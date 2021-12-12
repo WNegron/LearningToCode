@@ -5,6 +5,8 @@
 		  Author: Warren Negron
 		   Email: warren.negron@gmail.com
 
+Note: My answer to exercise 2.17 using only the tools and methods taught up to Chapter 2
+
 
 Description:
 
