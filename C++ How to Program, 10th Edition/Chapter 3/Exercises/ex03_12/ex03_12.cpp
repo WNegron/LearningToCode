@@ -5,7 +5,7 @@ Filename: ex03_12.cpp
   Author: Warren Negron
    Email: warren.negron@gmail.com
 
-Note: My answer to exercise 3.12 using only the tools and methods thought in Chapter 2.
+Note: My answer to exercise 3.12 using only the tools and methods thought in Chapter 3.
 
 Description:
 
