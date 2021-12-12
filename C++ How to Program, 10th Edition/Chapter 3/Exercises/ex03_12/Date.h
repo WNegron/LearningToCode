@@ -5,7 +5,7 @@ Filename: Date.h
   Author: Warren Negron
    Email: warren.negron@gmail.com
 
-Note: My answer to exercise 3.12 using only the tools and methods thought in Chapter 3.
+Note: My answer to exercise 3.12 using only the tools and methods taught up to Chapter 3.
 
 Description:
 
