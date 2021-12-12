@@ -5,7 +5,7 @@ Filename: ex02_29.cpp
   Author: Warren Negron
    Email: warren.negron@gmail.com
 
-Note: My answer to exercise 2.29 using only the tools and methods thought in Chapter 2.
+Note: My answer to exercise 2.29 using only the tools and methods taught up to Chapter 2.
 
 Description:
 
@@ -15,16 +15,16 @@ formatted table of values:
 
 	Integer	Square	Cube
 	0       0       0
-	1       1		    1
-	2		    4   		8
-	3		    9   		27
-	4		    16  		64
-	5		    25  		125
-	6		    36	  	216
-	7		    49	  	343
-	8		    64	  	512
-	9		    81  		729
-	10		  100		  1000
+	1       1       1
+	2       4       8
+	3       9       27
+	4       16      64
+	5       25      125
+	6       36      216
+	7       49      343
+	8       64      512
+	9       81      729
+	10      100     1000
 ************************************************************************************ */
 
 #include <iostream> //enables program to perform input and output
