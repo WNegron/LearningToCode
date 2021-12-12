@@ -51,4 +51,5 @@ float number2 = 0;
  /*cout << "Bonus: The remainder of the division" << endl; 
  cout << number1 << " % " << number2 << " = " << number1 % number2 << endl; */
  
+return 0;// indicates program ended succesfully	
 } // end of function main
