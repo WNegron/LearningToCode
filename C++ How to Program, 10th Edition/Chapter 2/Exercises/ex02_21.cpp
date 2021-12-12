@@ -10,15 +10,15 @@ Note: My answer to exercise 2.21 using only the tools and methods thought in Cha
 Description:
  2.21 (Displaying Large Letters) Write a program that prints C++ as follows:
 
-  *********    ***			*        *
+  *********    ***	*        *
   *       *   *   *    ***     *   *
   *       *  *     *  *****   *     *
   *       *  *     *   	*    *       *
-  *       *  *     *   	*   *	        *
-  *       *	 *     *   	*    *       *
-  *       *  *     *	 	*     *     *
-  *       *	  *   *   	*      *   *
-  *********    ***   	  *        *
+  *       *  *     *   	*   *         *
+  *       *  *     *   	*    *       *
+  *       *  *     *	*     *     *
+  *       *   *   *   	*      *   *
+  *********    ***      *        *
 ************************************************************************************ */
 
 #include <iostream> //enables program to perform input and output
