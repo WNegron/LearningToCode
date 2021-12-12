@@ -5,7 +5,7 @@ Filename: ex02_21.cpp
   Author: Warren Negron
    Email: warren.negron@gmail.com
 
-Note: My answer to exercise 2.21 using only the tools and methods thought in Chapter 2.
+Note: My answer to exercise 2.21 using only the tools and methods taught up to Chapter 2.
 
 Description:
  2.21 (Displaying Large Letters) Write a program that prints C++ as follows:
