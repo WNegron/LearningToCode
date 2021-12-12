@@ -27,7 +27,6 @@ unchanged. Write a driver program to demonstrate Invoice’s capabilities.
 ************************************************************************************ */
 
 // Invoice class header file
-// Invoice.h
 
 #include <iostream> // enable program to perform input and output
 #include <string> // enable program to use C++ string data type
