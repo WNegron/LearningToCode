@@ -5,7 +5,7 @@ Filename: ex02_20.cpp
   Author: Warren Negron
    Email: warren.negron@gmail.com
 
-Note: My answer to exercise 2.20 using only the tools and methods thought in Chapter 2.
+Note: My answer to exercise 2.20 using only the tools and methods taught in Chapter 2.
 
 Description:
 
