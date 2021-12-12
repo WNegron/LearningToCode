@@ -5,7 +5,7 @@ Filename: ex02_26.cpp
   Author: Warren Negron
    Email: warren.negron@gmail.com
 
-Note: My answer to exercise 2.26 using only the tools and methods thought in Chapter 2.
+Note: My answer to exercise 2.26 using only the tools and methods taught up to Chapter 2.
 
 Description:
 
