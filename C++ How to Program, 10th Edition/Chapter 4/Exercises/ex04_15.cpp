@@ -38,15 +38,16 @@ of hours of leave accrued by that employee. Process each employee’s figures at
 
 *****************************      Pseudocode      ************************************
 
-Initialize hours worked to 0
+	Initialize hours worked to 0
 
-while user has not yet enter the sentinel
-	prompt user to enter number of hours worked by the employee
-	input hours worked
+	while user has not yet enter the sentinel
+		prompt user to enter number of hours worked by the employee
+		input hours worked
 	
-	if worked hours does not equal -1(sentinel)
-		print "Accrued leave: "
-		print accrued leave
+		if worked hours does not equal -1(sentinel)
+			print "Accrued leave: "
+			print accrued leave
+			print " hours"
 		
 *****************************    End Pseudocode    ************************************
 ************************************************************************************* */
@@ -72,5 +73,5 @@ const int sentinel = -1;
 			cout << " hours" << endl;
 		}//end if
 	}//end while
-}//end main funtion
+}//end main function
 
