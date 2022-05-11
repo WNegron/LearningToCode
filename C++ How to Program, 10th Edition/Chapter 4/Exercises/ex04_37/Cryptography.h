@@ -169,7 +169,11 @@ void encryptData(int dataNumber){
 }//end ecryptData
 
 void displayEncryptedNumber(){
-	std::cout << "Number has been ecnrypted: " << getEncryptedNumber() << std::endl;
+	std::cout << "Number has been ecnrypted: ";
+	if(getEncryptedNumber() < 1000){//if the first digit of the encrypted number is a 0
+		std::cout << "0";
+		}//end of if
+	std::cout << getEncryptedNumber() << std::endl;
 }//end displayEncryptedNumber
 
 void decryptData(int dataNumber){
