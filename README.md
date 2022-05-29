@@ -1,4 +1,4 @@
-# Program-How-to-
+# LearningToCode
 Learning programming mainly learning C and C++. 
 Using several books: 
   C How to Program, 8/e, C++ How to Program, 10/e,
