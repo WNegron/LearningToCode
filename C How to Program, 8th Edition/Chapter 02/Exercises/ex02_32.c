@@ -60,18 +60,41 @@ performed with doubles, they’ll both produce numbers with decimal points—the
 int main(void){
 	//variable definition
 	int bmi, weight, height;
+	int userChoice;
+
+	//prompt user to choose between inches and pounds or Meters and kilograms
+	printf("%s :", "Imperial System (1) or Metric Systen (2)");
 	
-	//prompt user for weight
-	printf("%s", "Enter weight in pounds: ");
-        //read user weight
-	scanf("%d", &weight);
-	//prompt user for  height
-	printf("%s", "Enter height in inches: ");
-	//read user height
-	scanf("%d", &height);
-	
-	bmi = (weight * 703) / (height * height);
-	
+	//read user choice
+	scanf("%d", &userChoice);
+
+	if(userChoice == 1){
+		//prompt user for weight
+		printf("%s", "Enter weight in pounds: ");
+                //read user weight
+		scanf("%d", &weight);
+		//prompt user for  height
+		printf("%s", "Enter height in inches: ");
+		//read user height
+		scanf("%d", &height);
+		
+		bmi = (weight * 703) / (height * height);
+	}//end if
+
+	if(userChoice == 2){
+		//prompt user for weight
+		printf("%s", "Enter weight in kilograms: ");
+		//read user weight
+		scanf("%d", &weight);
+
+		//prompt user for height
+		printf("%s", "Enter height in meters: ");
+		//read user height
+		scanf("%d", &height);
+
+		bmi = weight / (height * height);
+	}//end if
+
 
 	printf("\n\n%s \n", "BMI VALUES");
 	printf("%s \n", "Underweight: less than 18.5"); 
@@ -104,3 +127,4 @@ int main(void){
 	}//end if
 
 }//end function main
+
