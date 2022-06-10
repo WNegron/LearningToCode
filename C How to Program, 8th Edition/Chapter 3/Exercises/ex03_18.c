@@ -63,7 +63,10 @@ int main(void){
         //read & input salesAmount
         scanf("%f",&salesAmount);
 
-        //calculate & print employee salary
-        printf("\n %s %.2f \n", "Salary is: ", weeklyPay + (salesAmount * 0.9));
+        //verify sentinel value hasn't been entered by user
+        if(salesAmount != -1){
+            //calculate & print employee salary
+            printf("%s %.2f \n", "Salary is: ", weeklyPay + (salesAmount * 0.09));
+        }//end if
     }//end while
 }//end function main
