@@ -97,3 +97,4 @@ int main(void){
     printf("%s %.6f","The overall average miles/gallon was ", totalMiles/totalGallons);
 
 }//end function main
+
