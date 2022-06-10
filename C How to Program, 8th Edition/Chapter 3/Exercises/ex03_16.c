@@ -8,10 +8,11 @@ Notes:
 My answer to exercise 3.16 using only the tools and methods taught up to chapter 3.
 
 Description:
-For Exercises 3.16–3.20, perform each of these steps:
-1. Read the problem statement.
-2. Formulate the algorithm using pseudocode and top-down, stepwise refinement. 3. Write a C program.
-4. Test, debug and execute the C program.
+    For Exercises 3.16–3.20, perform each of these steps:
+        1. Read the problem statement.
+        2. Formulate the algorithm using pseudocode and top-down, stepwise refinement. 
+        3. Write a C program.
+        4. Test, debug and execute the C program.
 
     3.16 (Gas Mileage) Drivers are concerned with the mileage obtained by their automobiles. One 
 driver has kept track of several tankfuls of gasoline by recording miles driven and gallons used for 
