@@ -70,7 +70,7 @@ int main(void){
     //loop until user enters -1
     while(currentGallons != -1){
         //prompt user for amount of gallons
-        printf("%s","Enter the gallons used (-1 to end): ");
+        printf("\n%s","Enter the gallons used (-1 to end): ");
 
         //read users input
         scanf("%f", &currentGallons);
@@ -94,7 +94,7 @@ int main(void){
     }//end of while
 
     //calculate and print miles per gallon for total entered by user
-    printf("%s %.6f \n","The overall average miles/gallon was ", totalMiles/totalGallons);
+    printf("\n%s %.6f \n","The overall average miles/gallon was ", totalMiles/totalGallons);
 
 }//end function main
 
