@@ -84,7 +84,7 @@ int main(void){
             scanf("%f",&currentMiles);
 
             //calculate and print miles per gallon for tank
-            printf("%s %.6f","The miles/gallon for this tank was ", currentMiles/currentGallons);
+            printf("%s %.6f \n","The miles/gallon for this tank was ", currentMiles/currentGallons);
 
             //add the total amount of gallons
             totalGallons += currentGallons;
@@ -94,7 +94,7 @@ int main(void){
     }//end of while
 
     //calculate and print miles per gallon for total entered by user
-    printf("%s %.6f","The overall average miles/gallon was ", totalMiles/totalGallons);
+    printf("%s %.6f \n","The overall average miles/gallon was ", totalMiles/totalGallons);
 
 }//end function main
 
