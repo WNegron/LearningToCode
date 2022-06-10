@@ -105,7 +105,7 @@ int main(void){
     //loop until user entered sentinel value -1
     while(accountNumber != -1){
         //prompt user for account number
-        printf("%s","Enter account number (-1 to end): ");
+        printf("\n%s","Enter account number (-1 to end): ");
         //read & input account number
         scanf("%d",&accountNumber);
 
@@ -132,7 +132,7 @@ int main(void){
             scanf("%f", &creditLimit);
 
             //calculate new balance
-            newbalance = (balance + charges – credits);
+            newBalance = (balance + charges - credits);
 
             //check if newBalance is greater than credit limit
             if(newBalance > creditLimit){
