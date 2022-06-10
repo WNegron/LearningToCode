@@ -1,11 +1,11 @@
 /***************************************************************************************************
-File Name: filename.c
-     Date: yyyy-mm-dd
+File Name: ex03_17.c
+     Date: 2022-06-10
    Author: Warren Negron
     Email: warren.negron@gmail.com
    
 Notes:
-My answer to exercise x.xx using only the tools and methods taught up to chapter xx.
+My answer to exercise 3.17 using only the tools and methods taught up to chapter 3.
 
 Description:
     For Exercises 3.16–3.20, perform each of these steps:
