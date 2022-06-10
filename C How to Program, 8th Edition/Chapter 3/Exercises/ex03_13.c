@@ -70,10 +70,10 @@ int main(void){
     //loop until user enters -1
     while(currentGallons != -1){
         //prompt user for amount of gallons
-        print("%s","Enter the gallons used (-1 to end): ");
+        printf("%s","Enter the gallons used (-1 to end): ");
 
         //read users input
-        scan("%f", &currentGallons);
+        scanf("%f", &currentGallons);
 
         //check if user entered sentinel value
         if(currentGallons != -1){
