@@ -51,7 +51,7 @@ public:
 // Member functions to get data members value
 
 // function returns account balance
-		string getBalance() const{
+		std::string getBalance() {
 			return balance.toString();
 		}//end getBalance
 
@@ -72,7 +72,7 @@ public:
 //function to withdraw money from the Account
 		void withdraw(DollarAmount withdrawAmount){
 			if(withdrawAmount.toPennies() <= balance.toPennies()){//if the withdrawAmount is valid
-				balance.subtrack(withdrawAmount);// subtract it from balance
+				balance.subtract(withdrawAmount);// subtract it from balance
 			}//end if
 			else //if withdrawAmount isn't valid
 				std::cerr << "Withdraw amount exceeded account balance";

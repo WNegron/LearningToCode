@@ -138,5 +138,9 @@ void divide(int parameter){
 	cents = amount % 100;
 }//end function divide
 
+void setAmount(int dollarValue, int centValue){
+	dollars = dollarValue;
+	cents = centValue;
+}//end setAmount
 };// end DollarAmount class
 

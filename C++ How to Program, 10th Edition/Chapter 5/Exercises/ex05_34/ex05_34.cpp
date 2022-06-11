@@ -24,22 +24,21 @@ the bodies of class Account’s constructor and member functions accordingly.
 #include <iomanip> //enable to program to use parameterized stream manipulators
 #include <string> //enable program to use C++ string data type
 
+//#include "DollarAmount.h" //enables program to use DollarAmount data type
 #include "Account.h" // enables program to use Account data type and functions
-#include "DollarAmount.h" //enables program to use DollarAmount data type
 
 using namespace std; //program uses names from the std namespace
 
 // main function begins program
 int main(){
      // declaration and initializing variables
-	int dollarAmount{0};
-     int centAmount{0};
+	int dollarsAmount{0};
+     int centsAmount{0};
 	
-	// create and initialize class object
-	Account account1{"Jane Green", 50,0};
-	Account account2{"John Blue", 7,0}; 
-     DollarAmount amount{0,0};
-	//DollarAmount withdrawAmount{0,0};
+	// create and initialize class object 
+     DollarAmount amount{50,0};
+     Account account1{"Jane Green", amount};
+	Account account2{"John Blue", amount};
 
 	// display initial balance of each object
 	cout << "account1: " << account1.getName() << " balance is $"
@@ -48,9 +47,9 @@ int main(){
 		 << account2.getBalance(); 
 
 	cout << "\n\nEnter deposit amount for account1: "; // prompt
-	cin >> dollarAmount >> centAmount; // obtain user input
-	cout << "adding " << dollarAmount << "." << centAmount << " to account1 balance";
-     amount(dollarAmount,centAmount);
+	cin >> dollarsAmount >> centsAmount; // obtain user input
+	cout << "adding " << dollarsAmount << "." << centsAmount << " to account1 balance";
+     amount.setAmount(dollarsAmount,centsAmount);
 	account1.deposit(amount); // add to account1's balance
 
 	// display balances
@@ -60,9 +59,9 @@ int main(){
 		 << account2.getBalance(); 
 
 	cout << "\n\nEnter deposit amount for account2: "; // prompt
-	cin >> dollarAmount >> centAmount; // obtain user input
-	cout << "adding " << dollarAmount << "." << centAmount << " to account2 balance";
-     amount(dollarAmount,centAmount);
+	cin >> dollarsAmount >> centsAmount; // obtain user input
+	cout << "adding " << dollarsAmount << "." << centsAmount << " to account2 balance";
+     amount.setAmount(dollarsAmount,centsAmount);
 	account2.deposit(amount); // add to account2 balance
 
 	// display balances
@@ -74,23 +73,23 @@ int main(){
 	//Modify class AccountTest (Fig. 3.9) to test member function withdraw.     
 	//withdraw from the account1
 	cout << "\n\nEnter amount to withdraw from account1: ";//prompt
-	cin >> dollarAmount >> centAmount; // obtain user input
-	cout << "withdrawing " << dollarAmount << "." << centAmount << " from account1 balance\n";
-     amount(dollarAmount,centAmount);
+	cin >> dollarsAmount >> centsAmount; // obtain user input
+	cout << "withdrawing " << dollarsAmount << "." << centsAmount << " from account1 balance\n";
+     amount.setAmount(dollarsAmount,centsAmount);
 	account1.withdraw(amount);// subtract from account1's balance
 
 	//withdraw from the account2
 	cout << "\n\nEnter amount to withdraw from account2: ";//prompt
-	cin >> dollarAmount >> centAmount; // obtain user input
-	cout << "withdrawing " << dollarAmount << "." << centAmount << " from account2 balance\n";
-     amount(dollarAmount,centAmount);
+	cin >> dollarsAmount >> centsAmount; // obtain user input
+	cout << "withdrawing " << dollarsAmount << "." << centsAmount << " from account2 balance\n";
+     amount.setAmount(dollarsAmount,centsAmount);
 	account2.withdraw(amount);// subtract from account1's balance
 
 	// display balances
 	cout << "\n\naccount1: " << account1.getName() << " balance is $"
 		 << account1.getBalance(); 
 	cout << "\naccount2: " << account2.getName() << " balance is $"
-		 << account2.getBalance() << endl; 
+		 << account2.getBalance() << endl;
 
 return 0; // indicate that program ended successfully
 } // end of function main
