@@ -1,4 +1,5 @@
-/***************************************************************************************************
+/* ************************************************************************************
+
 Filename: Account.h
     Date: 2022-06-11
   Author: Warren Negron
@@ -8,89 +9,72 @@ Note: My answer to exercise 5.34 using only the tools and methods taught up to C
 
 Description:
 
- 
+3.9 (Modified Account Class) Modify class Account (Fig. 3.8) to provide a member function
+called withdraw that withdraws money from an Account. Ensure that the withdrawal amount
+does not exceed the Account’s balance. If it does, the balance should be left unchanged
+and the member function should display a message indicating "Withdrawal amount exceeded
+account balance." Modify class AccountTest (Fig. 3.9) to test member function withdraw.
 
-***************************************************************************************************/
+************************************************************************************ */
 
-#include <string> // enable program to use C++ string data type
-#include <iostream> // enable program to perform input and output
+class Account{// class definition
 
-class Account{
 private:
 /******************           Data Members           ***********************/
-	std::string firstName; // account firstName data member
-	std::string lastName; // account lastName data member
-	double balance{0}; // data member with default initial value
-	unsigned int accountNumber; //account number data member
-	
+std::string name; // account name data member
+int balance{0}; // data member with default initial value
+
 public:
 /*********                     Member Functions                         ***********/
 
 /*************************     Class Constructor    *******************************/ 
 // initializes the data members
-// Account constructor; assign parameters to data member			
-	Account(unsigned int number,std::string first,std::string last, double initialBalance)
-	:accountNumber(number),firstName(first),lastName(last){
-	// validate that the initialBalance is greater than 0; if not,
-	// data member balance keeps its default initial value of 0
-		if(initialBalance > 0){ // if the initialBalance valid
-			balance = initialBalance; // assign it to data member balance 
-		}//end if
-	}// end Account constructor
-		
+// Account constructor with two parameters
+		Account(std::string accountName, int initialBalance)
+			:name(accountName){// assign accountName to data member name
+			
+			// validate that the initialBalance is greater than 0; if not,
+			// data member balance keeps its default initial value of 0
+			if(initialBalance > 0){ // if the initialBalance valid
+				balance = initialBalance; // assign it to data member balance 
+			}//end if
+		}// end Account constructor
+
 /*************************   Set Member Functions   *******************************/
-// Member Functions to set the data members		
-	// function that sets the first name
-	void setFirstName(std::string first){
-		firstName = first;
-	}// end setFirstName
-		
-	// function that sets the last name
-	void setLastName(std::string last){
-		lastName = last;
-	}// end setLastName
-		
-	void setAccountNumber(unsigned int number){
-		accountNumber = number;
-	}//end setAccountNumer
-		
+// Member Functions to set the data members
+// function that sets the name
+		void setName(std::string accountName){
+			name = accountName;
+		}// end setName 
+	
 /*************************   Get Member Functions   *******************************/
 // Member functions to get data members value
-	// function that returns the name
-	std::string getFirstName(){
-		return firstName;
-	}// end getFirstName
-		
-	// function that returns the name
-	std::string getLastName(){
-		return lastName;
-	}// end getLastName
-		
-	// function returns account balance
-	double getBalance() const{
-		return balance;
-	}//end getBalance
-		
-	unsigned int getAccountNumber(){
-		return accountNumber;
-	}//end getAccountNumber
-	
-/**************************  Other Member Functions *******************************/	
-	// function that deposits (adds) only valid amount to the balance
-	void deposit(double depositAmount){
-		if(depositAmount > 0){ //if the depositAmount is valid
-			balance = balance + depositAmount;// add it to the balance
-		}//end if
-	}// end deposit
 
-	//function to withdraw money from the Account
-	void withdraw(double withdrawAmount){
-		if(withdrawAmount <= balance){//if the withdrawAmount is valid
-			balance = balance - withdrawAmount;// subtract it from balance
-		}//end if
-	else //if withdrawAmount isn't valid
-			std::cerr << "Withdraw amount exceeded account balance";
-	}// end withdraw
+// function returns account balance
+		int getBalance() const{
+			return balance;
+		}//end getBalance
 
+// function that returns the name
+		std::string getName() const{
+			return name;
+		}// end getName	
+
+/**************************  Other Member Functions *******************************/
+// function that deposits (adds) only valid amount to the balance
+		void deposit(int depositAmount){
+			if(depositAmount > 0){ //if the depositAmount is valid
+				balance = balance + depositAmount;// add it to the balance
+			}//end if
+		}// end deposit
 		
-};// end class Account
+//Exercise 3.9
+//function to withdraw money from the Account
+		void withdraw(int withdrawAmount){
+			if(withdrawAmount <= balance){//if the withdrawAmount is valid
+				balance = balance - withdrawAmount;// subtract it from balance
+			}//end if
+			else //if withdrawAmount isn't valid
+				std::cerr << "Withdraw amount exceeded account balance";
+		}// end withdraw
+};// end ClassName class
