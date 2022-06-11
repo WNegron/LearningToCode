@@ -12,6 +12,10 @@ This exercise is from the global Edition of C++ How to Program, 10/e
 
 Description:
 	
+     5.34 (Account Class That Stores a DollarAmount) Upgrade the Account class from Exercise 3.9 to 
+define its balance data member as an object of class DollarAmount from Exercise 5.33. Reimplement 
+the bodies of class Account’s constructor and member functions accordingly.
+
      
 
 ***************************************************************************************************/
@@ -20,77 +24,73 @@ Description:
 #include <iomanip> //enable to program to use parameterized stream manipulators
 #include <string> //enable program to use C++ string data type
 
-#include "DollarAmount.h" // enables program to use DollarAmount data type and functions
+#include "Account.h" // enables program to use Account data type and functions
+#include "DollarAmount.h" //enables program to use DollarAmount data type
 
 using namespace std; //program uses names from the std namespace
 
 // main function begins program
 int main(){
-// declaration and initializing variables
-DollarAmount d1{123,45};// $123.45
-DollarAmount d2{15,76};// $15.76
+     // declaration and initializing variables
+	int dollarAmount{0};
+     int centAmount{0};
+	
+	// create and initialize class object
+	Account account1{"Jane Green", 50,0};
+	Account account2{"John Blue", 7,0}; 
+     DollarAmount amount{0,0};
+	//DollarAmount withdrawAmount{0,0};
 
-//conver dollars and cents to pennies
-//d1.toPennies();
-//d2.toPennies();
+	// display initial balance of each object
+	cout << "account1: " << account1.getName() << " balance is $"
+		 << account1.getBalance(); 
+	cout << "\naccount2: " << account2.getName() << " balance is $"
+		 << account2.getBalance(); 
 
-cout << "After adding d2 (" << d2.toString() << ") from d1 ("
-	 << d1.toString() << "), d1 = ";	 
-d1.add(d2);//modifies object d1
-cout << d1.toString() << "\n";
+	cout << "\n\nEnter deposit amount for account1: "; // prompt
+	cin >> dollarAmount >> centAmount; // obtain user input
+	cout << "adding " << dollarAmount << "." << centAmount << " to account1 balance";
+     amount(dollarAmount,centAmount);
+	account1.deposit(amount); // add to account1's balance
 
-cout << "After subtracting d2 (" << d2.toString() << ") from d1 ("
-     << d1.toString() << "), d1 = ";
-d1.subtract(d2); // modifies object d1
-cout << d1.toString() << "\n";
+	// display balances
+	cout << "\n\naccount1: " << account1.getName() << " balance is $"
+		 << account1.getBalance(); 
+	cout << "\naccount2: " << account2.getName() << " balance is $"
+		 << account2.getBalance(); 
 
-cout << "After subtracting d1 (" << d1.toString() << ") from d2 ("
-     << d2.toString() << "), d2 = ";
-d2.subtract(d1); // modifies object d2
-cout << d2.toString() << "\n\n";
+	cout << "\n\nEnter deposit amount for account2: "; // prompt
+	cin >> dollarAmount >> centAmount; // obtain user input
+	cout << "adding " << dollarAmount << "." << centAmount << " to account2 balance";
+     amount(dollarAmount,centAmount);
+	account2.deposit(amount); // add to account2 balance
 
-cout << "Enter integer interest rate and divisor. For example:\n" 
-     << "for     2%, enter:    2 100\n" 
-     << "for   2.3%, enter:   23 1000\n"
-     << "for  2.37%, enter:  237 10000\n"
-     << "for 2.375%, enter: 2375 100000\n> ";
-int rate; // whole-number interest rate
-int divisor; // divisor for rate 
-cin >> rate >> divisor;
+	// display balances
+	cout << "\n\naccount1: " << account1.getName() << " balance is $"
+		 << account1.getBalance(); 
+	cout << "\naccount2: " << account2.getName() << " balance is $"
+		 << account2.getBalance() << endl; 
+      
+	//Modify class AccountTest (Fig. 3.9) to test member function withdraw.     
+	//withdraw from the account1
+	cout << "\n\nEnter amount to withdraw from account1: ";//prompt
+	cin >> dollarAmount >> centAmount; // obtain user input
+	cout << "withdrawing " << dollarAmount << "." << centAmount << " from account1 balance\n";
+     amount(dollarAmount,centAmount);
+	account1.withdraw(amount);// subtract from account1's balance
 
-DollarAmount balance{1000,00}; // initial principal amount in pennies
-//balance.toPennies();
+	//withdraw from the account2
+	cout << "\n\nEnter amount to withdraw from account2: ";//prompt
+	cin >> dollarAmount >> centAmount; // obtain user input
+	cout << "withdrawing " << dollarAmount << "." << centAmount << " from account2 balance\n";
+     amount(dollarAmount,centAmount);
+	account2.withdraw(amount);// subtract from account1's balance
 
-cout << "\nInitial balance: " << balance.toString() << endl;
-
-// display headers
-cout << "\nYear" << setw(20) << "Amount on deposit" << endl;
-
-// calculate amount on deposit for each of ten years
-for (unsigned int year{1}; year <= 10; year++) {
-// increase balance by rate % (i.e., rate / divisor)
-balance.addInterest(rate, divisor);
-
-// display the year and the amount
-cout << setw(4) << year << setw(20) << balance.toString() << endl;
-}//end for
-
-//int divisor;
-cout << "Testing divide function \n";
-cout << "Enter an integer to divide amount: ";
-cin >> divisor;
-
-cout << "Before division d1 = " << d1.toString() << endl; 
-d1.divide(divisor);
-cout << "After division d1 = " << d1.toString() << endl;
-
-//the rounding technique does not work with negative numbers
-//as you can see the number is not properly rounded
-//to make the roudning technique work for negative number 
-//instead of + 50 it should be - 50; I think!
-cout << "Before division d2 = " << d2.toString() << endl; 
-d2.divide(divisor);
-cout << "After division d2 = " << d2.toString() << endl;
+	// display balances
+	cout << "\n\naccount1: " << account1.getName() << " balance is $"
+		 << account1.getBalance(); 
+	cout << "\naccount2: " << account2.getName() << " balance is $"
+		 << account2.getBalance() << endl; 
 
 return 0; // indicate that program ended successfully
 } // end of function main

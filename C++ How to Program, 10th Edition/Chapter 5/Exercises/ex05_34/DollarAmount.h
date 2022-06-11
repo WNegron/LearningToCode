@@ -11,7 +11,10 @@ My answer to exercise 5.34 using only the tools and methods taught up to Chapter
 This exercise is from the global Edition of C++ How to Program, 10/e 
 
 Description:
-	
+	5.34 (Account Class That Stores a DollarAmount) Upgrade the Account class from Exercise 3.9 to 
+define its balance data member as an object of class DollarAmount from Exercise 5.33. Reimplement 
+the bodies of class Account’s constructor and member functions accordingly.
+
 	
 ***************************************************************************************************/
 
@@ -128,7 +131,7 @@ void divide(int parameter){
 
 	//Exercise 5.33
 
-	std::cout << float(toPennies()) / float(parameter) << std::endl;
+	//std::cout << float(toPennies()) / float(parameter) << std::endl;
 	amount = (((float(toPennies()) / float(parameter)) * 100) + 50) / 100;
 	
 	dollars = amount / 100;

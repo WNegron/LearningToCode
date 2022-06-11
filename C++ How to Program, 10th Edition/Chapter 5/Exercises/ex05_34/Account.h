@@ -14,13 +14,15 @@ define its balance data member as an object of class DollarAmount from Exercise 
 the bodies of class Account’s constructor and member functions accordingly.
 
 ***************************************************************************************************/
+#include <string>//enable program to use string data type
+#include "DollarAmount.h"//enable program to use DollarAmount data type
 
 class Account{// class definition
 
 private:
 /******************           Data Members           ***********************/
 std::string name; // account name data member
-int balance{0}; // data member with default initial value
+DollarAmount balance{0,0}; // data member with default initial value
 
 public:
 /*********                     Member Functions                         ***********/
@@ -28,13 +30,13 @@ public:
 /*************************     Class Constructor    *******************************/ 
 // initializes the data members
 // Account constructor with two parameters
-		Account(std::string accountName, int initialBalance)
+		Account(std::string accountName, DollarAmount initialBalance)
 			:name(accountName){// assign accountName to data member name
 			
 			// validate that the initialBalance is greater than 0; if not,
 			// data member balance keeps its default initial value of 0
-			if(initialBalance > 0){ // if the initialBalance valid
-				balance = initialBalance; // assign it to data member balance 
+			if(initialBalance.toPennies() > 0){ // if the initialBalance valid
+				balance.add(initialBalance); // assign it to data member balance 
 			}//end if
 		}// end Account constructor
 
@@ -49,8 +51,8 @@ public:
 // Member functions to get data members value
 
 // function returns account balance
-		int getBalance() const{
-			return balance;
+		string getBalance() const{
+			return balance.toString();
 		}//end getBalance
 
 // function that returns the name
@@ -60,17 +62,17 @@ public:
 
 /**************************  Other Member Functions *******************************/
 // function that deposits (adds) only valid amount to the balance
-		void deposit(int depositAmount){
-			if(depositAmount > 0){ //if the depositAmount is valid
-				balance = balance + depositAmount;// add it to the balance
+		void deposit(DollarAmount depositAmount){
+			if(depositAmount.toPennies() > 0){ //if the depositAmount is valid
+				balance.add(depositAmount);// add it to the balance
 			}//end if
 		}// end deposit
 		
 //Exercise 3.9
 //function to withdraw money from the Account
-		void withdraw(int withdrawAmount){
-			if(withdrawAmount <= balance){//if the withdrawAmount is valid
-				balance = balance - withdrawAmount;// subtract it from balance
+		void withdraw(DollarAmount withdrawAmount){
+			if(withdrawAmount.toPennies() <= balance.toPennies()){//if the withdrawAmount is valid
+				balance.subtrack(withdrawAmount);// subtract it from balance
 			}//end if
 			else //if withdrawAmount isn't valid
 				std::cerr << "Withdraw amount exceeded account balance";
