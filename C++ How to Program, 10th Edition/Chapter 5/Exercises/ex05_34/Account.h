@@ -1,4 +1,4 @@
-/* ************************************************************************************
+/***************************************************************************************************
 
 Filename: Account.h
     Date: 2022-06-11
@@ -9,13 +9,11 @@ Note: My answer to exercise 5.34 using only the tools and methods taught up to C
 
 Description:
 
-3.9 (Modified Account Class) Modify class Account (Fig. 3.8) to provide a member function
-called withdraw that withdraws money from an Account. Ensure that the withdrawal amount
-does not exceed the Account’s balance. If it does, the balance should be left unchanged
-and the member function should display a message indicating "Withdrawal amount exceeded
-account balance." Modify class AccountTest (Fig. 3.9) to test member function withdraw.
+	5.34 (Account Class That Stores a DollarAmount) Upgrade the Account class from Exercise 3.9 to 
+define its balance data member as an object of class DollarAmount from Exercise 5.33. Reimplement 
+the bodies of class Account’s constructor and member functions accordingly.
 
-************************************************************************************ */
+***************************************************************************************************/
 
 class Account{// class definition
 
