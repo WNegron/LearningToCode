@@ -1,20 +1,16 @@
-/* ************************************************************************************
-
-Filename: Account.hpp
-    Date: 2021-12-11
+/***************************************************************************************************
+Filename: Account.h
+    Date: 2022-06-11
   Author: Warren Negron
    Email: warren.negron@gmail.com
 
-Note: My answer to exercise 3.14 using only the tools and methods taught up to Chapter 3.
+Note: My answer to exercise 5.34 using only the tools and methods taught up to Chapter 5.
 
 Description:
 
-3.14 (C++11 List Initializers) Write a statement that uses list initialization to
-initialize an object of class Account which provides a constructor that receives an
-unsigned int, two strings and a double to initialize the accountNumber, firstName,
-lastName and balance data members of a new object of the class. 
+ 
 
-************************************************************************************ */
+***************************************************************************************************/
 
 #include <string> // enable program to use C++ string data type
 #include <iostream> // enable program to perform input and output

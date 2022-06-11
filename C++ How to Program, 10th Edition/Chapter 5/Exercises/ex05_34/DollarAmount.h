@@ -6,16 +6,15 @@ File Name: DollarAmount.h
     Email: warren.negron@gmail.com
 
 Note: 
-My answer to exercise 5.33 using only the tools and methods taught up to Chapter 5.
+My answer to exercise 5.34 using only the tools and methods taught up to Chapter 5.
 
 This exercise is from the global Edition of C++ How to Program, 10/e 
 
 Description:
 	
-	5.33 (DollarAmount with dollars and cents Data Members) Reimplement class DollarAmount from 
-Exercise 5.32 to store data members dollars and cents, rather than amount. Modify the body of each 
-constructor and member function appropriately to manipulate the dollars and cents data members.
+	
 ***************************************************************************************************/
+
 #include <cmath> //enables program to use mathematical functions
 #include <string> // enable program to use C++ string data type
 #include <iostream>//enable program to perform input/output
