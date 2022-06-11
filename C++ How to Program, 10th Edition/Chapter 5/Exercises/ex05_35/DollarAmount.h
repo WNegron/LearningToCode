@@ -6,15 +6,12 @@ File Name: DollarAmount.h
     Email: warren.negron@gmail.com
 
 Note: 
-My answer to exercise 5.34 using only the tools and methods taught up to Chapter 5.
+My answer to exercise 5.35 using only the tools and methods taught up to Chapter 5.
 
 This exercise is from the global Edition of C++ How to Program, 10/e 
 
 Description:
-	5.34 (Account Class That Stores a DollarAmount) Upgrade the Account class from Exercise 3.9 to 
-define its balance data member as an object of class DollarAmount from Exercise 5.33. Reimplement 
-the bodies of class Account’s constructor and member functions accordingly.
-
+	
 	
 ***************************************************************************************************/
 
