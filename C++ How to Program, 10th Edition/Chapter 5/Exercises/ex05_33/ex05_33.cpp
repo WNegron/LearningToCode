@@ -34,8 +34,8 @@ DollarAmount d1{123,45};// $123.45
 DollarAmount d2{15,76};// $15.76
 
 //conver dollars and cents to pennies
-d1.toPennies();
-d2.toPennies();
+//d1.toPennies();
+//d2.toPennies();
 
 cout << "After adding d2 (" << d2.toString() << ") from d1 ("
 	 << d1.toString() << "), d1 = ";	 
@@ -62,7 +62,7 @@ int divisor; // divisor for rate
 cin >> rate >> divisor;
 
 DollarAmount balance{1000,00}; // initial principal amount in pennies
-balance.toPennies();
+//balance.toPennies();
 
 cout << "\nInitial balance: " << balance.toString() << endl;
 

@@ -23,7 +23,6 @@ program.
 ***************************************************************************************************/
 #include <cmath> //enables program to use mathematical functions
 #include <string> // enable program to use C++ string data type
-#include <iostream>//enable program to perform input/output
 
 class DollarAmount{// class definition
 

@@ -38,61 +38,81 @@ explicit DollarAmount(int amountDollars, int amountCents)
 // add function; add right's amount to this object's amount
 void add(DollarAmount right){
 	//can access private data of other objects of the same class
-	amount += right.amount;
+	//amount += right.amount;
+
+	//Exercise 5.33
+	dollars += right.dollars;
+	cents += right.cents;
 }//end function add
 
 // subtract function; subtract right's amount
 void subtract(DollarAmount right){
 	//can access private data of other objects oft he same class
-	amount -= right.amount;
+	//amount -= right.amount;
+
+	//Exercise 5.33
+	dollars -= right.dollars;
+	cents -= right.cents;
+
 }// end function subtract
 
 // uses integer arithmetic to calculate interest amount,
 // then calls add with the interest amount
 void addInterest(int rate, int divisor){
 	//create DollarAmount representing the interest
+
+	//amount = toPennies();//Exercise 5.33
 	
 	//Exercise 5.32: Banker's rounding
 	//Banker’s rounding fixes this problem by rounding .5 to the nearest even integer—e.g., 0.5 rounds 
 	//to 0, 1.5 and 2.5 round to 2, 3.5 and 4.5 round to 4, etc.
-	int interestDollars = ((amount * rate) / divisor) / 100;
-	int interestCents = ((amount * rate) / divisor) % 100;
+	int interestDollars = ((toPennies() * rate) / divisor) / 100;
+	int interestCents = ((toPennies() * rate) / divisor) % 100;
 	
 	if(interestCents >= 50 && interestCents < 60){
 		if(((interestDollars % 10) % 2 ) == 1){
 			++interestDollars;
 			interestCents = 0;
 			
-			DollarAmount interest{interestDollars,interestCents};
+			DollarAmount interest{interestDollars, interestCents};
 
-			 interest.toPennies();
+			 //interest.toPennies();
+			 add(interest);// add interest to this object's amount
+		}//end if
+		else if(((interestDollars % 10) % 2 ) == 0){//verifies if interestDollar is an even number
+			//interestDollars stays as the even number; only cents need to be rounded to zero
+			interestCents = 0;//round to zero
+			DollarAmount interest{interestDollars, interestCents};
+			 //interest.toPennies();
 			 add(interest);// add interest to this object's amount
 		}//end if
 	}//end if
-	else{
-		interestDollars = ((amount * rate + divisor / 2) / divisor) / 100;
-		interestCents = ((amount * rate + divisor / 2) / divisor) % 100; 
+	else if(interestCents < 50 || interestCents >= 60){
+		interestDollars = ((toPennies() * rate + divisor / 2) / divisor) / 100;
+		interestCents = ((toPennies() * rate + divisor / 2) / divisor) % 100; 
 		DollarAmount interest{interestDollars, interestCents};
 
-		interest.toPennies();
+		//interest.toPennies();
 		add(interest);// add interest to this object's amount
 	}//end else
 }//end function addInterest
 
 // return a string representation of a DollarAmount object
-std::string toString() const{
+std::string toString(){
 	//convert the numeric value of dollars and cents into a string object
 	//abs (from header <cmath>) to get the absolute value of the cents
 	//to ensure that cents are always represented as positive value
-	std::string dollars{std::to_string(amount/100)};
-	std::string cents{std::to_string(std::abs(amount%100))};
+	
+	//Exercise 5.33
+	std::string dollars{std::to_string(toPennies()/100)};
+	std::string cents{std::to_string(std::abs(toPennies()%100))};
 	return dollars + "." + (cents.size() == 1 ? "0" : "") + cents;
 }//end function toString
 
 //Exercise 5.30: calculate and store in the data member amount the total number of pennies.
-void toPennies(){
+int64_t toPennies(){
 		//convert whole dollars into pennies adds cents 
-		amount = (dollars * 100) + cents;
+		return (dollars * 100) + cents;
 }//end function toPennies
 
 // Exercise 5.31: divide member function that receives an int parameter, divides the data member 
@@ -104,7 +124,16 @@ void divide(int parameter){
 	//the result is multiply by 100; so that we can correctly round the decimal point values
 	//then we had 50; to round the number up since int truncates anything after the decimal point
 	//then we divided by 100; to make the correct amount of pennies
-	amount = (((float(amount) / float(parameter)) * 100) + 50) / 100;
+	
+	//amount = (((float(amount) / float(parameter)) * 100) + 50) / 100;
+
+	//Exercise 5.33
+
+	std::cout << float(toPennies()) / float(parameter) << std::endl;
+	amount = (((float(toPennies()) / float(parameter)) * 100) + 50) / 100;
+	
+	dollars = amount / 100;
+	cents = amount % 100;
 }//end function divide
 
 };// end DollarAmount class
