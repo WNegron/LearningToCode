@@ -12,6 +12,10 @@ This exercise is from the global Edition of C++ How to Program, 10/e
 
 Description:
 	
+	5.35 (Displaying the Interest Rate in the DollarAmount Example) Enhance the main program in 
+Fig. 5.7 to display the interest rate based on the two integers entered by the user. For example, 
+if the user enters 2 and 100, display 2.0%, and if the user enters 2015 and 100000, display 2.015%.  
+
 	
 ***************************************************************************************************/
 

@@ -11,8 +11,10 @@ My answer to exercise 5.35 using only the tools and methods taught up to Chapter
 This exercise is from the global Edition of C++ How to Program, 10/e 
 
 Description:
-	
-     
+
+     5.35 (Displaying the Interest Rate in the DollarAmount Example) Enhance the main program in 
+Fig. 5.7 to display the interest rate based on the two integers entered by the user. For example, 
+if the user enters 2 and 100, display 2.0%, and if the user enters 2015 and 100000, display 2.015%.  
 
 ***************************************************************************************************/
 
@@ -62,6 +64,18 @@ DollarAmount balance{1000,00}; // initial principal amount in pennies
 //balance.toPennies();
 
 cout << "\nInitial balance: " << balance.toString() << endl;
+if(rate < 10){
+   cout << "Rate: " << fixed << setprecision(2) << float(rate / 1.00) << "%" << endl;  
+}
+if(rate >= 10 && rate < 100){
+     cout << "Rate: " << fixed << setprecision(2) << float(rate / 10.00) << "%" << endl;
+}
+if(rate >= 100 && rate < 1000){
+     cout << "Rate: " << fixed << setprecision(2) << float(rate / 100.00) << "%" << endl;
+}
+if(rate >= 1000){
+     cout << "Rate: " << fixed << setprecision(2) << float(rate / 1000.00) << "%" << endl;
+}
 
 // display headers
 cout << "\nYear" << setw(20) << "Amount on deposit" << endl;
