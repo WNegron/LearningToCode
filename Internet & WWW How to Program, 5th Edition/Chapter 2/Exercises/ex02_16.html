@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--------------------------------------------------------------------------------------------------
+        Filename: ex02_16.html
+            Date: 2022-06-12
+          Author: Warren Negron
+           Email: warren.negron@gmail.com
+           
+Note: My answer to exercise 2.16 using only the tools and methods taught up to Chapter 2.
+
+Description:
+    
+    2.16 A local university has asked you to create an HTML5 document that allows prospective 
+college students to provide feedback about their campus visit. 
+    Your HTML5 document should contain: 
+        a form with text fields for a name and e-mail. 
+
+        Provide checkboxes that allow prospective students to indicate what they liked most about the 
+        campus. The checkboxes should include: campus, students, location, atmosphere, dorm rooms and 
+        sports. 
+
+        Also, provide radio buttons that ask the prospective students how they became interested in 
+        the college. Options should include: friends, television, Internet and other.
+
+        In addition, provide a text area for additional comments, 
+        
+        a submit button and a reset button. 
+        
+Use post to sent the information in the form to http://www.deitel.com.
+--------------------------------------------------------------------------------------------------->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Exercise 2.16: Feedback Form </title>
+    </head>
+    <body>
+        <h1>Prospective Student Feedback Form</h1>
+        
+        <p>Please fill out this form to help us improve our site.</p>
+
+        <form method="post" action="http://deitel.com">
+            <input type="hidden" name="recipient" value="deitel@deitel.com">
+            <input type="hidden" name="subject" value="Prospective Student - Feedback Form">
+            <input type="hidden" name="redirect" value="ex02_16.html">
+
+            <!-- Input for prospective student name -->
+            <p><label for="studentName">Name: 
+                <input type="text" name="studentName" id="studentName" size="25">
+            </label></p>
+
+            <!-- Input for prospective student email -->
+            <p><label for="studentEmail">E-mail: 
+                <input type="text" name="email" id="studentEmail" size="25">
+            </label></p>
+
+            <!-- checkboxes: campus, students, location, atmosphere, dorm rooms and sports. -->
+            <p>
+                <strong>Things you liked the most about the campus: </strong>
+                <br>
+                <label for="campus">Campus
+                    <input type="checkbox" name="thingsliked" id="campus"
+                    value="campus"> 
+                </label>
+                <br>
+                <label for="students">Students
+                    <input type="checkbox" name="thingsliked" id="student"
+                    value="student">
+                </label>
+                <br>            
+                <label for="location">Location
+                    <input type="checkbox" name="thingsliked" id="location"
+                    value="location">
+                </label>  
+                <br>
+                <label for="atmosphere">Atmosphere
+                    <input type="checkbox" name="thingsliked" id="atmosphere"
+                    value="atmosphere">
+                </label>
+                <br>            
+                <label for="dorm-rooms">Dorm rooms
+                    <input type="checkbox" name="thingsliked" id="dorm-rooms"
+                    value="dorm rooms">
+                </label>
+                <br>        
+                <label for="sports">Sports
+                    <input type="checkbox" name="thingsliked" id="sports"
+                    value="sports">
+                </label>                 
+            </p>
+
+            <!-- radio buttons: friends, television, Internet and other -->
+            <p>
+                <strong>How did you became interested in the college?:</strong>
+                <br>
+                <label for="friends"> Friends 
+                    <input type="radio" name="howinterested" id="friends"
+                    value="friends">
+                </label>
+                <br>
+                <label for="television">Television
+                    <input type="radio" name="howinterested" id="television"
+                    value="television">
+                </label>
+                <br>
+                <label for="internet">Internet
+                    <input type="radio" name="howinterested" id="internet"
+                    value="internet">
+                </label>
+                <br>
+                <label for="other">Other
+                    <input type="radio" name="howinterested" id="other"
+                    value="other">
+                </label>
+            </p>
+
+            <!-- Input for prospective student comments -->        
+            <p><label for="studentComments">Comments: <br>
+                <textarea name="comments" id="studentComments" rows="10" cols="60">
+                    Enter comments here </textarea>
+            </label></p>
+
+            <!-- Buttons to submit and reset the form-->
+            <p>
+                <input type="submit" value="Submit">
+                <input type="reset" value="Clear">
+            </p>
+        </form>
+    </body>
+</html>
+
+
+
