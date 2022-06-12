@@ -21,5 +21,20 @@ indicating that the average of all the values preceding 9999 is to be calculated
 //function main begins program execution
 int main(void){
 	//variable definition
+    int newValue = 0;
+    int totalSum = 0;
+    int counter = 1;
+
+    printf("%s","Enter integers to be averaged: ");
+    scanf("%d", &newValue);
+
+    while(newValue != 9999){
+        totalSum += newValue;
+        ++counter;
+        
+        scanf("%d",&newValue);
+    }//end while
 	
+    --counter;
+    printf("%s %d \n","Average: ", totalSum/counter);
 }//end function main
