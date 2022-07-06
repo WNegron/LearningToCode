@@ -24,19 +24,30 @@ rounded number.
 #include <stdio.h>//standard input/output header
 #include <math.h>//enable program to use mathematical functions that are part of the header file 
 
+//function prototype
+double roundingNumbers(double x);
+
 //function main begins program execution
 int main(void){
 	//variable definition
     double x = 0.0;
     double y = 0.0;
+    int size = 5;
 
-    printf("%s","Rounding values:\n");
-    printf("%s","Enter a number: ");
-    scanf("%lf", &x);
+    printf("%s","Rounding Values\n");
 
-    y = floor(x + 0.5);
+    
+    for(int i = 0; i < size; i++){//for loop
+        printf("%s","Enter a number: "); //prompt user
+        scanf("%lf", &x);//read user input
 
-    printf("\n%s %.2f\n", "x = ", x);
-    printf("\n%s %.2f\n", "y = ", y);
-	
+        printf("\n%s %.2f\n", "x = ", x);//print original number
+        printf("\n%s %.2f\n", "y = ", roundingNumbers(x));//print rounded number
+    }//end for
+    
 }//end function main
+
+double roundingNumbers(double x){
+
+    return floor(x + 0.5);
+}
