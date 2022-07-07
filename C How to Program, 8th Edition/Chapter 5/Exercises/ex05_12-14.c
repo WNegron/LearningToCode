@@ -85,16 +85,15 @@ int main(void){
     //number at random from the set.
     printf("\n%s\n","Exercise 5.14:");
     
-    enum evenNumber{ 2, 4, 6, 8, 10};
-    enum evenNumber num;
-    n = rand() % 5; //a) 2,4,6,8,10.
-    printf("\n%s %d\n","random integer, \"a) 2,4,6,8,10.\", is ", num{n});//print the value of n 
+    n = 2 + rand() % 8; //a) 2,4,6,8,10.
+    (n % 2 == 0) ? n : (n += 1);
+    printf("\n%s %d\n","random integer, \"a) 2,4,6,8,10.\", is ", n);//print the value of n 
     
     n = 3 + rand() % 8; //b) 3,5,7,9,11.
     (n % 2 == 1) ? n : (n += 1);
     printf("\n%s %d\n","random integer, \"b) 3,5,7,9,11.\", is ", n);//print the value of n 
     
-    n = 6 + rand() % 16; //c) 6, 10, 14, 18, 22.
+    n = 6 + ((rand() % 5) * 4); //c) 6, 10, 14, 18, 22.
     printf("\n%s %d\n","random integer, \"c) 6, 10, 14, 18, 22.\", is ", n);//print the value of n 
 
 }//end function main
