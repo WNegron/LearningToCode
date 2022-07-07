@@ -101,7 +101,9 @@ int main(void){
 
 bool isPrime(int number){
     int counter = 1;
-    //int size = sqrt(number);
+    //c)to see whether a number is prime; you might think that n/2, need go only square root of n
+    int counterRoot = sqrt(number);
+
     //for loop
     for(int i = 2; i < number; i++){
         if((number % i) == 0){ 
@@ -109,10 +111,14 @@ bool isPrime(int number){
         }//end if
         else{
             ++counter;
+            //c)to see whether a number is prime; you might think that n/2, need go only square root of n
+            if(counter >= counterRoot){
+                break;
+            }//end if
         }//end else
     }//end for
 
-    if(counter == (number -1)){
+    if(counter >= counterRoot){
         return true;
     }//end if
     else{
