@@ -36,11 +36,16 @@ Answers:
             e.g. rand() selects a number from 0 to RAND_MAX, or from 1 to 6
 
          b) Why is the rand function useful for simulating games of chance?
-
+            is a function part of the stdlib header, to produces a pseudorandom numbers, calling rand
+            repeadtedly will create a sequence of numbers that appears to be random. 
 
          c) Why would you randomize a program by using srand? Under what circumstances is it 
 desirable not to randomize?
+            srand uses a seed to create a different sequence of random numbers. If you want a 
+            different sequence of numbers each time the program is run.
+
          d) Why is it often necessary to scale and/or shift the values produced by rand?
+            it will debend on the desire sequences of numbers
 
 ***************************************************************************************************/
 
@@ -78,8 +83,6 @@ int main(void){
     printf("\n%s %d\n","random integer, \"f) –3 ≤ n ≤ 11\", is ", n);//print the value of n
 
     printf("\n%s\n", "-----------------------------------------------------------");
-
-    
 
     //5.14 For each of the following sets of integers, write a single statement that will print a 
     //number at random from the set.
