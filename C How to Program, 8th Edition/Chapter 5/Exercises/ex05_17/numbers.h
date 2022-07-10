@@ -18,6 +18,7 @@ program that inputs a series of pairs of integers.
 
 
 ***************************************************************************************************/
+#include <stdbool.h> // allows the use of bool, true, and false
 
 //function isMultiple determines if the 2nd integer (num2) is a multiple of the first integer (num1)
 //and returns true; if true. And returns false; if false
