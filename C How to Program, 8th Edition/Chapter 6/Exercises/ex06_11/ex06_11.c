@@ -22,3 +22,26 @@ been made. If none has been made, then the data must already be in the proper or
 should terminate. If swaps have been made, then at least one more pass is needed.
 
 ***************************************************************************************************/
+
+#include <stdio.h>//standard input/output
+#include "bubblesort.h"
+
+//symbolic constant
+#define SIZE = 10 //maximum size of array
+
+int main(void){
+        int values[SIZE] = {6,1,8,2,13,30,0,23,4,11};
+
+        for(int i = 0; i < SIZE; i++){
+                printf("%s","Unsorted array: \n");
+                printf("%d %s",values[i],", ");
+        }//end for loop 'i'
+
+        originalBubbleSort(values,SIZE);
+
+        for(int i = 0; i < SIZE; i++){
+                printf("%s","Sorted array: \n");
+                printf("%d %s",values[i],", ");
+        }//end for loop 'i'
+
+}//end function main
