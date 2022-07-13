@@ -27,21 +27,34 @@ should terminate. If swaps have been made, then at least one more pass is needed
 #include "bubblesort.h"
 
 //symbolic constant
-#define SIZE = 10 //maximum size of array
+#define SIZE 10 //maximum size of array
 
 int main(void){
         int values[SIZE] = {6,1,8,2,13,30,0,23,4,11};
 
+        printf("%s","\nUnsorted array: \n");
         for(int i = 0; i < SIZE; i++){
-                printf("%s","Unsorted array: \n");
+                printf("%d %s",values[i],", ");
+        }//end for loop 'i'
+        
+        puts("");
+
+        /*originalBubbleSort(values,SIZE);
+
+        printf("%s","\nSorted array: \n");
+        for(int i = 0; i < SIZE; i++){
                 printf("%d %s",values[i],", ");
         }//end for loop 'i'
 
-        originalBubbleSort(values,SIZE);
+        puts("");*/
 
+        modBubbleSort(values,SIZE);
+
+        printf("%s","\nSorted array: \n");
         for(int i = 0; i < SIZE; i++){
-                printf("%s","Sorted array: \n");
                 printf("%d %s",values[i],", ");
         }//end for loop 'i'
+
+        puts("");
 
 }//end function main
