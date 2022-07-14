@@ -88,7 +88,7 @@ numbers of 3, 4, or 6 as follows:
     2   3   4   4   4   4   3   2
 
 Now write a version of the Knight’s Tour program using the accessibility heuristic. At any time, the 
-knight should move to the square with the lowest accessibility num- ber. In case of a tie, the knight 
+knight should move to the square with the lowest accessibility number. In case of a tie, the knight 
 may move to any of the tied squares. Therefore, the tour may begin in any of the four corners. 
 [Note: As the knight moves around the chess- board, your program should reduce the accessibility 
 numbers as more and more squares become occupied. In this way, at any given time during the tour, 
@@ -109,7 +109,7 @@ the lowest accessibility number.
 #define ROWS 8
 #define COLUMNS 8
 
-bool isAvailable(int chessboard[ROWS][COLUMNS], int row, int column){
+bool isAvailable(char chessboard[ROWS][COLUMNS], int row, int column){
     if(chessboard[row][column] != 'X'){
         return true;
     }//end if 
@@ -118,7 +118,7 @@ bool isAvailable(int chessboard[ROWS][COLUMNS], int row, int column){
     }//end else   
 }//end function previousSquares
 
-int newRow(int chessboard[ROWS][COLUMNS]){
+int newRow(char chessboard[ROWS][COLUMNS]){
     for(int row = 0; row < ROWS; row++){
         for(int column = 0; column < COLUMNS; column++){
             if(chessboard[row][column] == 'K'){
@@ -128,7 +128,7 @@ int newRow(int chessboard[ROWS][COLUMNS]){
     }//end for loop 'row'
 }//end function newRow
 
-int newColumn(int chessboard[ROWS][COLUMNS]){
+int newColumn(char chessboard[ROWS][COLUMNS]){
     for(int row = 0; row < ROWS; row++){
         for(int column = 0; column < COLUMNS; column++){
             if(chessboard[row][column] == 'K'){
@@ -152,7 +152,7 @@ bool isMoveValid(int row, int column){
     }//end else
 }//end function isMoveValid
 
-void moveKnight(int chessboard[ROWS][COLUMNS], int moveNumber, int currentRow, int currentColumn){
+void moveKnight(char chessboard[ROWS][COLUMNS], int moveNumber, int currentRow, int currentColumn){
       //knights available moves
     int horizontal[COLUMNS] = {2,1,-1,-2,-2,-1,1,2};
     int vertical[ROWS] = {-1,-2,-2,-1,1,2,2,1};

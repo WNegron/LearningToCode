@@ -105,15 +105,24 @@ the lowest accessibility number.
 
 #include <stdio.h>//standard input/output
 
-#include "chessboard.h"
-#include "knightstour.h"
+#include "chessboard.h"//initializes and prints the board
+#include "knightstour.h"//moves the knight piece around
+
 //symbolic constant
 #define ROWS 8
 #define COLUMNS 8 
 
 int main(void){
     char chessboard[ROWS][COLUMNS];
-
+    int heuristicBoard[ROWS][COLUMNS] =  {{2,3,4,4,4,4,3,2},
+                                          {3,4,6,6,6,6,4,3},
+                                          {4,6,8,8,8,8,6,4},
+                                          {4,6,8,8,8,8,6,4},
+                                          {4,6,8,8,8,8,6,4},
+                                          {4,6,8,8,8,8,6,4},
+                                          {3,4,6,6,6,6,4,3},
+                                          {2,3,4,4,4,4,3,2}};//end of heuristicBoard
+     
     //knights starting position
     int currentRow = 3;
     int currentColumn = 4;
@@ -124,7 +133,9 @@ int main(void){
     //to move knight
     int moveNumber = 0;//0 to 7
 
-    initializeBoard(chessboard,currentRow,currentColumn);
+    initializeBoard(chessboard,currentRow,currentColumn,heuristicBoard);
+
+    printHeuristicBoard(heuristicBoard);
 
     while(moveNumber != -1){
 
