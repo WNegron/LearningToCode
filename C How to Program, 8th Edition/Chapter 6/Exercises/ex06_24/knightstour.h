@@ -109,6 +109,15 @@ the lowest accessibility number.
 #define ROWS 8
 #define COLUMNS 8
 
+/**************************** Implementing Heuristic ****************************/
+void possibleMoves(char chessboard[][COLUMNS], int heuristicBoard[][COLUMNS]){
+    int horizontal[COLUMNS] = {2,1,-1,-2,-2,-1,1,2};
+    int vertical[ROWS] = {-1,-2,-2,-1,1,2,2,1};
+    
+}//end function possibleMoves
+
+/*******************************************************************************/
+
 bool isAvailable(char chessboard[ROWS][COLUMNS], int row, int column){
     if(chessboard[row][column] != 'X'){
         return true;
