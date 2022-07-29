@@ -101,7 +101,7 @@ bool isMoveValidH(int row, int column){
     }//end else
 }//end function isMoveValid
 
-//newPossibleMoves will show available moves to the knight based on current position
+//rates the available moves to based on the Knight's position
 void rateMoves(int chessboard[ROWS][COLUMNS],int currentRow, int currentColumn,int ratingMoves[ROWS]){
     bool validMove;
     bool available;

@@ -136,16 +136,20 @@ int main(void){
     //applying the heuristic approach
     int ratingMoves[ROWS];
 
+    //position Knight on chess board
     initializeBoard(chessboard,currentRow,currentColumn);
     trackingKnight(heuristicBoard,currentRow,currentColumn);
 
+    //will show available moves based on the Knight's position
     newPossibleMoves(chessboard,currentRow,currentColumn);
+
     rateMoves(heuristicBoard,currentRow,currentColumn,ratingMoves);
 
-   // printHeuristicBoard(heuristicBoard);
-
+    //while loop to run the Knight's tour
+    //when no moves are available the moveNumber will be -1
+    //when moveNumber is -1 the loop will end
     while(moveNumber != -1){
-        
+        //display chess board
         printBoard(chessboard);
         
         //using lowestRate
@@ -153,15 +157,20 @@ int main(void){
 
         puts("\n\n\n");//new lines
 
+        //verifies there is moveNumber is not equal -1
         if(moveNumber != -1){
+            //function to move Knight
             moveKnight(chessboard,moveNumber,currentRow,currentColumn);
+            //keeps track of knights new position
             currentRow = newRow(chessboard);
             currentColumn = newColumn(chessboard);
             trackingKnight(heuristicBoard,currentRow,currentColumn);
+            //function to erase available moves based on the old Knight's position
             clearBoard(chessboard);
+            //function for new available moves based on the new Knight's position
             newPossibleMoves(chessboard,currentRow,currentColumn);
+            //function rates the available moves based on the new Knight's position
             rateMoves(heuristicBoard,currentRow,currentColumn,ratingMoves);
-            ++counter;
         }//end if 'moveNumber'
 
         puts("\n\n\n");//new lines

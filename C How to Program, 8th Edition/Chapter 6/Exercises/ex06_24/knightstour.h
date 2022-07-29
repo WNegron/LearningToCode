@@ -109,6 +109,7 @@ the lowest accessibility number.
 #define ROWS 8
 #define COLUMNS 8
 
+//checks if the Knight can move to the desired sqaured
 bool isAvailable(char chessboard[ROWS][COLUMNS], int row, int column){
     if(chessboard[row][column] != 'X'){
         return true;
@@ -118,6 +119,7 @@ bool isAvailable(char chessboard[ROWS][COLUMNS], int row, int column){
     }//end else   
 }//end function previousSquares
 
+//returns the current row for the Knight
 int newRow(char chessboard[ROWS][COLUMNS]){
     for(int row = 0; row < ROWS; row++){
         for(int column = 0; column < COLUMNS; column++){
@@ -128,6 +130,7 @@ int newRow(char chessboard[ROWS][COLUMNS]){
     }//end for loop 'row'
 }//end function newRow
 
+//returns the current column for the Knight
 int newColumn(char chessboard[ROWS][COLUMNS]){
     for(int row = 0; row < ROWS; row++){
         for(int column = 0; column < COLUMNS; column++){
@@ -138,6 +141,7 @@ int newColumn(char chessboard[ROWS][COLUMNS]){
     }//end for loop 'row'
 }//end function newColumn
 
+//function to make sure the move is within the confines of the board
 bool isMoveValid(int row, int column){
     if((row >= 0) && (row <= 7)){
         if((column >= 0) && (column <= 7)){
@@ -197,15 +201,16 @@ void clearBoard(char chessboard[][COLUMNS]){
 void newPossibleMoves(char chessboard[ROWS][COLUMNS],int currentRow, int currentColumn){
     bool validMove;
     bool available;
+    //knights available moves
     int horizontal[COLUMNS] = {2,1,-1,-2,-2,-1,1,2};
     int vertical[ROWS] = {-1,-2,-2,-1,1,2,2,1};
-    //int counter = 0;
-
+    
     for(int moveNumber = 0; moveNumber < ROWS; moveNumber++){
+        /// verifies the move is within the chess board; returns true or false
         validMove = isMoveValid(currentRow + vertical[moveNumber],currentColumn + horizontal[moveNumber]);
         
         if(validMove){
-            
+            //verifies the square is available
             available = isAvailable(chessboard,currentRow + vertical[moveNumber],currentColumn + horizontal[moveNumber]);
             
             if(available){
@@ -236,10 +241,6 @@ void newPossibleMoves(char chessboard[ROWS][COLUMNS],int currentRow, int current
                         chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '7';
                         break;
                     default:
-                       /* ++counter;
-                        if(counter == (ROWS - 1)){
-                            puts("No more moves available");
-                        }*/
                         break;
                 }//end switch-case
             }//end if 'available' 
@@ -247,8 +248,9 @@ void newPossibleMoves(char chessboard[ROWS][COLUMNS],int currentRow, int current
     }//end for loop moveNumber
 }//end funciton newPossibleMoves
 
+//function to move Knight
 void moveKnight(char chessboard[ROWS][COLUMNS], int moveNumber, int currentRow, int currentColumn){
-      //knights available moves
+    //knights available moves
     int horizontal[COLUMNS] = {2,1,-1,-2,-2,-1,1,2};
     int vertical[ROWS] = {-1,-2,-2,-1,1,2,2,1};
     bool validMove;
