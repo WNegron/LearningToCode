@@ -208,6 +208,7 @@ void newPossibleMoves(char chessboard[ROWS][COLUMNS],int currentRow, int current
     bool available;
     int horizontal[COLUMNS] = {2,1,-1,-2,-2,-1,1,2};
     int vertical[ROWS] = {-1,-2,-2,-1,1,2,2,1};
+    //int counter = 0;
 
     for(int moveNumber = 0; moveNumber < ROWS; moveNumber++){
         validMove = isMoveValid(currentRow + vertical[moveNumber],currentColumn + horizontal[moveNumber]);
@@ -218,40 +219,40 @@ void newPossibleMoves(char chessboard[ROWS][COLUMNS],int currentRow, int current
             
             if(available){
                 //possibles moves for the knight
-                //int tempRow = currentRow + vertical[moveNumber];
-                //int tempCol = currentColumn + horizontal[moveNumber];
-                if(moveNumber == 0){
-                    chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '0';
-                }//end if
-                if(moveNumber == 1){
-                    chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '1';
-                }//end if
-                if(moveNumber == 2){
-                    chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '2';
-                }//end if
-                if(moveNumber == 3){
-                    chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '3';
-                }//end if
-                if(moveNumber == 4){
-                    chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '4';
-                }//end if
-                if(moveNumber == 5){
-                    chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '5';
-                }//end if
-                if(moveNumber == 6){
-                    chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '6';
-                }//end if
-                if(moveNumber == 7){
-                    chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '7';
-                }//end if
+                switch(moveNumber){
+                    case 0:
+                        chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '0';
+                        break;
+                    case 1:
+                        chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '1';
+                        break;
+                    case 2:
+                        chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '2';
+                        break;
+                    case 3:
+                        chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '3';
+                        break;
+                    case 4:
+                        chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '4';
+                        break;
+                    case 5:
+                        chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '5';
+                        break;
+                    case 6:
+                        chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '6';
+                        break;
+                    case 7:
+                        chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '7';
+                        break;
+                    default:
+                       /* ++counter;
+                        if(counter == (ROWS - 1)){
+                            puts("No more moves available");
+                        }*/
+                        break;
+                }//end switch-case
             }//end if 'available' 
-            /*else{
-                continue;
-            }*/
         }//end if 'validMove'
-        /*else{
-            continue;
-        }*/
     }//end for loop moveNumber
 }//end funciton newPossibleMoves
 
