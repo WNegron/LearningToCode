@@ -105,18 +105,9 @@ the lowest accessibility number.
 
 #include <stdbool.h> // allows the use of bool, true, and false
 
-//symbolic constant
+//symbolic constants
 #define ROWS 8
 #define COLUMNS 8
-
-/**************************** Implementing Heuristic ****************************/
-void possibleMoves(char chessboard[][COLUMNS], int heuristicBoard[][COLUMNS]){
-    int horizontal[COLUMNS] = {2,1,-1,-2,-2,-1,1,2};
-    int vertical[ROWS] = {-1,-2,-2,-1,1,2,2,1};
-    
-}//end function possibleMoves
-
-/*******************************************************************************/
 
 bool isAvailable(char chessboard[ROWS][COLUMNS], int row, int column){
     if(chessboard[row][column] != 'X'){
@@ -263,10 +254,12 @@ void moveKnight(char chessboard[ROWS][COLUMNS], int moveNumber, int currentRow, 
     bool validMove;
     bool available;
 
+    // verifies the move is within the chess board; returns true or false
     validMove = isMoveValid(currentRow + vertical[moveNumber],currentColumn + horizontal[moveNumber]);
-
+    
     if(validMove){
 
+        //verifies the square is available
         available = isAvailable(chessboard,currentRow + vertical[moveNumber],currentColumn + horizontal[moveNumber] );
 
         if(available){
@@ -277,11 +270,6 @@ void moveKnight(char chessboard[ROWS][COLUMNS], int moveNumber, int currentRow, 
             currentRow += vertical[moveNumber];
             currentColumn += horizontal[moveNumber];
             chessboard[currentRow][currentColumn] = 'K';
-
-            //clearBoard(chessboard);
-
-            //newPossibleMoves(chessboard,horizontal,vertical,currentRow,currentColumn);
-
         }//end if 'available' 
         else{
             printf("%s","Square is not available!\nEnter new move!\n");

@@ -15,12 +15,11 @@ Description:
 #define COLUMNS 8
 
 //function to initialize the chessboard; so the array is not full of garbage
-void initializeBoard(char chessboard[ROWS][COLUMNS],int initialRow, int initialColumn,int heuristicBoard[ROWS][COLUMNS]){
+void initializeBoard(char chessboard[ROWS][COLUMNS],int initialRow, int initialColumn){
     for(int row = 0; row < ROWS; row++){
         for(int column = 0; column < COLUMNS; column++){
             if((row == initialRow) && (column == initialColumn)){
                 chessboard[row][column]='K';
-                heuristicBoard[row][column] = 0;
             }//end if
             else{
                 chessboard[row][column]=' ';
@@ -43,15 +42,3 @@ void printBoard(char chessboard[ROWS][COLUMNS]){ //,int rowSize, int columnSize)
         }//end for loop 'rows'
 }//end function printBoard
 
-void printHeuristicBoard(int board[ROWS][COLUMNS]){
-    printf("%s","    0   1   2   3   4   5   6   7\n");
-        puts("  ---------------------------------");
-        for(int row = 0; row < ROWS; row++){
-            printf("%d |",row);
-            for(int column = 0; column < COLUMNS; column++){
-                printf(" %d |", board[row][column]);
-            }//end for loop 'column'
-            puts("");
-            puts("  ---------------------------------");
-        }//end for loop 'rows'
-}//end function printBoard

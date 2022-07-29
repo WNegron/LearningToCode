@@ -107,6 +107,7 @@ the lowest accessibility number.
 
 #include "chessboard.h"//initializes and prints the board
 #include "knightstour.h"//moves the knight piece around
+#include "heuristicboard.h"//section c of the exercise
 
 //symbolic constant
 #define ROWS 8
@@ -114,14 +115,14 @@ the lowest accessibility number.
 
 int main(void){
     char chessboard[ROWS][COLUMNS];
-    int heuristicBoard[ROWS][COLUMNS] =  {{2,3,4,4,4,4,3,2},
-                                          {3,4,6,6,6,6,4,3},
-                                          {4,6,8,8,8,8,6,4},
-                                          {4,6,8,8,8,8,6,4},
-                                          {4,6,8,8,8,8,6,4},
-                                          {4,6,8,8,8,8,6,4},
-                                          {3,4,6,6,6,6,4,3},
-                                          {2,3,4,4,4,4,3,2}};//end of heuristicBoard
+    int heuristicBoard[ROWS][COLUMNS] = {{2,3,4,4,4,4,3,2},
+                                         {3,4,6,6,6,6,4,3},
+                                         {4,6,8,8,8,8,6,4},
+                                         {4,6,8,8,8,8,6,4},
+                                         {4,6,8,8,8,8,6,4},
+                                         {4,6,8,8,8,8,6,4},
+                                         {3,4,6,6,6,6,4,3},
+                                         {2,3,4,4,4,4,3,2}};//end of heuristicBoard;
      
     //knights starting position
     int currentRow = 3;
@@ -133,9 +134,14 @@ int main(void){
     //to move knight
     int moveNumber = 0;//0 to 7
 
-    initializeBoard(chessboard,currentRow,currentColumn,heuristicBoard);
+    //applying the heuristic approach
+    int ratingMoves[ROWS];
+
+    initializeBoard(chessboard,currentRow,currentColumn);
+    trackingKnight(heuristicBoard,currentRow,currentColumn);
 
     newPossibleMoves(chessboard,currentRow,currentColumn);
+    rateMoves(heuristicBoard,currentRow,currentColumn,ratingMoves);
 
     printHeuristicBoard(heuristicBoard);
 
@@ -143,6 +149,8 @@ int main(void){
 
         printBoard(chessboard);//,ROWS,COLUMNS);
         
+        printRates(ratingMoves);
+
         //prompt user
         printf("%s","\nEnter move number (-1 to quit): ");
         scanf("%d",&moveNumber);
@@ -153,8 +161,10 @@ int main(void){
             moveKnight(chessboard,moveNumber,currentRow,currentColumn);
             currentRow = newRow(chessboard);
             currentColumn = newColumn(chessboard);
+            trackingKnight(heuristicBoard,currentRow,currentColumn);
             clearBoard(chessboard);
             newPossibleMoves(chessboard,currentRow,currentColumn);
+            rateMoves(heuristicBoard,currentRow,currentColumn,ratingMoves);
             ++counter;
         }//end if
 
