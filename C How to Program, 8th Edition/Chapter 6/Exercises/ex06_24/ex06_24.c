@@ -107,8 +107,8 @@ the lowest accessibility number.
 #include <stdlib.h>//standard functions; rand
 
 #include "chessboard.h"//initializes and prints the board
-#include "knightstour.h"//moves the knight piece around
-#include "heuristicboard.h"//section c of the exercise
+#include "knightstour.h"//functions to move the knight piece around
+#include "heuristicboard.h"//implementing section c of exercise 6.24
 
 //symbolic constant
 #define ROWS 8
