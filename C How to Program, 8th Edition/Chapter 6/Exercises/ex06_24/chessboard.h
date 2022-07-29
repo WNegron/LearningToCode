@@ -5,7 +5,7 @@ File Name: chessboard.h
     Email: warren.negron@gmail.com
    
 Notes:
-My answer to exercise 6.11 using only the tools and methods taught up to chapter 6.
+My answer to exercise 6.24 using only the tools and methods taught up to chapter 6.
 
 Description:
 

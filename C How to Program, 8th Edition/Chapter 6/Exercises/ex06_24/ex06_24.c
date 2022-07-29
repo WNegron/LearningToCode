@@ -104,6 +104,7 @@ the lowest accessibility number.
 ****************************************************************************************************/
 
 #include <stdio.h>//standard input/output
+#include <stdlib.h>//standard functions; rand
 
 #include "chessboard.h"//initializes and prints the board
 #include "knightstour.h"//moves the knight piece around
@@ -114,6 +115,7 @@ the lowest accessibility number.
 #define COLUMNS 8 
 
 int main(void){
+    //variable declaration
     char chessboard[ROWS][COLUMNS];
     int heuristicBoard[ROWS][COLUMNS] = {{2,3,4,4,4,4,3,2},
                                          {3,4,6,6,6,6,4,3},
@@ -128,9 +130,6 @@ int main(void){
     int currentRow = 3;
     int currentColumn = 4;
 
-    //tracking how many squares the knight has touch
-    int counter = 1;//1 to 64
-
     //to move knight
     int moveNumber = 0;//0 to 7
 
@@ -143,20 +142,16 @@ int main(void){
     newPossibleMoves(chessboard,currentRow,currentColumn);
     rateMoves(heuristicBoard,currentRow,currentColumn,ratingMoves);
 
-    printHeuristicBoard(heuristicBoard);
+   // printHeuristicBoard(heuristicBoard);
 
     while(moveNumber != -1){
-        printHeuristicBoard(heuristicBoard);
-
+        
         printBoard(chessboard);
         
-        printRates(ratingMoves);
+        //using lowestRate
+        moveNumber = lowestRate(ratingMoves);
 
-        //prompt user
-        printf("%s","\nEnter move number (-1 to quit): ");
-        scanf("%d",&moveNumber);
-
-        puts("\n\n\n");
+        puts("\n\n\n");//new lines
 
         if(moveNumber != -1){
             moveKnight(chessboard,moveNumber,currentRow,currentColumn);
@@ -167,8 +162,8 @@ int main(void){
             newPossibleMoves(chessboard,currentRow,currentColumn);
             rateMoves(heuristicBoard,currentRow,currentColumn,ratingMoves);
             ++counter;
-        }//end if
+        }//end if 'moveNumber'
 
-        puts("\n\n\n");
+        puts("\n\n\n");//new lines
     }//end while loop
 }//end function main

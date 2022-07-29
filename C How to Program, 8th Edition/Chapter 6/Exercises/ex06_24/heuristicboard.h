@@ -115,11 +115,30 @@ void rateMoves(int chessboard[ROWS][COLUMNS],int currentRow, int currentColumn,i
     }//end for loop 'moveNumber'
 }//end funciton newPossibleMoves
 
+//lowestRate
+int lowestRate(int ratingMoves[ROWS]){
+    int lowRate = 9;
+    int moveNum = -1;
+
+    for(int i = 0; i < ROWS; i++){
+        if((ratingMoves[i] < lowRate) && (ratingMoves[i] != 0)){
+            lowRate = ratingMoves[i];
+            moveNum = i;
+        }//end if 'ratingMoves'
+    }//end for
+
+    return moveNum;
+}//end function lowestRate
+
+//prints Rates
 void printRates(int ratingMoves[ROWS]){
+    int lowRate = lowestRate(ratingMoves);
+
     for(int i = 0; i < ROWS; i++){
         if(ratingMoves[i] != 0){
             printf("%s %d %s %d \n","Move ", i, " rating is ", ratingMoves[i]);
         }//end if
     }//end for loop 'i'
-}//end function printRates
 
+    printf("%s %d","Lowest Rate: ", lowRate);
+}//end function printRates
