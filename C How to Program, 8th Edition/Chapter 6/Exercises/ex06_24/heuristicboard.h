@@ -4,7 +4,20 @@ File Name: heuristicboard.h
    Author: Warren Negron
     Email: warren.negron@gmail.com
 
-c) After attempting to write and run a Knight’s Tour program, you have probably developed some valuable 
+Notes:
+My answer to exercise 6.24 using only the tools and methods taught up to chapter 6.
+
+Description:
+	6.24 (Knight’s Tour) One of the more interesting puzzlers for chess buffs is the Knight’s Tour 
+problem, originally proposed by the mathematician Euler. The question is this: Can the chess piece 
+called the knight move around an empty chessboard and touch each of the 64 squares once and only once? 
+We study this intriguing problem in depth here.
+    
+    The knight makes L-shaped moves (over two in one direction and then over one in a perpendicular 
+direction). Thus, from a square in the middle of an empty chessboard, the knight can make eight 
+different moves (numbered 0 through 7) as shown in Fig. 6.26.
+
+    c) After attempting to write and run a Knight’s Tour program, you have probably developed some valuable 
 insights. We’ll use these to develop a heuristic (or strategy) for moving the knight. Heuristics do not 
 guarantee success, but a carefully developed heuristic greatly improves the chance of success. You may have 
 observed that the outer squares are in some sense more troublesome than the squares nearer the center of 
