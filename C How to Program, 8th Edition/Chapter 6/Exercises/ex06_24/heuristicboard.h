@@ -1,4 +1,9 @@
 /***************************************************************************************************
+File Name: heuristicboard.h
+     Date: 2022-07-28
+   Author: Warren Negron
+    Email: warren.negron@gmail.com
+
 c) After attempting to write and run a Knight’s Tour program, you have probably developed some valuable 
 insights. We’ll use these to develop a heuristic (or strategy) for moving the knight. Heuristics do not 
 guarantee success, but a carefully developed heuristic greatly improves the chance of success. You may have 
@@ -118,63 +123,3 @@ void printRates(int ratingMoves[ROWS]){
     }//end for loop 'i'
 }//end function printRates
 
-/*//newPossibleMoves will show available moves to the knight based on current position
-void possibleMoves(int chessboard[ROWS][COLUMNS],int currentRow, int currentColumn){
-    bool validMove;
-    bool available;
-    int horizontal[COLUMNS] = {2,1,-1,-2,-2,-1,1,2};
-    int vertical[ROWS] = {-1,-2,-2,-1,1,2,2,1};
-    //int counter = 0;
-
-    for(int moveNumber = 0; moveNumber < ROWS; moveNumber++){
-        validMove = isMoveValid(currentRow + vertical[moveNumber],currentColumn + horizontal[moveNumber]);
-        
-        if(validMove){
-            
-            available = isAvailable(chessboard,currentRow + vertical[moveNumber],currentColumn + horizontal[moveNumber]);
-            
-            if(available){
-                //possibles moves for the knight
-                switch(moveNumber){
-                    case 0:
-                        //chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '0';
-                        break;
-                    case 1:
-                        //chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '1';
-                        break;
-                    case 2:
-                        //chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '2';
-                        break;
-                    case 3:
-                        //chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '3';
-                        break;
-                    case 4:
-                        //chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '4';
-                        break;
-                    case 5:
-                        //chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '5';
-                        break;
-                    case 6:
-                        //chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '6';
-                        break;
-                    case 7:
-                        //chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '7';
-                        break;
-                    default:
-                        ++counter;
-                        if(counter == (ROWS - 1)){
-                            puts("No more moves available");
-                        }
-                        break;
-                }//end switch-case
-            }//end if 'available' 
-        }//end if 'validMove'
-    }//end for loop moveNumber
-}//end funciton newPossibleMoves*/
-
-
-/*void nextMove(int chessboard[][COLUMNS]){
-    int horizontal[COLUMNS] = {2,1,-1,-2,-2,-1,1,2};
-    int vertical[ROWS] = {-1,-2,-2,-1,1,2,2,1};
-    
-}//end function possibleMoves*/
