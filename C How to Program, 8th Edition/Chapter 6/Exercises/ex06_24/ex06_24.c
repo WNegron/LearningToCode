@@ -146,8 +146,9 @@ int main(void){
     printHeuristicBoard(heuristicBoard);
 
     while(moveNumber != -1){
+        printHeuristicBoard(heuristicBoard);
 
-        printBoard(chessboard);//,ROWS,COLUMNS);
+        printBoard(chessboard);
         
         printRates(ratingMoves);
 
