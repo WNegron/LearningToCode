@@ -127,8 +127,8 @@ int main(void){
                                          {2,3,4,4,4,4,3,2}};//end of heuristicBoard;
      
     //knights starting position
-    int currentRow = 3;
-    int currentColumn = 4;
+    int currentRow = 0;
+    int currentColumn = 0;
 
     //to move knight
     int moveNumber = 0;//0 to 7
