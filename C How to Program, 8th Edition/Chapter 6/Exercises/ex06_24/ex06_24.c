@@ -135,6 +135,8 @@ int main(void){
 
     initializeBoard(chessboard,currentRow,currentColumn,heuristicBoard);
 
+    newPossibleMoves(chessboard,currentRow,currentColumn);
+
     printHeuristicBoard(heuristicBoard);
 
     while(moveNumber != -1){
@@ -151,6 +153,8 @@ int main(void){
             moveKnight(chessboard,moveNumber,currentRow,currentColumn);
             currentRow = newRow(chessboard);
             currentColumn = newColumn(chessboard);
+            clearBoard(chessboard);
+            newPossibleMoves(chessboard,currentRow,currentColumn);
             ++counter;
         }//end if
 

@@ -161,6 +161,100 @@ bool isMoveValid(int row, int column){
     }//end else
 }//end function isMoveValid
 
+// Updated On: 2022-07-28
+//clearBoard will erase the old available moves
+void clearBoard(char chessboard[][COLUMNS]){
+    for(int row = 0; row < ROWS; row++){
+        for(int column = 0; column < COLUMNS; column++){
+            if(chessboard[row][column] == '0'){
+                chessboard[row][column] = ' ';
+            }
+            
+            if(chessboard[row][column] == '1'){
+                chessboard[row][column] = ' ';
+            }
+            
+            if(chessboard[row][column] == '2'){
+                chessboard[row][column] = ' ';
+            }
+            
+            if(chessboard[row][column] == '3'){
+                chessboard[row][column] = ' ';
+            }
+            
+            if(chessboard[row][column] == '4'){
+                chessboard[row][column] = ' ';
+            }
+                        
+            if(chessboard[row][column] == '5'){
+                chessboard[row][column] = ' ';
+            }
+            
+            if(chessboard[row][column] == '6'){
+                chessboard[row][column] = ' ';
+            }
+            
+            if(chessboard[row][column] == '7'){
+                chessboard[row][column] = ' ';
+            }
+        }//end for loop column
+    }//end for loop row
+}//end function clearBoard
+
+// Updated On: 2022-07-28
+//newPossibleMoves will show available moves to the knight based on current position
+void newPossibleMoves(char chessboard[ROWS][COLUMNS],int currentRow, int currentColumn){
+    bool validMove;
+    bool available;
+    int horizontal[COLUMNS] = {2,1,-1,-2,-2,-1,1,2};
+    int vertical[ROWS] = {-1,-2,-2,-1,1,2,2,1};
+
+    for(int moveNumber = 0; moveNumber < ROWS; moveNumber++){
+        validMove = isMoveValid(currentRow + vertical[moveNumber],currentColumn + horizontal[moveNumber]);
+        
+        if(validMove){
+            
+            available = isAvailable(chessboard,currentRow + vertical[moveNumber],currentColumn + horizontal[moveNumber]);
+            
+            if(available){
+                //possibles moves for the knight
+                //int tempRow = currentRow + vertical[moveNumber];
+                //int tempCol = currentColumn + horizontal[moveNumber];
+                if(moveNumber == 0){
+                    chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '0';
+                }//end if
+                if(moveNumber == 1){
+                    chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '1';
+                }//end if
+                if(moveNumber == 2){
+                    chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '2';
+                }//end if
+                if(moveNumber == 3){
+                    chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '3';
+                }//end if
+                if(moveNumber == 4){
+                    chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '4';
+                }//end if
+                if(moveNumber == 5){
+                    chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '5';
+                }//end if
+                if(moveNumber == 6){
+                    chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '6';
+                }//end if
+                if(moveNumber == 7){
+                    chessboard[currentRow + vertical[moveNumber]][currentColumn + horizontal[moveNumber]] = '7';
+                }//end if
+            }//end if 'available' 
+            /*else{
+                continue;
+            }*/
+        }//end if 'validMove'
+        /*else{
+            continue;
+        }*/
+    }//end for loop moveNumber
+}//end funciton newPossibleMoves
+
 void moveKnight(char chessboard[ROWS][COLUMNS], int moveNumber, int currentRow, int currentColumn){
       //knights available moves
     int horizontal[COLUMNS] = {2,1,-1,-2,-2,-1,1,2};
@@ -173,6 +267,7 @@ void moveKnight(char chessboard[ROWS][COLUMNS], int moveNumber, int currentRow, 
     if(validMove){
 
         available = isAvailable(chessboard,currentRow + vertical[moveNumber],currentColumn + horizontal[moveNumber] );
+
         if(available){
             //knight's previous position
             chessboard[currentRow][currentColumn] = 'X';
@@ -181,6 +276,11 @@ void moveKnight(char chessboard[ROWS][COLUMNS], int moveNumber, int currentRow, 
             currentRow += vertical[moveNumber];
             currentColumn += horizontal[moveNumber];
             chessboard[currentRow][currentColumn] = 'K';
+
+            //clearBoard(chessboard);
+
+            //newPossibleMoves(chessboard,horizontal,vertical,currentRow,currentColumn);
+
         }//end if 'available' 
         else{
             printf("%s","Square is not available!\nEnter new move!\n");
