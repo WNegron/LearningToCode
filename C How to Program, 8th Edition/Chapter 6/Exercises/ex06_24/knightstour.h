@@ -121,24 +121,32 @@ bool isAvailable(char chessboard[ROWS][COLUMNS], int row, int column){
 
 //returns the current row for the Knight
 int newRow(char chessboard[ROWS][COLUMNS]){
+    int value = 0;
     for(int row = 0; row < ROWS; row++){
         for(int column = 0; column < COLUMNS; column++){
             if(chessboard[row][column] == 'K'){
-                return row;
+                value = row;
+                break;
             }//end if
         }//end for loop 'column'
     }//end for loop 'row'
+    
+    return value;
 }//end function newRow
 
 //returns the current column for the Knight
 int newColumn(char chessboard[ROWS][COLUMNS]){
+    int value = 0;
     for(int row = 0; row < ROWS; row++){
         for(int column = 0; column < COLUMNS; column++){
             if(chessboard[row][column] == 'K'){
-                return column;
+                value = column;
+                break;
             }//end if
         }//end for loop 'column'
     }//end for loop 'row'
+    
+    return value;
 }//end function newColumn
 
 //function to make sure the move is within the confines of the board
