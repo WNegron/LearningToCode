@@ -117,62 +117,95 @@ the lowest accessibility number.
 int main(void){
     //variable declaration
     char chessboard[ROWS][COLUMNS];
-    int heuristicBoard[ROWS][COLUMNS] = {{2,3,4,4,4,4,3,2},
-                                         {3,4,6,6,6,6,4,3},
-                                         {4,6,8,8,8,8,6,4},
-                                         {4,6,8,8,8,8,6,4},
-                                         {4,6,8,8,8,8,6,4},
-                                         {4,6,8,8,8,8,6,4},
-                                         {3,4,6,6,6,6,4,3},
-                                         {2,3,4,4,4,4,3,2}};//end of heuristicBoard;
-     
+    /* 
     //knights starting position
     int currentRow = 0;
     int currentColumn = 0;
+    int counter = 1;
 
     //to move knight
-    int moveNumber = 0;//0 to 7
+    int moveNumber = 0;//0 to 7 */
 
     //applying the heuristic approach
     int ratingMoves[ROWS];
 
-    //position Knight on chess board
-    initializeBoard(chessboard,currentRow,currentColumn);
-    trackingKnight(heuristicBoard,currentRow,currentColumn);
+    for(int row = 0; row < ROWS; row++){
+        for(int column = 0; column < COLUMNS; column++){
+            //resetting the values of currentRow and currentColumn
+            //this will give the knight a new position
+            int currentRow = row;
+            int currentColumn = column;
 
-    //will show available moves based on the Knight's position
-    newPossibleMoves(chessboard,currentRow,currentColumn);
+            //restart counter
+            int counter = 1;
+            //restarting moveNumber
+            int moveNumber = 0;
 
-    rateMoves(heuristicBoard,currentRow,currentColumn,ratingMoves);
+            int heuristicBoard[ROWS][COLUMNS] = {{2,3,4,4,4,4,3,2},
+                 {3,4,6,6,6,6,4,3},
+                 {4,6,8,8,8,8,6,4},
+                 {4,6,8,8,8,8,6,4},
+                 {4,6,8,8,8,8,6,4},
+                 {4,6,8,8,8,8,6,4},
+                 {3,4,6,6,6,6,4,3},
+                 {2,3,4,4,4,4,3,2}};//end of heuristicBoard */
 
-    //while loop to run the Knight's tour
-    //when no moves are available the moveNumber will be -1
-    //when moveNumber is -1 the loop will end
-    while(moveNumber != -1){
-        //display chess board
-        printBoard(chessboard);
-        
-        //using lowestRate
-        moveNumber = lowestRate(ratingMoves);
+            puts("\nStarting Knight's in from a new position");
+            printf("%s %d %s %d\n\n","Knight's New Position: ",currentRow,", ",currentColumn);
 
-        puts("\n\n\n");//new lines
-
-        //verifies there is moveNumber is not equal -1
-        if(moveNumber != -1){
-            //function to move Knight
-            moveKnight(chessboard,moveNumber,currentRow,currentColumn);
-            //keeps track of knights new position
-            currentRow = newRow(chessboard);
-            currentColumn = newColumn(chessboard);
+            //positioning Knight on chess board
+            initializeBoard(chessboard,currentRow,currentColumn);
+            //initializeHeuristic(heuristicBoard);
             trackingKnight(heuristicBoard,currentRow,currentColumn);
-            //function to erase available moves based on the old Knight's position
-            clearBoard(chessboard);
-            //function for new available moves based on the new Knight's position
-            newPossibleMoves(chessboard,currentRow,currentColumn);
-            //function rates the available moves based on the new Knight's position
-            rateMoves(heuristicBoard,currentRow,currentColumn,ratingMoves);
-        }//end if 'moveNumber'
 
-        puts("\n\n\n");//new lines
-    }//end while loop
+            //will show available moves based on the Knight's position
+            newPossibleMoves(chessboard,currentRow,currentColumn);
+
+            rateMoves(heuristicBoard,currentRow,currentColumn,ratingMoves);
+
+            //while loop to run the Knight's tour
+            //when no moves are available the moveNumber will be -1
+            //when moveNumber is -1 the loop will end
+            while(moveNumber != -1){
+                //display chess board
+                //printBoard(chessboard);
+        
+                //using lowestRate
+                moveNumber = lowestRate(ratingMoves);
+
+                //puts("\n\n\n");//new lines
+
+                //verifies there is moveNumber is not equal -1
+                if(moveNumber != -1){
+                    //function to move Knight
+                    moveKnight(chessboard,moveNumber,currentRow,currentColumn);
+                    //keeps track of knights new position
+                    currentRow = newRow(chessboard);
+                    currentColumn = newColumn(chessboard);
+                    trackingKnight(heuristicBoard,currentRow,currentColumn);
+                    //function to erase available moves based on the old Knight's position
+                    clearBoard(chessboard);
+                    //function for new available moves based on the new Knight's position
+                    newPossibleMoves(chessboard,currentRow,currentColumn);
+                    //function rates the available moves based on the new Knight's position
+                    rateMoves(heuristicBoard,currentRow,currentColumn,ratingMoves);
+                    ++counter;
+                }//end if 'moveNumber'
+                //puts("\n\n\n");//new lines
+            }//end while loop
+
+            //display chess board
+            printBoard(chessboard);
+
+            if(counter == 64){
+                printf("%s %d %s","Squares:", counter, "Complete Tour\n");
+            }//end if
+            else{
+                printf("%s %d %s","Squares:", counter, "Incomplete Tour\n");
+            }//end else
+
+        }//end for loop 'column'
+    }//end for loop 'row'
+
+
 }//end function main

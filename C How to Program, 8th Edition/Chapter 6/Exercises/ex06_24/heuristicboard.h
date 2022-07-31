@@ -60,6 +60,13 @@ tours did you get?)
 #define ROWS 8
 #define COLUMNS 8
 
+//initial position chess board state
+/* void initializeHeuristic(int chessboard[ROWS][COLUMNS]){
+    chessboard[][] = {{2,3,4,4,4,4,3,2}, {3,4,6,6,6,6,4,3},
+    {4,6,8,8,8,8,6,4}, {4,6,8,8,8,8,6,4}, {4,6,8,8,8,8,6,4},
+    {4,6,8,8,8,8,6,4}, {3,4,6,6,6,6,4,3}, {2,3,4,4,4,4,3,2}};//end of heuristicBoard;
+}//end function initializeHeuristic */
+
 //function to track the Knight's moves on the chessboard;
 void trackingKnight(int chessboard[ROWS][COLUMNS],int row, int column){
     chessboard[row][column] = 0;
