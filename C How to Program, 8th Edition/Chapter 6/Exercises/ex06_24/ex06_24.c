@@ -117,6 +117,7 @@ the lowest accessibility number.
 int main(void){
     //variable declaration
     char chessboard[ROWS][COLUMNS];
+    int knightsposition[ROWS][COLUMNS];
     /* 
     //knights starting position
     int currentRow = 0;
@@ -158,6 +159,7 @@ int main(void){
 
             //positioning Knight on chess board
             initializeBoard(chessboard,currentRow,currentColumn);
+            initializeMoves(knightsposition);
             //initializeHeuristic(heuristicBoard);
             trackingKnight(heuristicBoard,currentRow,currentColumn);
 
@@ -180,25 +182,41 @@ int main(void){
 
                 //verifies there is moveNumber is not equal -1
                 if(moveNumber != -1){
+                    knightsposition[currentRow][currentColumn]=counter;
+
                     //function to move Knight
-                    moveKnight(chessboard,moveNumber,currentRow,currentColumn);
+                    moveKnight(chessboard,moveNumber,currentRow,currentColumn,counter);
+
                     //keeps track of knights new position
                     currentRow = newRow(chessboard);
                     currentColumn = newColumn(chessboard);
                     trackingKnight(heuristicBoard,currentRow,currentColumn);
-                    //function to erase available moves based on the old Knight's position
+
+                    /*//function to erase available moves based on the old Knight's position
                     clearBoard(chessboard);
                     //function for new available moves based on the new Knight's position
-                    newPossibleMoves(chessboard,currentRow,currentColumn);
+                    newPossibleMoves(chessboard,currentRow,currentColumn);*/
+
                     //function rates the available moves based on the new Knight's position
                     rateMoves(heuristicBoard,currentRow,currentColumn,ratingMoves);
+
+                    //increase counter
                     ++counter;
                 }//end if 'moveNumber'
                 //puts("\n\n\n");//new lines
             }//end while loop
 
             //display chess board
-            printBoard(chessboard);
+            //printBoard(chessboard);
+
+            //Knight's last position
+            currentRow = newRow(chessboard);
+            currentColumn = newColumn(chessboard);
+            knightsposition[currentRow][currentColumn]= counter;
+
+            //display Knight's Moves board
+            printMoves(knightsposition);
+
 
             if(counter == 64){
                 printf("%s %d %s","Squares:", counter, "Complete Tour\n");

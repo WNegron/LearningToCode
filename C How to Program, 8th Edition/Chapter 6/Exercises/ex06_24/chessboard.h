@@ -28,10 +28,19 @@ void initializeBoard(char chessboard[ROWS][COLUMNS],int initialRow, int initialC
     }//end for loop 'row'
 }//end function initializedBoard
 
+//function to initialize the chessboard; so the array is not full of garbage
+void initializeMoves(int chessboard[ROWS][COLUMNS]){
+    for(int row = 0; row < ROWS; row++){
+        for(int column = 0; column < COLUMNS; column++){
+            chessboard[row][column]= NULL;
+        }//end for loop 'column'
+    }//end for loop 'row'
+}//end function initializedBoard
+
 
 void printBoard(char chessboard[ROWS][COLUMNS]){ //,int rowSize, int columnSize){
     printf("%s","    0   1   2   3   4   5   6   7\n");
-        puts("  ---------------------------------");
+    puts("  ---------------------------------");
         for(int row = 0; row < ROWS; row++){
             printf("%d |",row);
             for(int column = 0; column < COLUMNS; column++){
@@ -42,3 +51,16 @@ void printBoard(char chessboard[ROWS][COLUMNS]){ //,int rowSize, int columnSize)
         }//end for loop 'rows'
 }//end function printBoard
 
+void printMoves(int chessboard[ROWS][COLUMNS]){
+    printf("%s","    0   1   2   3   4   5   6   7\n");
+    puts("  -----------------------------------------------------");
+    //printf("%s","---------------------------------------------------------------------------------------");
+        for(int row = 0; row < ROWS; row++){
+            printf("%d | ",row);
+            for(int column = 0; column < COLUMNS; column++){
+                printf(" %d  | ", chessboard[row][column]);
+            }//end for loop 'column'
+            puts("");
+            puts("  -----------------------------------------------------");
+        }//end for loop 'rows'
+}//end function printMoves
