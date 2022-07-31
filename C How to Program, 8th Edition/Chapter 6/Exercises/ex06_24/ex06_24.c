@@ -129,6 +129,9 @@ int main(void){
     //applying the heuristic approach
     int ratingMoves[ROWS];
 
+// Added on: 2022-07-30
+// added 2 (two) for loops to control the Knight's satrting position for the tour
+// this way will have a tour starting from each one of the 64 squares on the board
     for(int row = 0; row < ROWS; row++){
         for(int column = 0; column < COLUMNS; column++){
             //resetting the values of currentRow and currentColumn
