@@ -28,29 +28,28 @@ Description:
 using namespace std;
 
 int main(){
-
-    int x = 0;
-
-x = fabs( -2.0 );
-cout<< x << endl;
+	int x = 0;
+	
+	x = fabs(-2.0);
+	cout << x << endl;
 
 	x = fabs(2.0);
-cout << x << endl;
+	cout << x << endl;
 
 	x = log(7.389056);
-cout << x << endl;
+	cout << x << endl;
 
 	x = sqrt(16.0);
-cout << x << endl;
+	cout << x << endl;
 	
-x = log10(1000.0);
-cout << x << endl;
+	x = log10(1000.0);
+	cout << x << endl;
  
 	x = sqrt(36.0);
-cout << x << endl;
+	cout << x << endl;
 
 	x = pow(2,3);
-cout << x << endl;
-
-return 0;
+	cout << x << endl;
+	
+	return 0;
 }//end function main
