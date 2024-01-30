@@ -22,20 +22,43 @@ each of the triangles shown below.
 #include <cmath>
 
 using namespace std;
-//#include ".hpp"//enable program to use Temperature functions
 
 int hypotenuseCalc(int,int); // function prototype
 
-int main(){
-    int s1 = 0, s2 = 0;
+void printTable(int,int);
 
+int main(){
+    int s1 = 0, s2 = 0;//, c1 = 0;
+    int s3 = 0, s4 = 0;//, c2 = 0;
+    int s5 = 0, s6 = 0;//, c3 = 0;
+
+    cout << "First triangle\n";
     cout << "Enter value: ";
     cin >> s1;
-
     cout << "Enter value: ";
-    cin >> s2;
+    cin >> s2;  
 
-    cout << "the hypotenuse is: " << hypotenuseCalc(s1,s2) << endl;
+    cout << "\nSecond triangle\n";
+    cout << "Enter value: ";
+    cin >> s3;
+    cout << "Enter value: ";
+    cin >> s4;
+
+    cout << "\nThird triangle\n";
+    cout << "Enter value: ";
+    cin >> s5;
+    cout << "Enter value: ";
+    cin >> s6;    
+
+    //cout << "the hypotenuse is: " << hypotenuseCalc(s1[counter],s2[counter]) << endl;
+
+    cout << "Triangle\tSide 1\tSide 2\tHypotenuse \n";  
+    cout << 1;  
+    printTable(s1,s2);
+    cout << 2;  
+    printTable(s3,s4);
+    cout << 3;  
+    printTable(s5,s6);
     
     return 0;
 }//end function main
@@ -45,3 +68,9 @@ int hypotenuseCalc(int side1, int side2){
     return pow(side1,2) + pow(side2,2);
 
 }// end hypotenuseCalc function
+
+void printTable(int side1, int side2){
+
+    cout << "\t\t" << side1 << "\t" << side2 << "\t" << hypotenuseCalc(side1,side2) << endl;
+
+}
