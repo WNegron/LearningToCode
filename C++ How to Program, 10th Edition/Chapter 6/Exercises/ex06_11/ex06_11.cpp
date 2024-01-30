@@ -21,6 +21,7 @@ Description:
 	g) x = pow( 2, 3)
 
 ***************************************************************************************************/
+
 #include <iostream>//enables program to perform input/output
 #include <cmath>
 
