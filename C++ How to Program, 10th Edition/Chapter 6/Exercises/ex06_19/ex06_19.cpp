@@ -21,6 +21,7 @@ each of the triangles shown below.
 #include <iostream>//enables program to perform input/output
 #include <cmath>
 
+using namespace std;
 //#include ".hpp"//enable program to use Temperature functions
 
 int hypotenuseCalc(int,int); // function prototype
@@ -31,7 +32,7 @@ int main(){
     cout << "Enter value: ";
     cin >> s1;
 
-    cout >> "Enter value: ";
+    cout << "Enter value: ";
     cin >> s2;
 
     cout << "the hypotenuse is: " << hypotenuseCalc(s1,s2) << endl;

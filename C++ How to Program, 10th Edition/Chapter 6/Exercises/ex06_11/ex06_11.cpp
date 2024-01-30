@@ -25,30 +25,32 @@ Description:
 #include <iostream>//enables program to perform input/output
 #include <cmath>
 
+using namespace std;
+
 int main(){
 
     int x = 0;
 
 x = fabs( -2.0 );
-count << x << endl;
+cout<< x << endl;
 
-	x = fabs( 2.0);
-count << x << endl;
+	x = fabs(2.0);
+cout << x << endl;
 
-	x = log( 7.389056);
-count << x << endl;
+	x = log(7.389056);
+cout << x << endl;
 
-	x = sqrt( 16.0 );
-count << x << endl;
+	x = sqrt(16.0);
+cout << x << endl;
 	
 x = log10(1000.0);
-count << x << endl;
+cout << x << endl;
  
-	x = sqrt( 36 .0);
-count << x << endl;
+	x = sqrt(36.0);
+cout << x << endl;
 
-	x = pow( 2, 3);
-count << x << endl;
+	x = pow(2,3);
+cout << x << endl;
 
 return 0;
 }//end function main
