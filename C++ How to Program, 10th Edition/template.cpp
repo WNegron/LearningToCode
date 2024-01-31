@@ -23,3 +23,4 @@ using namespace std;//program uses names from namespace std
 int main(){
     return 0;//program ended successfully
 }//end of main function
+
