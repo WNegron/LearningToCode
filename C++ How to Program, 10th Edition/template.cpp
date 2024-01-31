@@ -18,6 +18,7 @@ Description:
 #include <iomanip>//parameterized stream manipulators
 #include <cmath>//enable program to perform math functions
 #include <cstdlib> // contains prototypes for functions srand and rand
+#include <random> // contains C++11 random number generation features
 
 /* #include "headerFileName.hpp"//enable program to use function from headerFileNames */
 
