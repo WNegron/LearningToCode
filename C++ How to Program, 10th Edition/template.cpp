@@ -15,6 +15,9 @@ Description:
 ***************************************************************************************************/
 #include <iostream>//enable program to perform input/output
 #include <ctime>//enable program to perform time functions
+#include <iomanip>//parameterized stream manipulators
+#include <cmath>//enable program to perform math functions
+#include <cstdlib> // contains prototypes for functions srand and rand
 
 /* #include "headerFileName.hpp"//enable program to use function from headerFileNames */
 
