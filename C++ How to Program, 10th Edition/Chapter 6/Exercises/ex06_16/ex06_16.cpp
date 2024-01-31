@@ -96,7 +96,34 @@ int main(){
     }//end of for loop
 
     //e) –2≤n≤2
+    cout << "\nRnadom Numbers (-2 ≤ n ≤ 2)\n";
+    uniform_int_distribution<int> randomNum1(-2,2);
+
+    // loop 15 times
+    for(unsigned int counter=1; counter <= 15; ++counter){
+        // pick random number from 2 to 44 and output it
+        cout << setw(10) << randomNum1(engine);
+        //if counter is divisible by 3, start a new line of output
+        if(counter%5==0){ 
+            cout << endl;
+        }//end of if
+    }//end of for
+
+
     //f) –3≤n≤12
+    cout << "\nRnadom Numbers (-3 ≤ n ≤ 12)\n"; 
+    // loop 15 times
+    for (unsigned int counter=1; counter <= 15; ++counter) { 
+        // pick random number from 500 to 678 and output it
+        cout << setw(10) << (-3 + rand() % 12);
+        
+        //if counter is divisible by 5, start a new line of output
+        if(counter%5==0){
+            cout << endl;
+        }//end of if
+    }//end of for loop
+
+
     return 0;//program ended successfully
 }//end of main function
 
