@@ -16,7 +16,7 @@ Description:
 #include <iostream>//enable program to perform input/output
 #include <ctime>//enable program to perform time functions
 
-#include "headerFileName.hpp"//enable program to use function from headerFileNames
+/* #include "headerFileName.hpp"//enable program to use function from headerFileNames */
 
 using namespace std;//program uses names from namespace std
 
