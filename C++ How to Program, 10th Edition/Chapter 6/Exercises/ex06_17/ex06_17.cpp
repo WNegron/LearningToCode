@@ -32,6 +32,9 @@ following sets:
 using namespace std;//program uses names from namespace std
 
 int main(){
+    // randomize random number generator using current time
+    srand(static_cast<unsigned int>(time(0)));
+    
     //a) 0,3,6,9,12.
     cout << "\nRnadom Numbers (0,3,6,9,12)\n"; 
     // use the default random-number generation engine to
@@ -64,6 +67,38 @@ int main(){
     }//end of for loop
 
     //c) 6, 10, 14, 18.
+    int cNumber = 0;
+    cout << "\nRandom Numbers (6, 10, 14, 18)\n";
+    //loop 10 times
+    for(unsigned int counter = 1; counter <= 10; ++counter){
+        //pick random number from 0 to 3
+        cNumber = rand() % 4;
+
+        switch (cNumber){
+        case 0:
+            cout << setw(10) << 6;
+            break;
+        case 1:
+            cout << setw(10) << 10;
+            break;
+        case 2:
+            cout << setw(10) << 14;
+            break;
+        case 3:
+            cout << setw(10) << 18;
+            break;
+        default:
+            cerr << "\nError! Error! Error!\n"; 
+            break;
+        }//end of switch
+
+        //if counter is divisible by 5, start a new line
+        if(counter%5 == 0){
+            cout << endl;
+        }//end of if
+
+
+    }//end of for loop
 
     return 0;//program ended successfully
 }//end of main function
