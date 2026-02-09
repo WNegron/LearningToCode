@@ -103,8 +103,6 @@ pair<bool,int> isPrimeOptimized(unsigned int number){
 //printPrimeOptimizedUpTo function begins
 void printPrimeOptimizedUpTo(int limit){
     int total_trials = 0;
-    bool is_prime = false;
-    int trials = 0;
 
     cout <<"\nPrime Numbers between 2 and 10,000:" << endl;
     cout << "=== Optimized method (checking up to √n) ===" << endl;
@@ -112,6 +110,8 @@ void printPrimeOptimizedUpTo(int limit){
 
     //for loop to print all prime number up to 10,000
     for(int i = 3; i <= limit; i+=2){
+        //automatically deduces the types of the variables based on the object being unpacked
+        //declares two new variables that bind to the first and second members of the pair, respectively.
         auto [is_prime, trials] = isPrimeOptimized(i);
         total_trials += trials;
         //if to determine if number is a prime

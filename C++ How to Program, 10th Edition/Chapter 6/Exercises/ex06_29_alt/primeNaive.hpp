@@ -99,14 +99,14 @@ pair<bool,int> isPrimeNaive(unsigned int number){
 //printPrimeUpTo function begins
 void printPrimeNaiveUpTo(int limit){
     int total_trials{0};
-    bool prime = false;
-    int trials = 0;
     
     cout <<"\n=== Naive method (checking up to n/2) ===" << endl;
     cout << 2 << endl;//the only even prime
 
     //for loop to print all prime number up to 10,000
     for(int i = 3; i <= limit; i+=2){
+        //automatically deduces the types of the variables based on the object being unpacked
+        //declares two new variables that bind to the first and second members of the pair, respectively.
         auto [prime, trials] = isPrimeNaive(i);
         total_trials += trials;
         //if to determine if number is a prime
