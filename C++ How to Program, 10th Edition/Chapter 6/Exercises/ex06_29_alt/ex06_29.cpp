@@ -187,20 +187,11 @@ END FUNCTION isPrime
 
 -----------------------------------    End Pseudocode    -------------------------------------------
 
-***************************************************************************************************/
+*******************************************************************************************************************/
 
-#include "primeNumbers.hpp"
-#include "primeNaive.hpp"
-#include "primeOptimized.hpp"
-
-/*function prototypes
-bool isPrime(unsigned int );//bool data type this function will return true if the number is a prime or false if not.
-bool isPrimeNaive(unsigned int);
-bool isPrimeOptemized(unsigned int);
-
-void printPrimeUpTo(int);//void data type this function does not return a value, it will simply print prime numbers
-void printPrimeNaiveUpTo(int);
-void printPrimeOptemizedUpTo(int);*/
+#include "primeNumbers.hpp"//include definition of isPrime and primeUpTo functions 
+#include "primeNaive.hpp"//include definition of isPrimeNaive and primeNaiveUpTo functions
+#include "primeOptimized.hpp"//include definition of isPrimeOptemizedUpTo functions
 
 /*function to clear screen using ANSI codes
 ANSI Codes
@@ -271,7 +262,7 @@ int main(){
                 break;
 
                 case 4:
-                        printPrimeOptemizedUpTo(10000);
+                        printPrimeOptimizedUpTo(10000);
                 break;
 
                 case 5:
