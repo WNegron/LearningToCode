@@ -63,7 +63,7 @@ FUNCTION isPrime(n)
         END IF
 
         ELSE
-                FOR LOOP i FROM 2 TO SQUAREROOT OF n (inclusive):
+                FOR LOOP i FROM 2 TO n:
                         IF n % i == 0
                                 RETURN flase
                         END IF
@@ -148,6 +148,41 @@ PROGRAM MAIN
                 END SWITCH
         END WHILE
 END PROGRAM MAIN
+
+c) Initially, you might think that n/2 is the upper limit for which you must test to see
+whether a number is prime, but you need only go as high as the square root of n. Why?
+Rewrite the program, and run it both ways. Estimate the performance improvement.
+
+FUNCTION isPrimeNaive(n)
+        IF n <= 1
+                RETURN false
+        END IF
+
+        ELSE
+                FOR LOOP i FROM 2 TO n/2:
+                        IF n % i == 0
+                                RETURN flase
+                        END IF
+                END FOR loop
+                RETURN true
+        END ELSE
+END FUNCTION isPrime
+
+FUNCTION isPrimeOptimized(n)
+        IF n <= 1
+                RETURN false
+        END IF
+
+        ELSE
+                FOR LOOP i FROM 2 TO SQUAREROOT OF n:
+                        IF n % i == 0
+                                RETURN flase
+                        END IF
+                END FOR loop
+                RETURN true
+        END ELSE
+END FUNCTION isPrime
+
                 
 
 -----------------------------------    End Pseudocode    -------------------------------------------
@@ -155,22 +190,28 @@ END PROGRAM MAIN
 ***************************************************************************************************/
 
 #include <iostream> //enables program to perform input and output
-//#include <cmath> //enable program to use mathematical functions that are part of the header file
+#include <cmath> //enable program to use mathematical functions that are part of the header file
 
 
 using namespace std; //program uses names from the std namespace
 
 //function prototypes
 bool isPrime(unsigned int );//bool data type this function will return true if the number is a prime or false if not.
-void printPrimeUpTo(int);//void data type this function does not return a value, it will simply print prime numbers
+bool isPrimeNaive(unsigned int);
+bool isPrimeOptemized(unsigned int);
 
-//function to clear screen using ANSI codes
-void clearScreen(){
-/* ANSI Codes
+void printPrimeUpTo(int);//void data type this function does not return a value, it will simply print prime numbers
+void printPrimeNaiveUpTo(int);
+void printPrimeOptemizedUpTo(int);
+
+int totalTrials(int);
+
+/*function to clear screen using ANSI codes
+ANSI Codes
 \033[2J clears the entire screen.
 \033[1;1H moves the cursor to the top-left corner. */
+void clearScreen(){
 cout << "\033[2J\033[1;1H"; // Clears screen and moves cursor
-
 }//end of clearScreen function
 
 // main function begins program
@@ -183,7 +224,7 @@ int main(){
 
         //begin while loop
         while (!done){
-                 clearScreen();//function to clear screen
+                 //clearScreen();//function to clear screen
                 //display message and menu options for the user
                 cout << "Prime Number Program" << endl;
                 cout << "--------------------" << endl;
@@ -191,17 +232,19 @@ int main(){
                 cout << "\nMenu: " << endl;
                 cout << "1. Prime Checker - checks if a single number is a prime." << endl;
                 cout << "2. Print all primes between 2 and 10,000" << endl;
-                cout << "3. Quit" << endl;
+                cout << "3. Prime Naive" << endl;
+                cout << "4. Prime Optimized" << endl;
+                cout << "5. Quit" << endl;
 
                 //prompt user to make a choice
-                cout <<"Enter your choice (1-3): ";
+                cout << "Enter your choice (1-5): ";
                 cin >> choice;//reads user's choice
 
                 //begin switch-case
                 switch (choice){
                 case 1:
                         // display message
-                        cout << "Prime Number checker (enter 0 or a negative number to quit)" << endl;
+                        cout << "Prime Number checker (enter 0 to return to main menu)" << endl;
                         cout << "-----------------------------------------------------------" << endl;
 
                         // prompt user for a number to check
@@ -228,6 +271,14 @@ int main(){
                 break;
 
                 case 3:
+                        printPrimeNaiveUpTo(10000);
+                break;
+
+                case 4:
+                        printPrimeOptemizedUpTo(10000);
+                break;
+
+                case 5:
                         done = true;
                         cout << "\nProgram ended." << endl;
                 break;
@@ -237,11 +288,8 @@ int main(){
                 break;
                 }//end of switch-case
 
-                //cout << "\n\n\n";//prints out new lines before display message and menu options again
+                cout << "\n\n\n";//prints out new lines before display message and menu options again
                 //clearScreen();//function to clear screen
-
-                cout << "Press RETURN to continue...";
-                cin.get();
         }//end of while loop
 
 return 0; // indicate that program ended successfully
@@ -278,7 +326,7 @@ bool isPrime(unsigned int number){// isPrime function begins
 
         else{
                 // for loop
-                for (int i = 2; i < number /*sqrt((double) number)*/; i++)
+                for (int i = 2; i < number; i++)
                 {
                         //if the number is divisible by any of the numbers preceding it
                         //then it is not a prime number.
@@ -330,3 +378,130 @@ void printPrimeUpTo(int limit){//printPrimeUpTo function begins
                 }//end else             
         }//end of for loop
 }//end of printPrimeUpTo function
+
+/************************************************************************************************
+c) Initially, you might think that n/2 is the upper limit for which you must test to see
+whether a number is prime, but you need only go as high as the square root of n. Why?
+Rewrite the program, and run it both ways. Estimate the performance improvement.
+
+FUNCTION isPrimeNaive(n)
+        IF n <= 1
+                RETURN false
+        END IF
+
+        ELSE
+                FOR LOOP i FROM 2 TO n/2:
+                        IF n % i == 0
+                                RETURN flase
+                        END IF
+                END FOR loop
+                RETURN true
+        END ELSE
+END FUNCTION isPrime
+
+FUNCTION isPrimeOptimized(n)
+        IF n <= 1
+                RETURN false
+        END IF
+
+        ELSE
+                FOR LOOP i FROM 2 TO SQUAREROOT OF n:
+                        IF n % i == 0
+                                RETURN flase
+                        END IF
+                END FOR loop
+                RETURN true
+        END ELSE
+END FUNCTION isPrime
+*****************************************************************************************************/
+
+bool isPrimeNaive(unsigned int number){// isPrime function begins
+        //check to see if the number is 1
+        if (number <= 1)
+        {       /* code */
+                return false;
+        }//end if 
+
+        else{
+                // for loop
+                for (int i = 2; i < number/2 ; i++)
+                {
+                        //if the number is divisible by any of the numbers preceding it
+                        //then it is not a prime number.
+                        if(number % i == 0){
+                                return false;
+                        }//end of if modulo
+                        else{
+                                continue;
+                        }//end of else
+
+                }//end of for loop
+
+                //if the number is not divisible by any of the numbers preceding it
+                //then the number is a prime number.
+                return true;
+        }//end of else        
+}//end of isPrime function
+
+bool isPrimeOptemized(unsigned int number){// isPrime function begins
+        //check to see if the number is 1
+        if (number <= 1)
+        {       /* code */
+                return false;
+        }//end if 
+
+        else{
+                // for loop
+                for (int i = 2; i < floor(sqrt((double) number)); i++)
+                {
+                        //if the number is divisible by any of the numbers preceding it
+                        //then it is not a prime number.
+                        if(number % i == 0){
+                                return false;
+                        }//end of if modulo
+                        else{
+                                continue;
+                        }//end of else
+
+                }//end of for loop
+
+                //if the number is not divisible by any of the numbers preceding it
+                //then the number is a prime number.
+                return true;
+        }//end of else
+        
+}//end of isPrime function
+
+void printPrimeNaiveUpTo(int limit){//printPrimeUpTo function begins
+        cout <<"\nPrime Numbers between 2 and 10,000:" << endl;
+        cout << 2 << endl;
+
+        //for loop to print all prime number up to 10,000
+        for(int i = 3; i <= limit; i+=2){
+                //if to determine if number is a prime
+                if(isPrimeNaive(i)){
+                        cout << i << endl;
+                }//end if
+
+                else{
+                        continue;
+                }//end else             
+        }//end of for loop
+}//end of printPrimeNaiveUpTo function
+
+void printPrimeOptemizedUpTo(int limit){//printPrimeUpTo function begins
+        cout <<"\nPrime Numbers between 2 and 10,000:" << endl;
+        cout << 2 << endl;
+
+        //for loop to print all prime number up to 10,000
+        for(int i = 3; i <= limit; i+=2){
+                //if to determine if number is a prime
+                if(isPrimeOptemized(i)){
+                        cout << i << endl;
+                }//end if
+
+                else{
+                        continue;
+                }//end else             
+        }//end of for loop
+}//end of printPrimeOptemizedUpTo function
