@@ -73,7 +73,7 @@ pair<bool,int> isPrimeNaive(unsigned int number){
     //check to see if the number is 1
     if (number <= 1)
     {/* code */
-        return {false, 0};
+        return {false, 0};// returns a pair: first = false, second = 0
     }//end if 
     else{
         // for loop
@@ -83,7 +83,7 @@ pair<bool,int> isPrimeNaive(unsigned int number){
             //if the number is divisible by any of the numbers preceding it
             //then it is not a prime number.
             if(number % i == 0){
-                return {false, 0};
+                return {false, 0};// returns a pair: first = false, second = 0
             }//end of if modulo
             else{
                 continue;
@@ -92,7 +92,7 @@ pair<bool,int> isPrimeNaive(unsigned int number){
 
         //if the number is not divisible by any of the numbers preceding it
         //then the number is a prime number.
-        return {true, trials};
+        return {true, trials};// returns a pair: first = true, second = trials
     }//end of else        
 }//end of isPrimeNaive function
 
