@@ -11,6 +11,10 @@ My answer to exercise X.XX using only the tools and methods taught up to Chapter
 This exercise is from the global Edition of C++ How to Program, 10/e 
 
 Description:
+
+-------------------------------------    Pseudocode    ---------------------------------------------
+
+-----------------------------------    End Pseudocode    -------------------------------------------
     
 ***************************************************************************************************/
 #include <iostream>//enable program to perform input/output
