@@ -63,50 +63,66 @@ FUNCTION printPrimeOptimizedUpTo(limit)
 #include <iostream> //enables program to perform input and output
 #include <cmath> //enable program to use mathematical functions that are part of the header file
 
+#include <utility>//enables program to use pair
+
 using namespace std; //program uses names from the std namespace
 
-bool isPrimeOptimized(unsigned int number){// isPrime function begins
-        //check to see if the number is 1
-        if (number <= 1)
-        {       /* code */
-                return false;
-        }//end if 
+// isPrimeOptimized function begins
+pair<bool,int> isPrimeOptimized(unsigned int number){
+    int trials = 0;
+    //int sqrt_n = static_cast<int>(std::floor(std::sqrt(static_cast<double>(n))));
+    //check to see if the number is 1
+    if (number <= 1)
+    {   /* code */
+        return {false, 0};
+    }//end if 
+
+    else{
+        // for loop
+        for (int i = 2; i < floor(sqrt((double) number)); i++)
+        {
+            ++trials;
+            //if the number is divisible by any of the numbers preceding it
+            //then it is not a prime number.
+            if(number % i == 0){
+                return {false, 0};
+            }//end of if modulo
+            
+            else{
+                continue;
+            }//end of else
+
+        }//end of for loop
+
+        //if the number is not divisible by any of the numbers preceding it
+        //then the number is a prime number.
+        return {true, trials};
+    }//end of else
+}//end of isPrimeOptimized function
+
+//printPrimeOptimizedUpTo function begins
+void printPrimeOptimizedUpTo(int limit){
+    int total_trials = 0;
+    bool is_prime = false;
+    int trials = 0;
+
+    cout <<"\nPrime Numbers between 2 and 10,000:" << endl;
+    cout << "=== Optimized method (checking up to √n) ===" << endl;
+    cout << 2 << endl;//the only even prime
+
+    //for loop to print all prime number up to 10,000
+    for(int i = 3; i <= limit; i+=2){
+        auto [is_prime, trials] = isPrimeOptimized(i);
+        total_trials += trials;
+        //if to determine if number is a prime
+        if(is_prime){
+            cout << i << endl;
+        }//end if
 
         else{
-                // for loop
-                for (int i = 2; i < floor(sqrt((double) number)); i++)
-                {
-                        //if the number is divisible by any of the numbers preceding it
-                        //then it is not a prime number.
-                        if(number % i == 0){
-                                return false;
-                        }//end of if modulo
-                        else{
-                                continue;
-                        }//end of else
+            continue;
+        }//end else             
+    }//end of for loop
 
-                }//end of for loop
-
-                //if the number is not divisible by any of the numbers preceding it
-                //then the number is a prime number.
-                return true;
-        }//end of else
-        
-}//end of isPrime function
-
-void printPrimeOptimizedUpTo(int limit){//printPrimeUpTo function begins
-        cout <<"\nPrime Numbers between 2 and 10,000:" << endl;
-        cout << 2 << endl;
-
-        //for loop to print all prime number up to 10,000
-        for(int i = 3; i <= limit; i+=2){
-                //if to determine if number is a prime
-                if(isPrimeOptimized(i)){
-                        cout << i << endl;
-                }//end if
-
-                else{
-                        continue;
-                }//end else             
-        }//end of for loop
+    cout << "Total trials (divisions) performed: " << total_trials << endl;
 }//end of printPrimeOptemizedUpTo function

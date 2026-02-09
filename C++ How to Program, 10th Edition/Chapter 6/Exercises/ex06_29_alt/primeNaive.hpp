@@ -63,49 +63,60 @@ FUNCTION printPrimeNaiveUpTo(limit)
 #include <iostream> //enables program to perform input and output
 #include <cmath> //enable program to use mathematical functions that are part of the header file
 
+#include <utility>//enables program to use pair
+
 using namespace std; //program uses names from the std namespace
 
-bool isPrimeNaive(unsigned int number){// isPrime function begins
-        //check to see if the number is 1
-        if (number <= 1)
-        {       /* code */
-                return false;
-        }//end if 
+// isPrimeNaive function begins
+pair<bool,int> isPrimeNaive(unsigned int number){
+    int trials{0};
+    //check to see if the number is 1
+    if (number <= 1)
+    {/* code */
+        return {false, 0};
+    }//end if 
+    else{
+        // for loop
+        for (int i = 2; i < number/2 ; i++)
+        {
+            ++trials;
+            //if the number is divisible by any of the numbers preceding it
+            //then it is not a prime number.
+            if(number % i == 0){
+                return {false, 0};
+            }//end of if modulo
+            else{
+                continue;
+            }//end of else
+        }//end of for loop
+
+        //if the number is not divisible by any of the numbers preceding it
+        //then the number is a prime number.
+        return {true, trials};
+    }//end of else        
+}//end of isPrimeNaive function
+
+//printPrimeUpTo function begins
+void printPrimeNaiveUpTo(int limit){
+    int total_trials{0};
+    bool prime = false;
+    int trials = 0;
+    
+    cout <<"\n=== Naive method (checking up to n/2) ===" << endl;
+    cout << 2 << endl;//the only even prime
+
+    //for loop to print all prime number up to 10,000
+    for(int i = 3; i <= limit; i+=2){
+        auto [prime, trials] = isPrimeNaive(i);
+        total_trials += trials;
+        //if to determine if number is a prime
+        if(prime){
+            cout << i << endl;
+        }//end if
 
         else{
-                // for loop
-                for (int i = 2; i < number/2 ; i++)
-                {
-                        //if the number is divisible by any of the numbers preceding it
-                        //then it is not a prime number.
-                        if(number % i == 0){
-                                return false;
-                        }//end of if modulo
-                        else{
-                                continue;
-                        }//end of else
-
-                }//end of for loop
-
-                //if the number is not divisible by any of the numbers preceding it
-                //then the number is a prime number.
-                return true;
-        }//end of else        
-}//end of isPrime function
-
-void printPrimeNaiveUpTo(int limit){//printPrimeUpTo function begins
-        cout <<"\nPrime Numbers between 2 and 10,000:" << endl;
-        cout << 2 << endl;
-
-        //for loop to print all prime number up to 10,000
-        for(int i = 3; i <= limit; i+=2){
-                //if to determine if number is a prime
-                if(isPrimeNaive(i)){
-                        cout << i << endl;
-                }//end if
-
-                else{
-                        continue;
-                }//end else             
-        }//end of for loop
+            continue;
+        }//end else             
+    }//end of for loop
+    cout << "Total trials (divisions) performed: " << total_trials << endl;
 }//end of printPrimeNaiveUpTo function
