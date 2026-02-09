@@ -196,80 +196,79 @@ END FUNCTION isPrime
 // main function begins program
 int main(){
 
-        // declaration and initializing variables
-        int number;// number enter by user
-        int choice;// user will choose an option from the menu
-        bool done = false;// will end the while loop when value is change to true
+    // declaration and initializing variables
+    int number;// number enter by user
+    int choice;// user will choose an option from the menu
+    bool done = false;// will end the while loop when value is change to true
 
-        //begin while loop
-        while (!done){
-                 //clearScreen();//function to clear screen
-                //display message and menu options for the user
-                cout << "Prime Number Program" << endl;
-                cout << "--------------------" << endl;
+    //begin while loop
+    while (!done){
+        //clearScreen();//function to clear screen
+        //display message and menu options for the user
+        cout << "Prime Number Program" << endl;
+        cout << "--------------------" << endl;
 
-                cout << "\nMenu: " << endl;
-                cout << "1. Prime Checker - checks if a single number is a prime." << endl;
-                cout << "2. Print all primes between 2 and 10,000" << endl;
-                cout << "3. Prime Naive" << endl;
-                cout << "4. Prime Optimized" << endl;
-                cout << "5. Quit" << endl;
+        cout << "\nMenu: " << endl;
+        cout << "1. Prime Checker - checks if a single number is a prime." << endl;
+        cout << "2. Print all primes between 2 and 10,000" << endl;
+        cout << "3. Prime Naive" << endl;
+        cout << "4. Prime Optimized" << endl;
+        cout << "5. Quit" << endl;
 
-                //prompt user to make a choice
-                cout << "Enter your choice (1-5): ";
-                cin >> choice;//reads user's choice
+        //prompt user to make a choice
+        cout << "Enter your choice (1-5): ";
+        cin >> choice;//reads user's choice
 
-                //begin switch-case
-                switch (choice){
-                case 1:
-                        // display message
-                        cout << "Prime Number checker (enter 0 to return to main menu)" << endl;
-                        cout << "-----------------------------------------------------------" << endl;
+        //begin switch-case
+        switch (choice){
+            case 1:
+                // display message
+                cout << "Prime Number checker (enter 0 to return to main menu)" << endl;
+                cout << "-----------------------------------------------------------" << endl;
 
-                        // prompt user for a number to check
-                        cout << "Enter a number: ";
-                        cin >> number; //store number
+                // prompt user for a number to check
+                cout << "Enter a number: ";
+                cin >> number; //store number
         
-                        // while loop it will continue to repeat until user enters a 0 or a negative number
-                        while(number >= 1){
-                                if (isPrime(number)){
-                                        cout << "\n" << number << ", is a prime number." << endl;
-                                }//end of if isPrime
-                                else{
-                                        cout << "\n" << number << ", is not a prime number." << endl;
-                                }//end of else
+                // while loop it will continue to repeat until user enters a 0 or a negative number
+                while(number >= 1){
+                    if (isPrime(number)){
+                        cout << "\n" << number << ", is a prime number." << endl;
+                    }//end of if isPrime
                                 
-                                // prompt user for another number or the quit input
-                                cout << "\nEnter another number (or 0 to return to main menu): ";
-                                cin >> number;//reads user's number
-                        }//end of while loop
-                break;
+                    else{
+                        cout << "\n" << number << ", is not a prime number." << endl;
+                    }//end of else
+                                
+                    // prompt user for another number or the quit input
+                    cout << "\nEnter another number (or 0 to return to main menu): ";
+                    cin >> number;//reads user's number
+                }//end of while loop
+            break;
 
-                case 2:
-                        printPrimeUpTo(10000);
-                break;
+            case 2:
+                printPrimeUpTo(10000);
+            break;
 
-                case 3:
-                        printPrimeNaiveUpTo(10000);
-                break;
+            case 3:
+                printPrimeNaiveUpTo(10000);
+            break;
 
-                case 4:
-                        printPrimeOptimizedUpTo(10000);
-                break;
+            case 4:
+                printPrimeOptimizedUpTo(10000);
+            break;
 
-                case 5:
-                        done = true;
-                        cout << "\nProgram ended." << endl;
-                break;
+            case 5:
+                done = true;
+                cout << "\nProgram ended." << endl;
+            break;
 
-                default:
-                        cout << "\nInvalid choice. Please try again." << endl;
-                break;
-                }//end of switch-case
+            default:
+                cout << "\nInvalid choice. Please try again." << endl;
+            break;
+        }//end of switch-case
 
-                cout << "\n\n\n";//prints out new lines before display message and menu options again
-                //clearScreen();//function to clear screen
-        }//end of while loop
-
+        cout << "\n\n\n";//prints out new lines before display message and menu options again
+    }//end of while loop
 return 0; // indicate that program ended successfully
 } // end of function main
