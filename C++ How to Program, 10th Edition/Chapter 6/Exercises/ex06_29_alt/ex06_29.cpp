@@ -193,14 +193,6 @@ END FUNCTION isPrime
 #include "primeNaive.hpp"//include definition of isPrimeNaive and primeNaiveUpTo functions
 #include "primeOptimized.hpp"//include definition of isPrimeOptemizedUpTo functions
 
-/*function to clear screen using ANSI codes
-ANSI Codes
-\033[2J clears the entire screen.
-\033[1;1H moves the cursor to the top-left corner. */
-void clearScreen(){
-cout << "\033[2J\033[1;1H"; // Clears screen and moves cursor
-}//end of clearScreen function
-
 // main function begins program
 int main(){
 
