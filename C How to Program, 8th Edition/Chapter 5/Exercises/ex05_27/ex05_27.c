@@ -159,6 +159,8 @@ END FUNCTION isPrimeOptimized
 //#include <stdbool.h>//bool data type
 
 #include "primeNumbers.h"
+#include "primeNaive.h"
+#include "primeOptimized.h"
 
 //function main begins program execution
 int main(void){
@@ -212,15 +214,15 @@ int main(void){
             break;
 
             case 2:
-                printPrimeUpTo(10000);
+                printPrimesUpTo(10000);
             break;
 
             case 3:
-                printPrimeNaiveUpTo(10000);
+                printPrimesNaiveUpTo(10000);
             break;
 
             case 4:
-                printPrimeOptimizedUpTo(10000);
+                printPrimesOptimizedUpTo(10000);
             break;
 
             case 5:
