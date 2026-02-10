@@ -59,4 +59,6 @@ int main(void){
 <string.h> Contains function prototypes for string-processing functions.
 
 <time.h> Contains function prototypes and types for manipulating the time and date.
+
+<stdbool.h> contains bool data type
 */
