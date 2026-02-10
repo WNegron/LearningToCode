@@ -8,6 +8,9 @@ Notes:
 This is an updated verision to my orignal answer to this exercise. The original is save as ex05_27(original).c
 My answer to exercise 5.27 using only the tools and methods taught up to chapter 5.
 
+I rewrote the program to illustrea better the difference between n/2 and square root of n. I made use 'strcut' data 
+type which is not introduce until chapter 10.
+
 Description:
 	5.27 (Prime Numbers) An integer is said to be prime if it’s divisible by only 1 and itself. For 
 example, 2, 3, 5 and 7 are prime, but 4, 6, 8 and 9 are not.
