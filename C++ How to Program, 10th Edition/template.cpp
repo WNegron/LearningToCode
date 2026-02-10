@@ -29,7 +29,9 @@ Description:
 
 using namespace std;//program uses names from namespace std
 
+// function main begins program execution
 int main(){
-    return 0;//program ended successfully
-}//end of main function
+    // declaring and initializing variables
+    return 0;// indicate that program ended successfully
+}// end of main function
 
