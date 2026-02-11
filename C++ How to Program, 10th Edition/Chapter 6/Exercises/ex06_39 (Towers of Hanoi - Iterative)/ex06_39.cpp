@@ -87,14 +87,23 @@ int main(){
     int peg3 = 3;//auxPeg
 
     //example output
-    towerOfHanoi(disk,peg1,peg2,peg3);//call function
+    towersOfHanoi(disk,peg1,peg2,peg3);//call function
+
+    std::cout << "\n\n==== Welcome to the Towers of Hanoi ====\n";
+
+    towersOfHanoiIterative(disk,peg1,peg2,peg3);//call function
+
+
+
+    /*
 
     std::cout << "\n\n==== Welcome to the Towers of Hanoi ====\n";
     std::cout << "Enter the number of Disk: ";
     std::cin >> disk;
 
     std::cout << "\nHere is how to solve the tower:\n";
-    towerOfHanoi(disk,peg1,peg2,peg3);//call function
+    towersOfHanoi(disk,peg1,peg2,peg3);//call function
+    */
 
 
     return 0;// indicate that program ended successfully

@@ -88,7 +88,7 @@ end function
 
 #include <iostream>//enable program to perform input/output
 
-void towerOfHanoi(int numberOfDisk, int fromPeg, int auxPeg, int destinationPeg){
+void towersOfHanoi(int numberOfDisk, int fromPeg, int auxPeg, int destinationPeg){
     if(numberOfDisk == 1){
         std::cout << fromPeg << " --> " << destinationPeg << std::endl;
     }//end if
@@ -96,12 +96,56 @@ void towerOfHanoi(int numberOfDisk, int fromPeg, int auxPeg, int destinationPeg)
     else{
         
         //a) Move n – 1 disks from peg 1 to peg 2, using peg 3 as a temporary holding area.
-        towerOfHanoi(numberOfDisk - 1, fromPeg, destinationPeg,auxPeg);
+        towersOfHanoi(numberOfDisk - 1, fromPeg, destinationPeg,auxPeg);
 
         //b) Move the last disk (the largest) from peg 1 to peg 3.
         std::cout << fromPeg << " --> " << destinationPeg << std::endl;
 
         //c) Move the n – 1 disks from peg 2 to peg 3, using peg 1 as a temporary holding area.
-        towerOfHanoi(numberOfDisk - 1, auxPeg, fromPeg, destinationPeg);
+        towersOfHanoi(numberOfDisk - 1, auxPeg, fromPeg, destinationPeg);
     }
 }//end function
+
+void towersOfHanoiIterative(int numberOfDisk, int fromPeg, int auxPeg, int destinationPeg){
+    //int disk = numberOfDisk;
+    int temp;
+
+    while(numberOfDisk >= 1){
+        if(numberOfDisk == 1){
+            std::cout << fromPeg << " --> " << destinationPeg << std::endl;
+             break;
+
+        }//end if
+
+        else{
+            --numberOfDisk;
+
+            std::cout << fromPeg << " --> " << destinationPeg << std::endl;
+
+            temp = auxPeg;
+            auxPeg = destinationPeg;
+            destinationPeg =temp;
+
+            std::cout << fromPeg << " --> " << destinationPeg << std::endl;
+
+            temp = fromPeg;
+            fromPeg = auxPeg;
+            auxPeg = temp;
+
+            std::cout << fromPeg << " --> " << destinationPeg << std::endl;
+
+            temp = auxPeg;
+            auxPeg = destinationPeg;
+            destinationPeg = fromPeg;
+            fromPeg = temp;
+            
+
+        }
+
+
+    }//end while loop
+
+    
+
+
+}//end towersOfHanoiIterative
