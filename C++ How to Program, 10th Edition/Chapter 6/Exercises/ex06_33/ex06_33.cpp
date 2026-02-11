@@ -56,15 +56,6 @@ end function
     
 ***************************************************************************************************/
 
-
-/*#include <ctime>//enable program to perform time functions
-#include <iomanip>//parameterized stream manipulators
-#include <cmath>//enable program to perform math functions
-#include <cstdlib> // contains prototypes for functions srand and rand
-#include <random> // contains C++11 random number generation features
-#include <utility>//enables program to use pair */
-
-
 #include "coinToss.hpp"//enable program to use function from headerFileNames
 
 //using namespace std;//program uses names from namespace std
