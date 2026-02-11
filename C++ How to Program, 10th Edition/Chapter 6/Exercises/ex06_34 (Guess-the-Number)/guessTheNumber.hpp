@@ -102,13 +102,13 @@ int generateSecretNumber(){
 void playTheGame(){
     int secretNumber = generateSecretNumber(); //generates a random integer
     int usersGuess = 0; // will store user's guess
-    char response = NULL; // will work to determine if user wants to play another round
+    char response = '\0'; // will work to determine if user wants to play another round
 
     std::cout << "I have a number between 1 and 1000.\n";
     std::cout << "Can you guess my number?\n";
     std::cout << "Please type your first guess: ";
     
-    do{ 
+    do{ //do...while loop begins
         std::cin >> usersGuess;
         if(usersGuess == secretNumber){
             std::cout << "Excellent! You guessed the number!\n";
