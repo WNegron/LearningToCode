@@ -71,22 +71,34 @@ int main(){
     // declaring and initializing variables
     int base = 0;
     int exponent = 0;
-    //int result = 0;
 
+    std::cout << "Recursive Exponentiation (now handles exponent = 0)\n\n";
+
+    // Test cases
+    std::cout << "3^4   = " << power(3, 4)   << "\n";    // 81
+    std::cout << "2^10  = " << power(2, 10)  << "\n";    // 1024
+    std::cout << "5^3   = " << power(5, 3)   << "\n";    // 125
+    std::cout << "7^1   = " << power(7, 1)   << "\n";    // 7
+    std::cout << "10^5  = " << power(10, 5)  << "\n";    // 100000
+    std::cout << "8^0   = " << power(8, 0)   << "\n";    // 1
+
+    //this loop will gone on foever
+    //to end loop press and hold the control key (^ on mac, crtl on Windows), and press z
     while(true){//forever loop
 
-    //promtp user to enter a base
-    std::cout << "Enter base integer: ";
-    std::cin >> base;
-
-    //prompt user to enter an exponent
-    std::cout << "Enter exponent integer: ";
-    std::cin >> exponent;
+    //promtp user to enter base and exponent
+    std::cout << "\nEnter base and exponent (e.g. 4 3 or 5 0): ";
+    std::cin >> base >> exponent;
 
     //result = power(base,exponent);//call power function
 
     //displays the result
-    std::cout << base << "^" << exponent << " = " << power(base,exponent) << std::endl;
+    // We now allow exponent >= 0
+    if (exponent >= 0) {
+        std::cout << base << "^" << exponent << " = " << power(base, exponent) << "\n";
+    } else {
+        std::cout << "This version only handles non-negative exponents.\n";
+    }
     }//end of while loop
 
     return 0;// indicate that program ended successfully

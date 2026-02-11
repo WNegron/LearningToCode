@@ -57,12 +57,17 @@ end power function
 
 //power function begins
 int power(int base, int exponent){
+    //exponent == 0; any non-zero number to the power of 0 is 1
     if(exponent == 0){
         return 1;
     }//end if
+
+    //exponent == 1; return the base itself
     if (exponent == 1){
         return base;
     }//end if
+
+    //recursion; base^exponent = base * base^(exponent - 1)
     else{
         return base * power(base,exponent -1);
     }
