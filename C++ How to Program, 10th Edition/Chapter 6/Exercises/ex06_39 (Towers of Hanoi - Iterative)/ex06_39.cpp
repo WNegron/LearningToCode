@@ -1,12 +1,12 @@
 /***************************************************************************************************
 
-File Name: towersOfHanoi.hpp
+File Name: ex06_39.cpp
      Date: 2026-02-11
    Author: Warren Negron
     Email: warren.negron@gmail.com
 
 Note: 
-My answer to exercise 6.38 using only the tools and methods taught up to Chapter 6.
+My answer to exercise 6.39 using only the tools and methods taught up to Chapter 6.
 
 This exercise is from the global Edition of C++ How to Program, 10/e 
 
@@ -56,19 +56,19 @@ peg. To move a stack of three disks from peg 1 to peg 3, the program displays th
 
 -------------------------------------    Pseudocode    ---------------------------------------------
 
-function towerOfHanoi numberOfDisk, fromPeg, auxPeg, destinationPeg, 
+function towerOfHanoi numberOfDisk, fromPeg, auxPeg, targetPeg, 
 
     if numberOfDisk = 1 then
-        display fromPeg to destinationPeg
+        display fromPeg to targetPeg
 
     else
         a) Move n – 1 disks from peg 1 to peg 2, using peg 3 as a temporary holding area.
         b) Move the last disk (the largest) from peg 1 to peg 3.
         c) Move the n – 1 disks from peg 2 to peg 3, using peg 1 as a temporary holding area.
 
-        towerOfHanoi(numberOfDisk - 1, fromPeg, destinationPeg, auxPeg);
+        towerOfHanoi(numberOfDisk - 1, fromPeg, targetPeg, auxPeg);
         display fromPeg to auxPeg
-        towerOfHanoi(numberOfDisk - 1), auxPeg, formPeg, destinationPeg);
+        towerOfHanoi(numberOfDisk - 1), auxPeg, formPeg, targetPeg);
 
 end function
 
@@ -76,22 +76,27 @@ end function
     
 ***************************************************************************************************/
 
-#include <iostream>//enable program to perform input/output
+#include "towersOfHanoi.hpp"//enable program to use function from headerFileNames
 
-void towerOfHanoi(int numberOfDisk, int fromPeg, int auxPeg, int destinationPeg){
-    if(numberOfDisk == 1){
-        std::cout << fromPeg << " --> " << destinationPeg << std::endl;
-    }//end if
+// function main begins program execution
+int main(){
+    // declaring and initializing variables
+    int disk = 3;
+    int peg1 = 1;//fromPeg
+    int peg2 = 2;//targetPeg
+    int peg3 = 3;//auxPeg
 
-    else{
-        
-        //a) Move n – 1 disks from peg 1 to peg 2, using peg 3 as a temporary holding area.
-        towerOfHanoi(numberOfDisk - 1, fromPeg, destinationPeg,auxPeg);
+    //example output
+    towerOfHanoi(disk,peg1,peg2,peg3);//call function
 
-        //b) Move the last disk (the largest) from peg 1 to peg 3.
-        std::cout << fromPeg << " --> " << destinationPeg << std::endl;
+    std::cout << "\n\n==== Welcome to the Towers of Hanoi ====\n";
+    std::cout << "Enter the number of Disk: ";
+    std::cin >> disk;
 
-        //c) Move the n – 1 disks from peg 2 to peg 3, using peg 1 as a temporary holding area.
-        towerOfHanoi(numberOfDisk - 1, auxPeg, fromPeg, destinationPeg);
-    }
-}//end function
+    std::cout << "\nHere is how to solve the tower:\n";
+    towerOfHanoi(disk,peg1,peg2,peg3);//call function
+
+
+    return 0;// indicate that program ended successfully
+}// end of main function
+
