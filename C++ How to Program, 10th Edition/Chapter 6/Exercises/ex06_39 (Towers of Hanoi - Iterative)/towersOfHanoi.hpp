@@ -110,7 +110,9 @@ void towersOfHanoi(int numberOfDisk, int fromPeg, int auxPeg, int destinationPeg
     }
 }//end function
 
-
+// still not solved. this iterative version does must of the step correctley
+// for the 3 disk problem it prints the wrong move for steps 3 and 5
+// for the 4 disk promblem it prints the wrong move for steps 3, 5, 9, 10, 11, and 12
 //iterative solution for Towers of Hanoi
 void iterativeTowersOfHanoi(int disk, int source, int aux, int destination){
     //variable declaration and definition
