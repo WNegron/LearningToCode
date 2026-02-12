@@ -11,6 +11,17 @@ My answer to exercise 6.39 using only the tools and methods taught up to Chapter
 This exercise is from the global Edition of C++ How to Program, 10/e 
 
 Description:
+
+    ++====********  Exercise 6.39  ********====++
+    6.39 (Towers of Hanoi: Iterative Version) Any program that can be implemented recursively can
+be implemented iteratively, although sometimes with more difficulty and less clarity. Try writing
+an iterative version of the Towers of Hanoi. If you succeed, compare your iterative version with the
+recursive version developed in Exercise 6.38. Investigate issues of performance, clarity and your abil-
+ity to demonstrate the correctness of the programs.
+
+    ++====********  *************  ********====++
+
+    
     6.38 (Towers of Hanoi) In this chapter, you studied functions that can be easily implemented
 both recursively and iteratively. In this exercise, we present a problem whose recursive solution 
 demonstrates the elegance of recursion, and whose iterative solution may not be as apparent.
