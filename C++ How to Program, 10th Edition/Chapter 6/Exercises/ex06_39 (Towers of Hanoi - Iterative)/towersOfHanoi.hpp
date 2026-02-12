@@ -87,7 +87,11 @@ end function
 ***************************************************************************************************/
 
 #include <iostream>//enable program to perform input/output
+#include <cmath>//enable program to perform math functions
 
+
+//recursive solution for Towers of Hanoi
+// towersOfHanoi function begins
 void towersOfHanoi(int numberOfDisk, int fromPeg, int auxPeg, int destinationPeg){
     if(numberOfDisk == 1){
         std::cout << fromPeg << " --> " << destinationPeg << std::endl;
@@ -106,46 +110,108 @@ void towersOfHanoi(int numberOfDisk, int fromPeg, int auxPeg, int destinationPeg
     }
 }//end function
 
-void towersOfHanoiIterative(int numberOfDisk, int fromPeg, int auxPeg, int destinationPeg){
-    //int disk = numberOfDisk;
-    int temp;
 
-    while(numberOfDisk >= 1){
-        if(numberOfDisk == 1){
-            std::cout << fromPeg << " --> " << destinationPeg << std::endl;
-             break;
+//iterative solution for Towers of Hanoi
+void iterativeTowersOfHanoi(int disk, int source, int aux, int destination){
+    //variable declaration and definition
+    int from, to, temp;
 
+    // 2^n - 1; gives us the amount of moves it will take to solve hte towers
+    int total_Moves = static_cast<int>(pow(2,disk)-1); 
+
+    // if number of disks is even, swap auxiliary and destination
+    // this ensures the smallest disk cycles in the correct direction
+    if(disk % 2 == 0){
+        aux = 3;
+        destination = 2;
+    }//end if
+
+    for (int i = 1; i <= total_Moves; i++){  
+        
+    
+        if (i % 3 == 0){// i % 3 == 0
+            from = aux;
+            to = destination;
+        }//end if
+        else if(i % 3 == 1){
+            from = source;
+            to = destination;
+        }//end if
+        else{ //if(i % 3 == 2){
+            from = source;
+            to = aux;
         }//end if
 
-        else{
-            --numberOfDisk;
+        std::cout << from << " --> " << to << std::endl;
 
-            std::cout << fromPeg << " --> " << destinationPeg << std::endl;
+    }//end for loop
+}//end iterativeTowersOfHanoi
 
-            temp = auxPeg;
-            auxPeg = destinationPeg;
-            destinationPeg =temp;
+//groks versions
 
-            std::cout << fromPeg << " --> " << destinationPeg << std::endl;
+/* void iterativeTowersOfHanoi(int n, int source, int auxiliary, int destination) {
+    if (n == 0) return;
 
-            temp = fromPeg;
-            fromPeg = auxPeg;
-            auxPeg = temp;
+    // Changed from bit shift to pow (as requested)
+    int total_moves = static_cast<int>(pow(2, n) - 1);
 
-            std::cout << fromPeg << " --> " << destinationPeg << std::endl;
+    // If number of disks is even, swap auxiliary and destination
+    // This ensures the smallest disk cycles in the correct direction
+   // Decide direction of smallest disk movement
+    int temp = auxiliary;
+    if (n % 2 == 0) {
+        auxiliary = destination;
+        destination = temp;           // now auxiliary = original dest, destination = original aux
+    }
 
-            temp = auxPeg;
-            auxPeg = destinationPeg;
-            destinationPeg = fromPeg;
-            fromPeg = temp;
-            
+    for (int i = 1; i <= total_moves; ++i) {
+        int from, to;
 
+        if (i % 3 == 1) {
+            from = source;
+            to   = destination;
+        }
+        else if (i % 3 == 2) {
+            from = source;
+            to   = auxiliary;
+        }
+        else {  // i % 3 == 0
+            from = auxiliary;
+            to   = destination;
         }
 
+        std::cout << from << " --> " << to << std::endl;
+    }
+} 
 
-    }//end while loop
 
-    
+void iterativeTowersOfHanoi(int n, int source, int auxiliary, int destination) {
+    if (n == 0) return;
 
+    int total_moves = static_cast<int>(std::pow(2, n) - 1);
 
-}//end towersOfHanoiIterative
+    // Direction: 1 = clockwise (odd n), -1 = counterclockwise (even n)
+    int dir = (n % 2 == 0) ? -1 : 1;
+
+    // Peg order: let's number them 0,1,2 internally for modulo arithmetic
+    int pegs[3] = {source, auxiliary, destination};
+
+    for (int i = 1; i <= total_moves; ++i) {
+        int move_type = (i % 3);
+        int from, to;
+
+        if (move_type == 1) {
+            from = pegs[0];
+            to   = pegs[dir == 1 ? 2 : 1];
+        } else if (move_type == 2) {
+            from = pegs[0];
+            to   = pegs[dir == 1 ? 1 : 2];
+        } else {
+            from = pegs[dir == 1 ? 1 : 2];
+            to   = pegs[2];
+        }
+
+        std::cout << from << " --> " << to << std::endl;
+    }
+}*/
+

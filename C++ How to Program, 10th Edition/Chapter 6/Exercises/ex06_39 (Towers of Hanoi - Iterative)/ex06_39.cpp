@@ -81,17 +81,14 @@ end function
 // function main begins program execution
 int main(){
     // declaring and initializing variables
-    int disk = 3;
-    int peg1 = 1;//fromPeg
-    int peg2 = 2;//targetPeg
-    int peg3 = 3;//auxPeg
-
+    int disk = 3;//number of disk to be moved
+    
     //example output
-    towersOfHanoi(disk,peg1,peg2,peg3);//call function
+    towersOfHanoi(disk,1,2,3);//call function
 
     std::cout << "\n\n==== Welcome to the Towers of Hanoi ====\n";
 
-    towersOfHanoiIterative(disk,peg1,peg2,peg3);//call function
+    iterativeTowersOfHanoi(disk,1,2,3);//call function
 
 
 
