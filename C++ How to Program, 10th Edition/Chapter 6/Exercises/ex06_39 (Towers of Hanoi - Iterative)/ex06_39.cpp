@@ -21,7 +21,7 @@ ity to demonstrate the correctness of the programs.
 
     ++====********  *************  ********====++
 
-    
+
     6.38 (Towers of Hanoi) In this chapter, you studied functions that can be easily implemented
 both recursively and iteratively. In this exercise, we present a problem whose recursive solution 
 demonstrates the elegance of recursion, and whose iterative solution may not be as apparent.
@@ -99,6 +99,10 @@ int main(){
 
     std::cout << "\n\n==== Welcome to the Towers of Hanoi ====\n";
 
+
+// still not solved. this iterative version does must of the step correctley
+// for the 3 disk problem it prints the wrong move for steps 3 and 5
+// for the 4 disk promblem it prints the wrong move for steps 3, 5, 9, 10, 11, and 12
     iterativeTowersOfHanoi(disk,1,2,3);//call function
 
 
