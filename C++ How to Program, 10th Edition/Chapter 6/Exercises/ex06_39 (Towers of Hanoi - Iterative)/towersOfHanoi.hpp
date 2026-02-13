@@ -149,7 +149,8 @@ void iterativeTowersOfHanoi(int disk, int source, int aux, int destination){
     }//end for loop
 }//end iterativeTowersOfHanoi
 
-//groks versions
+//the following algorithms were done by using Grok by xAI
+//none of the algorithms solve the problem either
 
 /* void iterativeTowersOfHanoi(int n, int source, int auxiliary, int destination) {
     if (n == 0) return;
