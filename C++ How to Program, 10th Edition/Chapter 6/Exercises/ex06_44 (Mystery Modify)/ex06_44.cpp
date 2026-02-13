@@ -1,12 +1,12 @@
 /***************************************************************************************************
 
-File Name: ex06_43.cpp
+File Name: ex06_44.cpp
      Date: 2026-02-13
    Author: Warren Negron
     Email: warren.negron@gmail.com
 
 Note: 
-My answer to exercise 6.43 using only the tools and methods taught up to Chapter 6.
+My answer to exercise 6.44 using only the tools and methods taught up to Chapter 6.
 
 This exercise is from the global Edition of C++ How to Program, 10/e 
 
