@@ -106,44 +106,38 @@ unsigned int rollDice() {
 #include <iostream>//enable program to perform input/output
 #include <ctime>//enable program to perform time functions
 #include <cstdlib> // contains prototypes for functions srand and rand
+#include <string> //
 
 using namespace std;//program uses names from namespace std
 
-/**************************************************************************************************/
-//exercise 6.47 functions
-
-//gobal variable
-double balance = 12345.67;
-
-//begin increaseBalance function
-void increaseBalance(double amount){
-    balance + amount;
-}//end increaseBalance function
-
-//begin printBalance function
-void printBalance(){
-    cout << "\nYour Balance is: " << balance << endl; 
-}//end printBalance function
-
-//begin placeWager function
-double placeWager(){
-    //variable declaration and definition
-    double wagerAmount = 0.0;
-
-    
-
-    //while loop; loop will continue if the amount exceeds balance
-    do{
-        //print message and promt user to enter an amount
-        cout << "\nEnter your wager: ";
-        cin >> wagerAmount;
-    }while(wagerAmount >= balance);//end while loop
-
-    return wagerAmount;
-
-}//end placeWager function
-
-/**************************************************************************************************/
+//begin chatter function
+void chatter(double balance, double wager){
+    //
+    if(balance == 0){
+        cout << "Sorry. You busted!\n";
+    }//end if
+    else if(wager >= balance * 0.75 && balance >0){
+        cout << "Oh, you're going for broke, huh?\n";
+    }///end else...if
+    else if(wager >= balance * 0.5){
+        cout << "Aw cmon, take a chance!\n";
+    }//end else...if
+    else if(balance > 2000){
+        cout << "You're up big. Now's the time to cash in your chips!\n";
+    }//end else...if
+    else if(wager > 300){
+        cout << "Big Spender!\n";
+    }//end else...if
+    else if (rand() % 5 == 0) {  // occasional random chatter
+        string messages[] = {
+            "Feeling lucky today?",
+            "Let's see those dice behave!",
+            "Come on, baby needs new shoes!",
+            "Don't be shy — roll 'em!"
+        };
+        cout << messages[rand() % 4] << endl;
+    }//end else...if
+}//end chatter function
 
 // roll dice, calculate sum and display results
 unsigned int rollDice() {
@@ -151,23 +145,16 @@ unsigned int rollDice() {
    int die2{1 + rand() % 6}; // second die roll
    int sum{die1 + die2}; // compute sum of die values
   
-
    // display results of this roll
    cout << "Player rolled " << die1 << " + " << die2
       << " = " << sum << endl;
    return sum;
-}
+}//end rollDice function
 
-void playCrapsGame(){
+bool playGame(){
     // scoped enumeration with constants that represent the game status 
    enum class Status {CONTINUE, WON, LOST}; // all caps in constants
     
-    double wager = 0.0;
-
-    printBalance();
-
-    wager = placeWager();
-
    // randomize random number generator using current time
    srand(static_cast<unsigned int>(time(0)));
 
@@ -206,13 +193,17 @@ void playCrapsGame(){
             gameStatus = Status::LOST;
          }
       }
-   }
+   }//end while loop
+
+   //return gameStatus;
 
    // display won or lost message
    if (Status::WON == gameStatus) {
-      cout << "Player wins" << endl;
+      //cout << "Player wins" << endl;
+      return true;
    }
    else {
-      cout << "Player loses" << endl;
+      //cout << "Player loses" << endl;
+      return false;
    }
 }//end playCrapsGame function

@@ -108,7 +108,57 @@ unsigned int rollDice() {
 // function main begins program execution
 int main(){
     // declaring and initializing variables
+    double balance = 1500.00;
+    double wager = 0.0;
+    bool won;
 
-    playCrapsGame();
+    cout << "Balance: " << balance << endl;
+
+    while (balance > 0){
+        //wager loop; it will continue to prompt user for an amount
+        do{
+            cout << "\nMake a wager: ";
+            cin >> wager;
+
+            if (wager == 0) {
+                cout << "\nThanks for playing! Final balance: $" << balance << endl;
+                return 0;
+            }//end if
+            if (wager <= 0) {
+                cout << "Wager must be positive.\n";
+            }//end if
+            else if (wager > balance) {
+                cout << "Sorry, you don't have enough money.\n";
+            }//end else...if
+
+        }while(wager <=0 || wager > balance);//end while loop
+
+        cout << "\nWager has been place!\n";
+
+        // Add some personality
+        chatter(balance, wager);
+
+        won = playGame();
+
+        if(won){
+            balance += wager;
+            cout << "Player wins $" << wager << "!\n";
+        }//end if
+        else{
+            balance -= wager;
+            cout << "Player loses $" << wager << ".\n";
+        }//end else
+
+        cout << "New Balance: $" << balance << endl;
+
+        if(balance <= 0) {
+            cout << "Sorry. You busted!\n";
+            cout << "Better luck next time!\n";
+            break;
+        }//end if
+    }//end while loop
+
+    cout << "Game over. Final balance: $" << balance << endl;
+
     return 0;// indicate that program ended successfully
 }// end of main function
