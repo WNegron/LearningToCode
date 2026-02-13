@@ -10,7 +10,12 @@ My answer to exercise 6.44 using only the tools and methods taught up to Chapter
 
 This exercise is from the global Edition of C++ How to Program, 10/e 
 
+The function does multiplication by recursive addition. 
+
 Description:
+
+    6.44 After you determine what the program of Exercise 6.43 does, modify the program to function 
+    properly after removing the restriction that the second argument be nonnegative.
 
 6.43 What does the following program do?
 
@@ -61,10 +66,23 @@ int main() {
 
 // Parameter b must be a positive integer to prevent infinite recursion
 int mystery(int a, int b) {
-    if (1 == b) { // base case
-    return a;
+
+    //base case: multiplier is 0
+    if(b == 0){
+        return 0;
+    }//end if
+
+    //base case: multiplier is 1
+    if ( b== 1){
+        return a;
+    }//end if
+
+    //handle negative multiplier by recursion on the positive side
+    if(b < 0){
+        return -mystery(a,-b);
     }
-    else { // recursion step
-    return a + mystery(a, b - 1);
+
+    else{ // recursion step
+        return a + mystery(a, b - 1);
     }
-}
+}//end mystery function

@@ -10,6 +10,8 @@ My answer to exercise 6.43 using only the tools and methods taught up to Chapter
 
 This exercise is from the global Edition of C++ How to Program, 10/e 
 
+The function does multiplication by recursive addition. 
+
 Description:
 
 6.43 What does the following program do?
