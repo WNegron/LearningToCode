@@ -170,6 +170,7 @@ double manhattanDistance(double x1, double y1, double x2, double y2){
 
 }//end manhattanDistance function
 
+//Chebyshev Distance
 double chebyshevDistance(double x1, double y1, double x2, double y2){
     // Calculate absolute differences in each dimension
     double diffX = abs(x2 - x1);
@@ -179,6 +180,5 @@ double chebyshevDistance(double x1, double y1, double x2, double y2){
     double distance = max(diffX, diffY);
 
     return distance;
-
 }//end chebyshevDistance function
 
