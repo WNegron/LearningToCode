@@ -109,11 +109,48 @@ unsigned int rollDice() {
 
 using namespace std;//program uses names from namespace std
 
+/**************************************************************************************************/
+//exercise 6.47 functions
+
+//gobal variable
+double balance = 12345.67;
+
+//begin increaseBalance function
+void increaseBalance(double amount){
+    balance + amount;
+}//end increaseBalance function
+
+//begin printBalance function
+void printBalance(){
+    cout << "\nYour Balance is: " << balance << endl; 
+}//end printBalance function
+
+//begin placeWager function
+double placeWager(){
+    //variable declaration and definition
+    double wagerAmount = 0.0;
+
+    
+
+    //while loop; loop will continue if the amount exceeds balance
+    do{
+        //print message and promt user to enter an amount
+        cout << "\nEnter your wager: ";
+        cin >> wagerAmount;
+    }while(wagerAmount >= balance);//end while loop
+
+    return wagerAmount;
+
+}//end placeWager function
+
+/**************************************************************************************************/
+
 // roll dice, calculate sum and display results
 unsigned int rollDice() {
    int die1{1 + rand() % 6}; // first die roll
    int die2{1 + rand() % 6}; // second die roll
    int sum{die1 + die2}; // compute sum of die values
+  
 
    // display results of this roll
    cout << "Player rolled " << die1 << " + " << die2
@@ -124,6 +161,12 @@ unsigned int rollDice() {
 void playCrapsGame(){
     // scoped enumeration with constants that represent the game status 
    enum class Status {CONTINUE, WON, LOST}; // all caps in constants
+    
+    double wager = 0.0;
+
+    printBalance();
+
+    wager = placeWager();
 
    // randomize random number generator using current time
    srand(static_cast<unsigned int>(time(0)));
