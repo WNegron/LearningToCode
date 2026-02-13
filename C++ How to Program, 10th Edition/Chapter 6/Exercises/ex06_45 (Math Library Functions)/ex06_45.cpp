@@ -61,6 +61,7 @@ tan(x)      trigonometric tangent of x (x in radians)                   tan(0.0)
 #include <iostream>//enable program to perform input/output
 #include <iomanip>//parameterized stream manipulators
 #include <cmath>//enable program to perform math functions
+// header <vector> is introduce in chapter 7
 #include <vector>//used to hold collections of test input values for each math function
 #include <string> //used to make separator lines and pass nice descriptive text to the header-printing function
 
