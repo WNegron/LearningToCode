@@ -162,9 +162,11 @@ int main() {
         {1.0, 100.0}, {10.0, 0.0}, {0.0, 0.0}, {0.5, 2.0}
     };
 
-    for (auto [x, y] : powTests) {
-        cout << setw(10) << x << setw(10) << y << setw(18) << pow(x, y) << '\n';
-    }
+    for (const auto& p : powTests) {
+    double x = p.first;
+    double y = p.second;
+    cout << setw(10) << x << setw(10) << y << setw(18) << pow(x, y) << '\n';
+}
 
     // ────────────────────────────────────────────────
     // Test trigonometric functions: sin, cos, tan (in radians)
@@ -203,9 +205,11 @@ int main() {
     cout << setw(10) << "x" << setw(10) << "y" << setw(18) << "fmod(x,y)" << '\n';
     printSeparator();
 
-    for (auto [x, y] : fmodTests) {
-        cout << setw(10) << x << setw(10) << y << setw(18) << fmod(x, y) << '\n';
-    }
+    for (const auto& test : fmodTests) {
+    double x = test.first;
+    double y = test.second;
+    cout << setw(10) << x << setw(10) << y << setw(18) << fmod(x, y) << '\n';
+}
 
     printSeparator();
     cout << "\nAll tested math functions demonstrated.\n";
