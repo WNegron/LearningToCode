@@ -18,13 +18,6 @@ Description:
     
 ***************************************************************************************************/
 #include <iostream>//enable program to perform input/output
-#include <ctime>//enable program to perform time functions
-#include <iomanip>//parameterized stream manipulators
-#include <cmath>//enable program to perform math functions
-#include <cstdlib> // contains prototypes for functions srand and rand
-#include <random> // contains C++11 random number generation features
-#include <utility>//enables program to use pair
-#include <string> //
 
 #include "greatestCommonDivisor.hpp"//enable program to use function gcd
 
