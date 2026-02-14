@@ -1,35 +1,16 @@
 /***************************************************************************************************
 
-File Name: ex06_58.cpp
+File Name: computerAssisstedInstructions.hpp
      Date: 2026-02-14
    Author: Warren Negron
     Email: warren.negron@gmail.com
 
 Note: 
-My answer to exercise 6.58 using only the tools and methods taught up to Chapter 6.
+My answer to exercise 6.57 using only the tools and methods taught up to Chapter 6.
 
 This exercise is from the global Edition of C++ How to Program, 10/e 
 
 Description:
-    6.58 (Computer-Assisted Instruction: Reducing Student Fatigue) One problem in CAI environments is 
-student fatigue. This can be reduced by varying the computer’s responses to hold the student’s attention. 
-Modify the program of Exercise 6.57 so that various comments are displayed for each answer as follows:
-
-    Possible responses to a correct answer:
-        Very good!
-        Excellent!
-        Nice work!
-        Keep up the good work!
-    
-    Possible responses to an incorrect answer:
-        No. Please try again.
-        Wrong. Try once more.
-        Don't give up!
-        No. Keep trying.
-
-Use random-number generation to choose a number from 1 to 4 that will be used to select
-one of the four appropriate responses to each correct or incorrect answer. Use a switch statement to
-issue the responses.
 
     6.57 (Computer-Assisted Instruction) The use of computers in education is referred to as computer-assisted 
 instruction (CAI). Write a program that will help an elementary-school student learn multiplication. 
@@ -126,20 +107,74 @@ PROGRAM LearnMultiplicationWithChatter
     END MAIN
 
 END PROGRAM
+
 -----------------------------------    End Pseudocode    -------------------------------------------
     
 ***************************************************************************************************/
 
-#include "computerAssistedInstruction.hpp"//enable program to use function from computerAssistedInstruction
+#include <iostream>//enable program to perform input/output
+#include <cstdlib> // contains prototypes for functions srand and rand
+#include <string> // enable program to use C++ string data type
+#include <ctime>//enable program to perform time functions
 
-// function main begins program execution
-int main(){
+//function definitions
+//chatter function; will display a message after every answer from the student 
+void chatter(bool answeredCorrectly){
     // declaring and initializing variables
+    std::string correctMessage[] = {
+            "Very good!",
+            "Excellent!",
+            "Nice work!",
+            "Keep up the good work!"
+        };
+    
+    std::string incorrectMessage[] = {
+            "No. Please try again.",
+            "Wrong. Try once more.",
+            "Don't give up!",
+            "No. Keep trying."
+        };
 
-    // randomize random number generator using current time
-    srand(static_cast<unsigned int>(time(0)));
+    //if answers are correct
+    if(answeredCorrectly){
+        //pick message at random
+        //printouts message
+        std::cout << correctMessage[rand()%4] << std::endl;
+    }//end if
 
-    multiplication();
+    else{
+        //pick message at random
+        //printouts message
+        std::cout << incorrectMessage[rand()%4] << std::endl;
+    }//end else
+}//end chatter function
 
-    return 0;// indicate that program ended successfully
-}// end of main function
+//multiplication
+void multiplication(){
+    // declaring and initializing variables
+    int x = (rand() % 9) + 1;//generate a random number between 1 and 9
+    int y = (rand() % 9) + 1;//generate a random number between 1 and 9
+    int product = x * y;//use to compare and check student's answers
+    int answer = 0;
+
+    std::cout << "    ++====********    LEARN MULTIPLICATION    ********====++\n";
+    std::cout << "--------------------------------------------------------------\n" << std::endl;
+
+    //do...while loop
+    do{
+        std::cout << "How much is " << x << " times " << y << " (enter -1 to exit)? ";//promt student for the answer
+        std::cin >> answer;//reads answer from student
+        
+        //check student's answers to see if it's correct
+        if(answer == product){
+            chatter(true);
+            x = (rand() % 9) + 1;//generate a random number between 1 and 9
+            y = (rand() % 9) + 1;//generate a random number between 1 and 9
+            product = x * y;//use to compare and check student's answers
+        }//end if
+        else if(answer != -1){
+            chatter(false);
+        }//end else
+    }while(answer != -1);//end do...while loop
+
+}//end multiplication function
