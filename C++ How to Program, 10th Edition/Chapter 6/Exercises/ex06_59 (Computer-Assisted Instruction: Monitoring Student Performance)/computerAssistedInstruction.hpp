@@ -27,98 +27,90 @@ question. This function should be called once when the application begins execut
 the user answers the question correctly.
 
 -------------------------------------    Pseudocode    ---------------------------------------------
-PROGRAM LearnMultiplicationWithChatter
+PROGRAM ComputerAssistedMultiplicationTutor
 
-    // Global or accessible random number generator is needed to be seeded 
-    // the srand(time(NULL)) in main function
+    // Global / shared data
+    DECLARE string correctMessages[4] ← {
+        "Very good!",
+        "Excellent!",
+        "Nice work!",
+        "Keep up the good work!"
+    }
 
-    // Returns a random one-digit integer (1 to 9)
-    FUNCTION getRandomDigit() returns integer
-        RETURN random integer between 1 and 9 (inclusive)
-    END FUNCTION
-
-    // Generates new multiplication question and returns the correct answer
-    FUNCTION generateNewQuestion() returns integer
-        DECLARE integer a ← getRandomDigit()
-        DECLARE integer b ← getRandomDigit()
-        DECLARE integer correct ← a * b
-       
-        DISPLAY "How much is ", a, " × ", b, " ? "
-       
-        RETURN correct
-    END FUNCTION
+    DECLARE string incorrectMessages[4] ← {
+        "No. Please try again.",
+        "Wrong. Try once more.",
+        "Don't give up!",
+        "No. Keep trying."
+    }
 
     // ────────────────────────────────────────────────
-    // Function: chatter
-    // Displays a random encouraging message depending on whether the answer was correct
+    // FUNCTION: Returns random digit 1–9
     // ────────────────────────────────────────────────
-    PROCEDURE chatter(boolean answeredCorrectly)
-        DECLARE string correctMessages[4] ← {
-            "Very good!",
-            "Excellent!",
-            "Nice work!",
-            "Keep up the good work!"
-        }
+    FUNCTION getRandomDigit() RETURNS integer
+        RETURN random integer between 1 and 9 (inclusive)
+    END FUNCTION
 
-        DECLARE string incorrectMessages[4] ← {
-            "No. Please try again.",
-            "Wrong. Try once more.",
-            "Don't give up!",
-            "No. Keep trying."
-        }
-
+    // ────────────────────────────────────────────────
+    // PROCEDURE: Displays random encouraging / corrective message
+    // ────────────────────────────────────────────────
+    PROCEDURE chatter(answeredCorrectly: boolean)
         IF answeredCorrectly THEN
-            index ← random integer from 0 to 3
+            index ← random integer between 0 and 3 inclusive
             DISPLAY correctMessages[index]
         ELSE
-            index ← random integer from 0 to 3
+            index ← random integer between 0 and 3 inclusive
             DISPLAY incorrectMessages[index]
         END IF
+        DISPLAY newline
     END PROCEDURE
 
+    // ────────────────────────────────────────────────
+    // FUNCTION: Prints question and returns correct product
+    // ────────────────────────────────────────────────
+    FUNCTION generateNewQuestion() RETURNS integer
+        DECLARE integer x ← getRandomDigit()
+        DECLARE integer y ← getRandomDigit()
+        DISPLAY "How much is ", x, " times ", y, " (enter -1 to exit)? "
+        RETURN x * y
+    END FUNCTION
 
     // ────────────────────────────────────────────────
-    // Function: multiplication (main practice loop)
+    // MAIN PROCEDURE: multiplication tutor loop
     // ────────────────────────────────────────────────
     PROCEDURE multiplication()
-        DECLARE integer x, y, correctAnswer, studentAnswer
+        DISPLAY "    ++====********    LEARN MULTIPLICATION    ********====++"
+        DISPLAY "--------------------------------------------------------------"
+        DISPLAY newline
 
-        DISPLAY header:
-            "    ++====********    LEARN MULTIPLICATION    ********====++"
-            "--------------------------------------------------------------"
+        DECLARE integer correctAnswer
+        DECLARE integer studentAnswer ← 0
 
         // Generate first question
-        SET x ← random integer 0 to 9
-        SET y ← random integer 0 to 9
-        SET correctAnswer ← x * y
+        SET correctAnswer ← generateNewQuestion()
 
-        // Main practice loop
-        REPEAT
-            DISPLAY "How much is ", x, " times ", y, " (enter -1 to exit)? "
+        // Main loop – continues until user enters -1
+        DO
             INPUT studentAnswer
 
             IF studentAnswer == correctAnswer THEN
                 CALL chatter(true)
-                // Generate next question
-                SET x ← random integer 0 to 9
-                SET y ← random integer 0 to 9
-                SET correctAnswer ← x * y
+                SET correctAnswer ← generateNewQuestion()
             ELSE IF studentAnswer != -1 THEN
                 CALL chatter(false)
-                // same question continues (no new numbers generated)
+                // Note: does NOT generate new question on wrong answer
             END IF
 
-        UNTIL studentAnswer == -1
+        WHILE studentAnswer != -1
 
-        // (program ends quietly when -1 is entered)
+        // (program ends when -1 is entered)
     END PROCEDURE
 
-
     // ────────────────────────────────────────────────
-    // Main program (implied)
+    // PROGRAM ENTRY POINT
     // ────────────────────────────────────────────────
     MAIN
-        INITIALIZE random number generator with current time
+        INITIALIZE random number generator (using current time)
         CALL multiplication()
     END MAIN
 
@@ -188,7 +180,7 @@ void multiplication(){
 
     std::cout << "    ++====********    LEARN MULTIPLICATION    ********====++\n";
     std::cout << "--------------------------------------------------------------\n" << std::endl;
-    
+
     correctAnswer = generateNewQuestion();//use to compare and check student's answers
 
     //do...while loop
