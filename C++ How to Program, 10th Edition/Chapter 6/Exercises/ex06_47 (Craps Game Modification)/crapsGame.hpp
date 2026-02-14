@@ -106,7 +106,7 @@ unsigned int rollDice() {
 #include <iostream>//enable program to perform input/output
 #include <ctime>//enable program to perform time functions
 #include <cstdlib> // contains prototypes for functions srand and rand
-#include <string> //
+#include <string> // enable program to use C++ string data type
 
 using namespace std;//program uses names from namespace std
 

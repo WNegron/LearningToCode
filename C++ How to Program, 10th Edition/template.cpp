@@ -24,7 +24,7 @@ Description:
 #include <cstdlib> // contains prototypes for functions srand and rand
 #include <random> // contains C++11 random number generation features
 #include <utility>//enables program to use pair
-#include <string> //
+#include <string> // enable program to use C++ string data type
 
 /* #include "headerFileName.hpp"//enable program to use function from headerFileNames */
 
