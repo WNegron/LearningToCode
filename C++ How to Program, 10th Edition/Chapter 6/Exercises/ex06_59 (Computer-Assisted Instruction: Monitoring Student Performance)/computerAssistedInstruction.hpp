@@ -29,8 +29,24 @@ the user answers the question correctly.
 -------------------------------------    Pseudocode    ---------------------------------------------
 PROGRAM LearnMultiplicationWithChatter
 
-    // Global or accessible random number generator is assumed to be seeded 
-    // (equivalent to srand(time(NULL)) in main)
+    // Global or accessible random number generator is needed to be seeded 
+    // the srand(time(NULL)) in main function
+
+    // Returns a random one-digit integer (1 to 9)
+    FUNCTION getRandomDigit() returns integer
+        RETURN random integer between 1 and 9 (inclusive)
+    END FUNCTION
+
+    // Generates new multiplication question and returns the correct answer
+    FUNCTION generateNewQuestion() returns integer
+        DECLARE integer a ← getRandomDigit()
+        DECLARE integer b ← getRandomDigit()
+        DECLARE integer correct ← a * b
+       
+        DISPLAY "How much is ", a, " × ", b, " ? "
+       
+        RETURN correct
+    END FUNCTION
 
     // ────────────────────────────────────────────────
     // Function: chatter
@@ -65,7 +81,7 @@ PROGRAM LearnMultiplicationWithChatter
     // Function: multiplication (main practice loop)
     // ────────────────────────────────────────────────
     PROCEDURE multiplication()
-        DECLARE integer x, y, product, answer
+        DECLARE integer x, y, correctAnswer, studentAnswer
 
         DISPLAY header:
             "    ++====********    LEARN MULTIPLICATION    ********====++"
@@ -74,25 +90,25 @@ PROGRAM LearnMultiplicationWithChatter
         // Generate first question
         SET x ← random integer 0 to 9
         SET y ← random integer 0 to 9
-        SET product ← x * y
+        SET correctAnswer ← x * y
 
         // Main practice loop
         REPEAT
             DISPLAY "How much is ", x, " times ", y, " (enter -1 to exit)? "
-            INPUT answer
+            INPUT studentAnswer
 
-            IF answer == product THEN
+            IF studentAnswer == correctAnswer THEN
                 CALL chatter(true)
                 // Generate next question
                 SET x ← random integer 0 to 9
                 SET y ← random integer 0 to 9
-                SET product ← x * y
-            ELSE IF answer != -1 THEN
+                SET correctAnswer ← x * y
+            ELSE IF studentAnswer != -1 THEN
                 CALL chatter(false)
                 // same question continues (no new numbers generated)
             END IF
 
-        UNTIL answer == -1
+        UNTIL studentAnswer == -1
 
         // (program ends quietly when -1 is entered)
     END PROCEDURE
@@ -149,32 +165,42 @@ void chatter(bool answeredCorrectly){
     }//end else
 }//end chatter function
 
+//begin getRandomDigit
+int getRandomDigit(){
+    return (rand() % 9) + 1;//generate a random number between 1 and 9
+}//end getRandomDigit function
+
+int generateNewQuestion(){
+    // declaring and initializing variables
+    int x = getRandomDigit();//generate a random number between 1 and 9
+    int y = getRandomDigit();//generate a random number between 1 and 9
+
+    std::cout << "How much is " << x << " times " << y << " (enter -1 to exit)? ";//promt student for the answer
+   return x * y;
+}//end generateNewQuestion function
+
+
 //multiplication
 void multiplication(){
     // declaring and initializing variables
-    int x = (rand() % 9) + 1;//generate a random number between 1 and 9
-    int y = (rand() % 9) + 1;//generate a random number between 1 and 9
-    int product = x * y;//use to compare and check student's answers
-    int answer = 0;
+    int correctAnswer = generateNewQuestion();//use to compare and check student's answers
+    int studentAnswer = 0;
 
     std::cout << "    ++====********    LEARN MULTIPLICATION    ********====++\n";
     std::cout << "--------------------------------------------------------------\n" << std::endl;
+    
+    correctAnswer = generateNewQuestion();//use to compare and check student's answers
 
     //do...while loop
     do{
-        std::cout << "How much is " << x << " times " << y << " (enter -1 to exit)? ";//promt student for the answer
-        std::cin >> answer;//reads answer from student
-        
         //check student's answers to see if it's correct
-        if(answer == product){
+        if(studentAnswer == correctAnswer){
             chatter(true);
-            x = (rand() % 9) + 1;//generate a random number between 1 and 9
-            y = (rand() % 9) + 1;//generate a random number between 1 and 9
-            product = x * y;//use to compare and check student's answers
+            correctAnswer = generateNewQuestion();//use to compare and check student's answers
         }//end if
-        else if(answer != -1){
+        else if(studentAnswer != -1){
             chatter(false);
         }//end else
-    }while(answer != -1);//end do...while loop
+    }while(studentAnswer != -1);//end do...while loop
 
 }//end multiplication function
