@@ -46,9 +46,8 @@ current line; do not advance to the next line.
 \\ Backslash. Used to print a backslash character.
 \' Single quote. Used to print a single-quote character.
 \" Double quote. Used to print a double-quote character.
-*/
 
-/*
+
 Standard Library
 header Explanation
 <iostream> Contains function prototypes for the C++ standard input and output
@@ -94,7 +93,7 @@ at execution time). This header is discussed in Section 12.9.
 <exception>,
 <stdexcept>
 These headers contain classes that are used for exception handling (dis-
-cussed in Chapter 17, Exception Handling: A Deeper Look).*/
+cussed in Chapter 17, Exception Handling: A Deeper Look).
 
 //setprecicion(n): parameterized stream manipulator
 //fixed: indicates that floating-point values should be output in fixed-point format, 
@@ -148,3 +147,8 @@ Character,Code point,Name / Description,Typical use in C++,Copy-paste
 ⁾,U+207E,Superscript right parenthesis,(x+y)⁽²⁾,⁾
 ⁱ,U+2071,Superscript i,imaginary unit iⁱ (rare),ⁱ
 ⁿ,U+207F,Superscript n,xⁿ (general exponent),ⁿ
+
+
+
+
+*/
