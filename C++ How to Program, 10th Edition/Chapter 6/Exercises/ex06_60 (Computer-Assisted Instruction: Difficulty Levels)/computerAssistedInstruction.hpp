@@ -69,10 +69,10 @@ PROGRAM ComputerAssistedMultiplicationTutor
     // (equivalent to srand(time(NULL)) in main)
 
     // ────────────────────────────────────────────────
-    // FUNCTION: chatter
-    // Displays a random encouraging message depending on whether the answer was correct
+    // FUNCTION: Displays random encouraging / corrective message
+    // Displays a random encouraging message when the answer is correct
     // ────────────────────────────────────────────────
-    FUNCTION chatter(boolean answeredCorrectly)
+    FUNCTION correctMessage()
         //
         DECLARE string correctMessages[4] ← {
             "Very good!",
@@ -80,50 +80,44 @@ PROGRAM ComputerAssistedMultiplicationTutor
             "Nice work!",
             "Keep up the good work!"
         }
+        index ← random integer from 0 to 3
+        DISPLAY correctMessages[index]
+    END FUNCTION
 
+    // ────────────────────────────────────────────────
+    // FUNCTION: Displays random encouraging / corrective message
+    // Displays a random encouraging message when the answer is incorrect
+    // ────────────────────────────────────────────────
+    FUNCTION incorrectMessage()
         DECLARE string incorrectMessages[4] ← {
             "No. Please try again.",
             "Wrong. Try once more.",
             "Don't give up!",
             "No. Keep trying."
         }
-
-        IF answeredCorrectly THEN
-            index ← random integer from 0 to 3
-            DISPLAY correctMessages[index]
-        ELSE
-            index ← random integer from 0 to 3
-            DISPLAY incorrectMessages[index]
-        END IF
+        index ← random integer from 0 to 3
+        DISPLAY incorrectMessages[index]
     END FUNCTION
 
     // ────────────────────────────────────────────────
     // FUNCTION: Returns random digit 1–9
     // ────────────────────────────────────────────────
-    FUNCTION getRandomDigit() RETURNS integer
-        RETURN random integer between 1 and 9 (inclusive)
+    FUNCTION getRandomDigit(difficulty) RETURNS integer
+        IF difficulty < 1 THEN
+            SET difficulty ← 1
+        END-IF
+        
+        SET maxValue ← 10^difficulty     // 10, 100, 1000, ...
+        
+        RETURN random integer in range [1 ... maxValue-1
     END FUNCTION
-
-    // ────────────────────────────────────────────────
-    // PROCEDURE: Displays random encouraging / corrective message
-    // ────────────────────────────────────────────────
-    PROCEDURE chatter(answeredCorrectly: boolean)
-        IF answeredCorrectly THEN
-            index ← random integer between 0 and 3 inclusive
-            DISPLAY correctMessages[index]
-        ELSE
-            index ← random integer between 0 and 3 inclusive
-            DISPLAY incorrectMessages[index]
-        END IF
-        DISPLAY newline
-    END PROCEDURE
 
     // ────────────────────────────────────────────────
     // FUNCTION: Prints question and returns correct product
     // ────────────────────────────────────────────────
-    FUNCTION generateNewQuestion() RETURNS integer
-        DECLARE integer x ← getRandomDigit()
-        DECLARE integer y ← getRandomDigit()
+    FUNCTION generateNewQuestion(difficulty) RETURNS integer
+        DECLARE integer x ← getRandomDigit(difficulty)
+        DECLARE integer y ← getRandomDigit(difficulty)
         DISPLAY "How much is ", x, " times ", y, " (enter -1 to exit)? "
         RETURN x * y
     END FUNCTION
@@ -138,11 +132,13 @@ PROGRAM ComputerAssistedMultiplicationTutor
         DECLARE studentAnswer ← 0
 
         Display header:
-            "_____________________________________________________________"
-            "    ++====********    LEARN MULTIPLICATION    ********====++"
-            "_____________________________________________________________"
+        Output separator line
+        Output "  ++====********    LEARN MULTIPLICATION    ********====++"
+        Output "              Difficulty level: " + difficulty
+        Output separator line
+        Output blank line
 
-        SET correctAnswer ← generateNewQuestion()
+        SET correctAnswer ← generateNewQuestion(difficulty)
 
         WHILE totalAnswers < 10 DO
             READ studentAnswer
@@ -168,6 +164,9 @@ PROGRAM ComputerAssistedMultiplicationTutor
                 CALL incorrectMessage()      // random try again message
             END-IF
 
+            // ───────────────────────────────────────
+            // Evaluation point: exactly 10 answers
+            // ───────────────────────────────────────
             // Special point: after exactly 10 answers
             IF totalAnswers = 10 THEN
                 CALCULATE percentage ← (correctCount * 100) / totalAnswers
@@ -186,6 +185,22 @@ PROGRAM ComputerAssistedMultiplicationTutor
                 Display "       Starting new student"
                 Display separator line
                 Display blank line
+
+                // ───────────────────────────────
+                // Ask for new difficulty level
+                // ───────────────────────────────
+                Output "Choose difficulty level (1 = easiest, 2 = medium, 3 = harder, ...): "
+                READ difficulty
+            
+                WHILE input invalid OR difficulty < 1 DO
+                    Clear input error state
+                    Discard rest of line
+                    Output "Please enter a positive number (1 or higher): "
+                    READ difficulty
+                END-WHILE
+
+                Output blank line
+                Output "Starting training at difficulty level " + difficulty + "..."
 
                 // Reset for new student / new session
                 SET correctCount ← 0
@@ -206,6 +221,22 @@ PROGRAM ComputerAssistedMultiplicationTutor
     // ────────────────────────────────────────────────
     MAIN
         INITIALIZE random number generator (using current time)
+
+        Output "Welcome to Multiplication Trainer!"
+        Output "(Enter -1 at any time to exit)"
+
+        Output "Choose difficulty level (1 = easiest, 2 = medium, 3 = harder, ...): "
+        READ difficulty
+        
+        WHILE input invalid OR difficulty < 1 DO
+            Clear input error state
+            Discard rest of line
+            Output "Please enter a positive number (1 or higher): "
+            READ difficulty
+        END-WHILE
+
+        Output blank line
+        Output "Starting training at difficulty level " + difficulty + "..."
         CALL multiplication()
     END MAIN
 
@@ -356,6 +387,12 @@ void runMultiplicationSession(int difficulty){
             // Reset counters and start fresh session
             correctCount = 0;
             totalAnswers = 0;
+
+                std::cout << "-------------------------------------------------------------\n";
+                std::cout << "  ++====********    LEARN MULTIPLICATION    ********====++\n";
+                std::cout << "              Difficulty level: " << difficulty << "\n";
+                std::cout << "-------------------------------------------------------------\n" << std::endl;
+
             correctAnswer = generateNewQuestion(difficulty);
             continue;
         }//end if
