@@ -103,8 +103,8 @@ void chatter(bool answeredCorrectly){
 //multiplication
 void multiplication(){
     // declaring and initializing variables
-    int x = rand() % 10;//generate a random number between 0 and 9
-    int y = rand() % 10;//generate a random number between 0 and 9
+    int x = (rand() % 9) + 1;//generate a random number between 1 and 9
+    int y = (rand() % 9) + 1;//generate a random number between 1 and 9
     int product = x * y;//use to compare and check student's answers
     int answer = 0;
 
@@ -119,8 +119,8 @@ void multiplication(){
         //check student's answers to see if it's correct
         if(answer == product){
             chatter(true);
-            x = rand() % 10;//generate a random number between 0 and 9
-            y = rand() % 10;//generate a random number between 0 and 9
+            x = (rand() % 9) + 1;//generate a random number between 0 and 9
+            y = (rand() % 9) + 1;//generate a random number between 0 and 9
             product = x * y;//use to compare and check student's answers
         }//end if
         else if(answer != -1){
