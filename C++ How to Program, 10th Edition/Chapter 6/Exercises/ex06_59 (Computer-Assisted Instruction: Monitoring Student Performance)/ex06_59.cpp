@@ -150,8 +150,10 @@ int main(){
     // randomize random number generator using current time
     srand(static_cast<unsigned int>(time(0)));
 
-    //function call
-    multiplication();
-
+    std::cout << "Welcome to Multiplication Trainer!\n\n";
+    std::cout << "(Enter -1 at any time to exit)\n\n";
+    
+    runMultiplicationSession();//call function
+    
     return 0;// indicate that program ended successfully
 }// end of main function
