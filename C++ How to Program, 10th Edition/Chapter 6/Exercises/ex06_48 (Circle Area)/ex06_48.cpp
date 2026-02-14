@@ -90,7 +90,7 @@ int main(){
     //message printout
     std::cout << "\n\n++====********   Circle Equations   ********====++\n";
     std::cout << "Area = \u03C0r\u00B2\n";
-    std::cout << "Area = " << std::setprecision(10) << std::fixed << pi << "(" 
+    std::cout << "Area = " << std::setprecision(10) << std::fixed << ::pi << "(" 
     << std::setprecision(2) << std::fixed << radius << ")\u00B2\n";
     std::cout << "The area of a circle with radius " << radius << " is "
     << std::setprecision(5) << std::fixed << area << std::endl;
