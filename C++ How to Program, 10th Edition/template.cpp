@@ -8,6 +8,11 @@ File Name: exXX_XX.cpp
 Note: 
 My answer to exercise X.XX using only the tools and methods taught up to Chapter X.
 
+//setprecicion(n): parameterized stream manipulator
+    //fixed: indicates that floating-point values should be output in fixed-point format, 
+    //as opposed to scientific notation
+    //std::cout << std::setprecision(10) << std::fixed;
+
 This exercise is from the global Edition of C++ How to Program, 10/e 
 
 Description:
