@@ -97,6 +97,54 @@ These headers contain classes that are used for exception handling (dis-
 cussed in Chapter 17, Exception Handling: A Deeper Look).*/
 
 //setprecicion(n): parameterized stream manipulator
-    //fixed: indicates that floating-point values should be output in fixed-point format, 
-    //as opposed to scientific notation
-    //std::cout << std::setprecision(10) << std::fixed;
+//fixed: indicates that floating-point values should be output in fixed-point format, 
+//as opposed to scientific notation
+std::cout << std::setprecision(10) << std::fixed;
+
+Character,Code point,Name / Description,Typical use in C++,Copy-paste
+₀,U+2080,Subscript zero,x₀ (initial value),₀
+₁,U+2081,Subscript one,"x₁, a₁",₁
+₂,U+2082,Subscript two,"x₂, a₂",₂
+₃,U+2083,Subscript three,"x₃, CO₂",₃
+₄,U+2084,Subscript four,x₄,₄
+₅,U+2085,Subscript five,x₅,₅
+₆,U+2086,Subscript six,x₆,₆
+₇,U+2087,Subscript seven,x₇,₇
+₈,U+2088,Subscript eight,x₈,₈
+₉,U+2089,Subscript nine,x₉,₉
+₊,U+208A,Subscript plus,rare,₊
+₋,U+208B,Subscript minus,rare,₋
+₌,U+208C,Subscript equals,rare,₌
+₍,U+208D,Subscript left parenthesis,rare,₍
+₎,U+208E,Subscript right parenthesis,rare,₎
+ₐ,U+2090,Subscript a,chemistry / phonetics,ₐ
+ₑ,U+2091,Subscript e,chemistry,ₑ
+ₒ,U+2092,Subscript o,chemistry,ₒ
+ₓ,U+2093,Subscript x,math / chemistry,ₓ
+ₕ,U+2095,Subscript h,chemistry (H₂O),ₕ
+ₖ,U+2096,Subscript k,rare,ₖ
+ₗ,U+2097,Subscript l,rare,ₗ
+ₘ,U+2098,Subscript m,rare,ₘ
+ₙ,U+2099,Subscript n,sequences,ₙ
+ₚ,U+209A,Subscript p,rare,ₚ
+ₛ,U+209B,Subscript s,rare,ₛ
+ₜ,U+209C,Subscript t,rare,ₜ
+
+Character,Code point,Name / Description,Typical use in C++,Copy-paste
+⁰,U+2070,Superscript zero,x⁰,⁰
+¹,U+00B9,Superscript one (Latin-1),"x¹, first order",¹
+²,U+00B2,Superscript two (squared),area = πr²,²
+³,U+00B3,Superscript three (cubed),volume = (4/3)πr³,³
+⁴,U+2074,Superscript four,x⁴,⁴
+⁵,U+2075,Superscript five,x⁵,⁵
+⁶,U+2076,Superscript six,x⁶,⁶
+⁷,U+2077,Superscript seven,x⁷,⁷
+⁸,U+2078,Superscript eight,x⁸,⁸
+⁹,U+2079,Superscript nine,x⁹,⁹
+⁺,U+207A,Superscript plus,x⁺y,⁺
+⁻,U+207B,Superscript minus,x⁻¹,⁻
+⁼,U+207C,Superscript equals,x⁼y,⁼
+⁽,U+207D,Superscript left parenthesis,(x+y)⁽²⁾,⁽
+⁾,U+207E,Superscript right parenthesis,(x+y)⁽²⁾,⁾
+ⁱ,U+2071,Superscript i,imaginary unit iⁱ (rare),ⁱ
+ⁿ,U+207F,Superscript n,xⁿ (general exponent),ⁿ
