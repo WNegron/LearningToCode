@@ -27,6 +27,45 @@ question. This function should be called once when the application begins execut
 the user answers the question correctly.
 
 -------------------------------------    Pseudocode    ---------------------------------------------
+PROGRAM MultiplicationTutor
+
+    FUNCTION generateMultiplicationQuestion() returns integer
+        num1 ← random(1 to 9)
+        num2 ← random(1 to 9)
+        product ← num1 × num2
+        answer
+
+    LOOP forever (practice continues until user terminates program)
+        DISPLAY "How much is ", num1, " × ", num2, " ? "
+        INPUT userResponse
+
+        INPUT userResponse
+
+        IF userResponse equals correctProduct THEN
+            DISPLAY "Very good!"
+            // New question only when correct
+            num1 ← random(1 to 9)
+            num2 ← random(1 to 9)
+            product ← num1 × num2
+        ELSE
+            DISPLAY "No. Please try again."
+            // Same question remains — student must try again
+        END IF
+
+    END LOOP
+        
+END FUNCTION
+
+MAIN
+
+    INITIALIZE random number generator with current time or similar
+
+    DECLARE integer correctProduct
+    DECLARE integer userResponse
+
+    // Start with first question
+    generateMultiplicationQuestion()
+END MAIN
 
 -----------------------------------    End Pseudocode    -------------------------------------------
     
@@ -40,7 +79,6 @@ the user answers the question correctly.
 //function definitions
 //chatter function; will display a message after every answer from the student 
 void chatter(bool answeredCorrectly){
-
     //if answers are correct
     if(answeredCorrectly){
         //pick message at random
@@ -67,9 +105,8 @@ void multiplication(){
     // declaring and initializing variables
     int x = rand() % 10;//generate a random number between 0 and 9
     int y = rand() % 10;//generate a random number between 0 and 9
-    int correctAns = x * y;//use to compare and check student's answers
+    int product = x * y;//use to compare and check student's answers
     int answer = 0;
-    //bool choice = false;
 
     std::cout << "    ++====********    LEARN MULTIPLICATION    ********====++\n";
     std::cout << "--------------------------------------------------------------\n" << std::endl;
@@ -80,11 +117,11 @@ void multiplication(){
         std::cin >> answer;//reads answer from student
         
         //check student's answers to see if it's correct
-        if(answer == correctAns){
+        if(answer == product){
             chatter(true);
             x = rand() % 10;//generate a random number between 0 and 9
             y = rand() % 10;//generate a random number between 0 and 9
-            correctAns = x * y;//use to compare and check student's answers
+            product = x * y;//use to compare and check student's answers
         }//end if
         else if(answer != -1){
             chatter(false);

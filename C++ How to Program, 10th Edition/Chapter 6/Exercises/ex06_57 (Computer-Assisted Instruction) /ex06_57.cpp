@@ -27,7 +27,44 @@ question. This function should be called once when the application begins execut
 the user answers the question correctly.
 
 -------------------------------------    Pseudocode    ---------------------------------------------
+PROGRAM MultiplicationTutor
+    FUNCTION generateMultiplicationQuestion() returns integer
+        num1 ← random(1 to 9)
+        num2 ← random(1 to 9)
+        product ← num1 × num2
+        answer
 
+    LOOP forever (practice continues until user terminates program)
+        DISPLAY "How much is ", num1, " × ", num2, " ? "
+        INPUT userResponse
+
+        INPUT userResponse
+
+        IF userResponse equals correctProduct THEN
+            DISPLAY "Very good!"
+            // New question only when correct
+            num1 ← random(1 to 9)
+            num2 ← random(1 to 9)
+            product ← num1 × num2
+        ELSE
+            DISPLAY "No. Please try again."
+            // Same question remains — student must try again
+        END IF
+
+    END LOOP
+        
+END FUNCTION
+
+MAIN
+
+    INITIALIZE random number generator with current time or similar
+
+    DECLARE integer correctProduct
+    DECLARE integer userResponse
+
+    // Start with first question
+    generateMultiplicationQuestion()
+END MAIN
 -----------------------------------    End Pseudocode    -------------------------------------------
     
 ***************************************************************************************************/
