@@ -35,6 +35,7 @@ the user answers the question correctly.
 #include <iostream>//enable program to perform input/output
 #include <cstdlib> // contains prototypes for functions srand and rand
 #include <string> // enable program to use C++ string data type
+#include <ctime>//enable program to perform time functions
 
 //function definitions
 //chatter function; will display a message after every answer from the student 
@@ -43,20 +44,20 @@ void chatter(bool answeredCorrectly){
     //if answers are correct
     if(answeredCorrectly){
         //pick message at random
-        std::string message[] = {
+        std::string message1[] = {
             "Very good!"
         };
         //printouts message
-        std::cout << message[0];
+        std::cout << message1[0] << std::endl;
     }//end if
 
     else{
         //pick message at random
-        std::string message[] = {
+        std::string message2[] = {
             "No. Please try again."
         };
         //printouts message
-        std::cout << message[0];
+        std::cout << message2[0] << std::endl;
 
     }//end else
 }//end chatter function
@@ -75,7 +76,7 @@ void multiplication(){
 
     //do...while loop
     do{
-        std::cout << "How much is " << x << " times " << y << "(enter -1 to exit)? ";//promt student for the answer
+        std::cout << "How much is " << x << " times " << y << " (enter -1 to exit)? ";//promt student for the answer
         std::cin >> answer;//reads answer from student
         
         //check student's answers to see if it's correct
@@ -85,9 +86,9 @@ void multiplication(){
             y = rand() % 10;//generate a random number between 0 and 9
             correctAns = x * y;//use to compare and check student's answers
         }//end if
-        else{
+        else if(answer != -1){
             chatter(false);
         }//end else
-    }while(answer == -1);//end do...while loop
+    }while(answer != -1);//end do...while loop
 
 }//end multiplication function
