@@ -68,5 +68,5 @@ const double pi = 3.1415926535; // pi first 10 digits
 //function to calculate area of a circle
 //begin circleArea function
 inline double circleArea(double radius){
-    return pi * radius * radius;
+    return ::pi * radius * radius;
 }//end circleArea function
