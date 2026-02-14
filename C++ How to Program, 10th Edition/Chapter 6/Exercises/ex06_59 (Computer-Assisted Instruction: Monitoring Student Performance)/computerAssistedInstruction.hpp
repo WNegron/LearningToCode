@@ -6,7 +6,7 @@ File Name: computerAssisstedInstructions.hpp
     Email: warren.negron@gmail.com
 
 Note: 
-My answer to exercise 6.57 using only the tools and methods taught up to Chapter 6.
+My answer to exercise 6.59 using only the tools and methods taught up to Chapter 6.
 
 This exercise is from the global Edition of C++ How to Program, 10/e 
 
@@ -37,6 +37,7 @@ PROGRAM ComputerAssistedMultiplicationTutor
     // Displays a random encouraging message depending on whether the answer was correct
     // ────────────────────────────────────────────────
     FUNCTION chatter(boolean answeredCorrectly)
+        //
         DECLARE string correctMessages[4] ← {
             "Very good!",
             "Excellent!",
@@ -92,9 +93,9 @@ PROGRAM ComputerAssistedMultiplicationTutor
     END FUNCTION
 
     // ────────────────────────────────────────────────
-    // MAIN PROCEDURE: multiplication tutor loop
+    // FUNCTION: multiplication tutor loop
     // ────────────────────────────────────────────────
-    PROCEDURE multiplication()
+    FUNCTION multiplication()
         DISPLAY "    ++====********    LEARN MULTIPLICATION    ********====++"
         DISPLAY "--------------------------------------------------------------"
         DISPLAY newline
@@ -120,7 +121,7 @@ PROGRAM ComputerAssistedMultiplicationTutor
         WHILE studentAnswer != -1
 
         // (program ends when -1 is entered)
-    END PROCEDURE
+    END FUNCTION
 
     // ────────────────────────────────────────────────
     // PROGRAM ENTRY POINT

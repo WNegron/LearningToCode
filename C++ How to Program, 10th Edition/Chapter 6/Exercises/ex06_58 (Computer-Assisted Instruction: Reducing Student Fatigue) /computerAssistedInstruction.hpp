@@ -6,11 +6,31 @@ File Name: computerAssisstedInstructions.hpp
     Email: warren.negron@gmail.com
 
 Note: 
-My answer to exercise 6.57 using only the tools and methods taught up to Chapter 6.
+My answer to exercise 6.58 using only the tools and methods taught up to Chapter 6.
 
 This exercise is from the global Edition of C++ How to Program, 10/e 
 
 Description:
+
+    6.58 (Computer-Assisted Instruction: Reducing Student Fatigue) One problem in CAI environments is 
+student fatigue. This can be reduced by varying the computer’s responses to hold the student’s attention. 
+Modify the program of Exercise 6.57 so that various comments are displayed for each answer as follows:
+
+    Possible responses to a correct answer:
+        Very good!
+        Excellent!
+        Nice work!
+        Keep up the good work!
+    
+    Possible responses to an incorrect answer:
+        No. Please try again.
+        Wrong. Try once more.
+        Don't give up!
+        No. Keep trying.
+
+Use random-number generation to choose a number from 1 to 4 that will be used to select
+one of the four appropriate responses to each correct or incorrect answer. Use a switch statement to
+issue the responses.
 
     6.57 (Computer-Assisted Instruction) The use of computers in education is referred to as computer-assisted 
 instruction (CAI). Write a program that will help an elementary-school student learn multiplication. 
