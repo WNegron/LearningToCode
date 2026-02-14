@@ -29,20 +29,36 @@ the user answers the question correctly.
 -------------------------------------    Pseudocode    ---------------------------------------------
 PROGRAM ComputerAssistedMultiplicationTutor
 
-    // Global / shared data
-    DECLARE string correctMessages[4] ← {
-        "Very good!",
-        "Excellent!",
-        "Nice work!",
-        "Keep up the good work!"
-    }
+    // Global or accessible random number generator is assumed to be seeded 
+    // (equivalent to srand(time(NULL)) in main)
 
-    DECLARE string incorrectMessages[4] ← {
-        "No. Please try again.",
-        "Wrong. Try once more.",
-        "Don't give up!",
-        "No. Keep trying."
-    }
+    // ────────────────────────────────────────────────
+    // FUNCTION: chatter
+    // Displays a random encouraging message depending on whether the answer was correct
+    // ────────────────────────────────────────────────
+    FUNCTION chatter(boolean answeredCorrectly)
+        DECLARE string correctMessages[4] ← {
+            "Very good!",
+            "Excellent!",
+            "Nice work!",
+            "Keep up the good work!"
+        }
+
+        DECLARE string incorrectMessages[4] ← {
+            "No. Please try again.",
+            "Wrong. Try once more.",
+            "Don't give up!",
+            "No. Keep trying."
+        }
+
+        IF answeredCorrectly THEN
+            index ← random integer from 0 to 3
+            DISPLAY correctMessages[index]
+        ELSE
+            index ← random integer from 0 to 3
+            DISPLAY incorrectMessages[index]
+        END IF
+    END FUNCTION
 
     // ────────────────────────────────────────────────
     // FUNCTION: Returns random digit 1–9
