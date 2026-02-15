@@ -10,6 +10,9 @@ My answer to exercise 6.61 using only the tools and methods taught up to Chapter
 
 This exercise is from the global Edition of C++ How to Program, 10/e 
 
+    Date: 2026-02-15 
+    Modifying the program to make it simpler and cleaner.
+
 Description:
 
     6.61 (Computer-Assisted Instruction: Varying the Types of Problems) Modify the program of
@@ -157,81 +160,74 @@ END PROGRAM
 // function main begins program execution
 int main(){
     // declaring and initializing variables
-    int choice;
+    int currentType;
     int difficulty;
+    char playAgain = 'y';
+    int problemType;
 
     // randomize random number generator using current time
     srand(static_cast<unsigned int>(time(0)));
 
-    while(true){
+    //while loop
+    while(playAgain == 'y' || playAgain == 'Y'){
         clearScreen();
-        std::cout << "\nWhat type of math problem would you like to practice?\n";
+        std::cout << "What type of math problem would you like to practice?\n";
         std::cout << "1 - Addition Problems\n";
         std::cout << "2 - Subtraction Problems\n";
         std::cout << "3 - Multiplication Problems\n";
         std::cout << "4 - Division Problems\n";
         std::cout << "5 - Random Mixture\n";
-        std::cout << "Please enter a number between 1 and 5 (or -1 to quit): ";
+        std::cout << "Enter type (1 - 5): ";
 
-        //reads and validates student's answer
-        if (!(std::cin >> choice)) {
-            // Handle bad input (letters, etc.)
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "\nPlease enter a number between 1 and 5  (or -1 to quit): ";
-            continue;
-        }//end if
-        //checking for qutting option
-        if(choice == -1) {
-            clearScreen();
-            std::cout << "\nGood bye!\n";
-            break; // signal to exit the program
-        }//end if
-
-        else{
-            std::cout << "\n\n";//printout new lines
-            switch(choice){
-                case 1:
-                    std::cout << "Welcome to Addition Trainer!\n\n";
-                    difficulty = difficultyLevel();
-                    runAdditionSession(difficulty);//function call
-                    break;
-
-                case 2:
-                    std::cout << "Welcome to Subtraction Trainer!\n\n";
-                    difficulty = difficultyLevel();
-                    runSubtractionSession(difficulty);//function call
-                    break;
-                
-                case 3:
-                    std::cout << "Welcome to Multiplication Trainer!\n\n";
-                    difficulty = difficultyLevel();
-                    runMultiplicationSession(difficulty);//function call 
-                    break;
-                
-                case 4:
-                    std::cout << "Welcome to Division Trainer!\n\n";
-                    difficulty = difficultyLevel();
-                    runDivisionSession(difficulty);//function call
-                    break;
+        //reads student's answer
+        std::cin >> problemType;
         
-                case 5:
-                    std::cout << "Welcome to Mix-Math Trainer!\n\n";
-                    difficulty = difficultyLevel();
-                    runMixMathSession(difficulty);
-                    break;
-                
-                default:
-                    if(choice != -1){
-                        clearScreen();
-                        std::cerr << "\nError: Incorrect choice.\n";
-                        std::cout << "\nPlease enter a number between 1 and 5 or -1 to quit)\n";
-                        dotsCountdown();    
-                    }//end if
-                    break;
-            }//end of switch-case
-        }//end else
+        int correctAnswer = 0;
+        int studentAnswer = 0;
+        int correctCount  = 0;
+        int totalAnswers  = 0;
+        int x = 0;
+        int y = 0;
+        char op;
+
+        difficulty = difficultyLevel();
+        currentType = (problemType == 5) ? (rand() % 4 + 1) : problemType;
+        generateNewQuestion(currentType,difficulty,x,y,op,correctAnswer);
+
+
+        
+        //while loop; 
+        while (totalAnswers < 10){
+            //reads student's answer
+            std::cin >> studentAnswer;
+            
+            //increase tally by 1
+            totalAnswers++;
+            
+            //check student's answers to see if it's correct
+            if(studentAnswer == correctAnswer){
+                correctCount++;//increase tally by 1
+                correctMessage();//will display a message after every answer from the student 
+            }//end if
+            else{
+                incorrectMessage();//will display a message after every answer from the student
+            }//end else
+            
+            if(totalAnswers < 10){
+                // Next question
+                currentType = (problemType == 5) ? (rand() % 4 + 1) : problemType;
+                generateNewQuestion(currentType,difficulty,x,y,op,correctAnswer);
+                }//end if
+        }//end while loop
+
+        totalScore(correctCount,totalAnswers);
+
+        std::cout << "\nStart another session? (y/n): ";
+        std::cin >> playAgain;
+        std::cin.ignore(1000, '\n');
     }//end while
+
+    std::cout << "Thanks for practicing. Goodbye! Come back soon!\n";
     
     return 0;// indicate that program ended successfully
 }// end of main function
