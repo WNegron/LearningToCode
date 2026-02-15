@@ -12,6 +12,11 @@ This exercise is from the global Edition of C++ How to Program, 10/e
 
 Description:
 
+    6.61 (Computer-Assisted Instruction: Varying the Types of Problems) Modify the program of
+Exercise 6.60 to allow the user to pick a type of arithmetic problem to study. An option of 1 means
+addition problems only, 2 means subtraction problems only, 3 means multiplication problems only,
+4 means division problems only and 5 means a random mixture of all these types.
+
     6.60 (Computer-Assisted Instruction: Difficulty Levels) Exercises 6.57–6.59 developed a 
 computer-assisted instruction program to help teach an elementary-school student multiplication. Modify 
 the program to allow the user to enter a difficulty level. At a difficulty level of 1, the program
@@ -252,7 +257,46 @@ END PROGRAM
 #include <ctime>//enable program to perform time functions
 #include <limits>    // numeric_limits
 
+#include "clearScreen.hpp"//enable program to use function from clearScreen
+
 //function definitions
+
+void totalScore(int correctCount, int totalAnswers){
+    int percentage = (correctCount * 100) / totalAnswers;
+
+    clearScreen();
+    
+    std::cout << "\nYou answered " << totalAnswers << " questions.\n";
+    std::cout << "Correct answers: " << correctCount << " (" << percentage << "%)\n\n";
+    
+    if (percentage >= 75) {
+        std::cout << "Congratulations, you are ready to go to the next level!\n";
+    } else {
+        std::cout << "Please ask your teacher for extra help.\n";
+    }//end if...else
+
+    std::this_thread::sleep_for(15s);
+}//end totalScore function
+
+int difficultyLevel(){
+    // declaring and initializing variables
+    int difficulty;
+
+    //get difficulty level
+    std::cout << "Choose difficulty level (1 = easiest, 2 = medium, 3 = harder, ...): ";
+                    
+    //validate difficulty choice
+    while (!(std::cin >> difficulty) || difficulty < 1) {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "Please enter a positive number (1 or higher): ";
+    }//end while loop
+    
+    std::cout << "\nStarting training at difficulty level " << difficulty << "...\n";
+    dotsCountdown();
+    return difficulty;
+}//end difficultyLevel
+
 //correctMessage function; will display a message after every answer from the student 
 void correctMessage(){
     // declaring and initializing variables
@@ -290,27 +334,64 @@ void incorrectMessage(){
 // ────────────────────────────────────────────────
 //begin getRandomDigit
 int getRandomDigit(int difficulty){
-    if (difficulty < 1) difficulty = 1;
+    // declaring and initializing variables
     int maxValue = 1;
+
     for (int i = 0; i < difficulty; ++i) {
         maxValue *= 10;
     }
     ////generate a random number based on difficulty level
     // 1 to (10^difficulty - 1)
-    return (rand() % maxValue - 1) + 1;
+    return ((rand() % (maxValue - 1)) + 1);
 }//end getRandomDigit function
 
-int generateNewQuestion(int difficulty){
+int generateNewQuestion(int difficulty,int choice){
     // declaring and initializing variables
-    int x = getRandomDigit(difficulty);//generate a random number between 1 and 9
-    int y = getRandomDigit(difficulty);//generate a random number between 1 and 9
+    int x = getRandomDigit(difficulty);//generate a random number
+    int y = getRandomDigit(difficulty);//generate a random number 
 
-    std::cout << "How much is " << x << " times " << y << " (enter -1 to exit)? ";//promt student for the answer
-   return x * y;
+    switch (choice)
+    {
+    case 1:
+        /* code */
+        std::cout << "How much is " << x << " + " << y << " (enter -1 to exit)? ";//promt student for the answer
+        return x + y;
+        break;
+    case 2:
+        /* code */
+         if(x >= y){
+            std::cout << "How much is " << x << " - " << y << " (enter -1 to exit)? ";//promt student for the answer
+            return x - y;
+         }//end if
+         else{
+            std::cout << "How much is " << y << " - " << x << " (enter -1 to exit)? ";//promt student for the answer
+            return y - x;
+         }//end else
+        break;
+    case 3:
+        /* code */
+        std::cout << "How much is " << x << " x " << y << " (enter -1 to exit)? ";//promt student for the answer
+        return x * y;
+        break;
+    case 4:
+        /* code */
+         std::cout << "How much is " << x << " / " << y << " (enter -1 to exit)? ";//promt student for the answer
+        return x / y;
+        break;
+    case 5:
+        /* code */
+        break;
+    
+    default:
+         std::cerr << "\nError. Please close and load program again\n";
+         return 0;
+        break;
+    }
+    return 0;
 }//end generateNewQuestion function
 
-//multiplication
-void runMultiplicationSession(int difficulty){
+/*----------------------------------------------------------------------------------------------------------------*/
+void runAdditionSession(int difficulty){
     // declaring and initializing variables
     int correctAnswer = 0;
     int studentAnswer = 0;
@@ -318,11 +399,11 @@ void runMultiplicationSession(int difficulty){
     int totalAnswers  = 0;
 
     std::cout << "-------------------------------------------------------------\n";
-    std::cout << "  ++====********    LEARN MULTIPLICATION    ********====++\n";
-    std::cout << "              Difficulty level: " << difficulty << "\n";
+    std::cout << "  ++====********    LEARN ADDITION    ********====++\n";
+    std::cout << "                  Difficulty level: " << difficulty << "\n";
     std::cout << "-------------------------------------------------------------\n" << std::endl;
 
-    correctAnswer = generateNewQuestion(difficulty);//use to compare and check student's answers
+    correctAnswer = generateNewQuestion(difficulty,1);//use to compare and check student's answers
 
     //while loop
     //it loops forever; to break loop student must enter -1
@@ -356,6 +437,125 @@ void runMultiplicationSession(int difficulty){
         }//end else
 
         // After 10 answers → evaluate and reset
+        if (totalAnswers == 10) {
+            totalScore(correctCount,totalAnswers);
+            break;
+        }//end if
+
+        // Next question
+        correctAnswer = generateNewQuestion(difficulty,1);//use to compare and check student's answers
+    }//end while loop
+}//end runAdditionSession function
+
+/*-----------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------*/
+void runSubtractionSession(int difficulty){
+    // declaring and initializing variables
+    int correctAnswer = 0;
+    int studentAnswer = 0;
+    int correctCount  = 0;
+    int totalAnswers  = 0;
+
+    std::cout << "-------------------------------------------------------------\n";
+    std::cout << "  ++====********    LEARN SUBTRACTION    ********====++\n";
+    std::cout << "                   Difficulty level: " << difficulty << "\n";
+    std::cout << "-------------------------------------------------------------\n" << std::endl;
+
+    correctAnswer = generateNewQuestion(difficulty,2);//use to compare and check student's answers
+
+    //while loop
+    //it loops forever; to break loop student must enter -1
+    while (totalAnswers < 10){
+        //reads and validates student's answer
+        if (!(std::cin >> studentAnswer)) {
+            // Handle bad input (letters, etc.)
+            std::cin.clear();
+            std::cin.ignore(10000, '\n');
+            std::cout << "Please enter a number (or -1 to quit): ";
+            continue;
+        }//end if
+
+        //terminates loop when student enters -1
+        if (studentAnswer == -1) {
+            std::cout << "Goodbye! Come back soon!\n";
+            break;  // exit session (and program)
+        }//end if
+
+        totalAnswers++;
+
+        //check student's answers to see if it's correct
+        if(studentAnswer == correctAnswer){
+            correctCount++;
+            correctMessage();//will display a message after every answer from the student 
+            //correctAnswer = generateNewQuestion();//use to compare and check student's answers
+        }//end if
+        else if(studentAnswer != -1){
+            incorrectMessage();//will display a message after every answer from the student
+            //new question is not generated yet; let's them try again  
+        }//end else
+
+        // After 10 answers → evaluate and reset
+        if (totalAnswers == 10) {
+            totalScore(correctCount,totalAnswers);
+            break;
+        }//end if
+
+        // Next question
+        correctAnswer = generateNewQuestion(difficulty,2);//use to compare and check student's answers
+    }//end while loop
+}//end runSubtractionSession function
+
+/*-----------------------------------------------------------------------------------------------------------------*/
+
+
+/* multiplication session function */
+void runMultiplicationSession(int difficulty){
+    // declaring and initializing variables
+    int correctAnswer = 0;
+    int studentAnswer = 0;
+    int correctCount  = 0;
+    int totalAnswers  = 0;
+
+    std::cout << "-------------------------------------------------------------\n";
+    std::cout << "  ++====********    LEARN MULTIPLICATION    ********====++\n";
+    std::cout << "                     Difficulty level: " << difficulty << "\n";
+    std::cout << "-------------------------------------------------------------\n" << std::endl;
+
+    correctAnswer = generateNewQuestion(difficulty,3);//use to compare and check student's answers
+
+    //while loop
+    //it loops forever; to break loop student must enter -1
+    while (totalAnswers < 10){
+        //reads and validates student's answer
+        if (!(std::cin >> studentAnswer)) {
+            // Handle bad input (letters, etc.)
+            std::cin.clear();
+            std::cin.ignore(10000, '\n');
+            std::cout << "Please enter a number (or -1 to quit): ";
+            continue;
+        }//end if
+
+        //terminates loop when student enters -1
+        if (studentAnswer == -1) {
+            std::cout << "Goodbye! Come back soon!\n";
+            break;  // exit session (and program)
+        }//end if
+
+        totalAnswers++;
+
+        //check student's answers to see if it's correct
+        if(studentAnswer == correctAnswer){
+            correctCount++;
+            correctMessage();//will display a message after every answer from the student 
+            //correctAnswer = generateNewQuestion();//use to compare and check student's answers
+        }//end if
+        else if(studentAnswer != -1){
+            incorrectMessage();//will display a message after every answer from the student
+            //new question is not generated yet; let's them try again  
+        }//end else
+
+        /*// After 10 answers → evaluate and reset
         if (totalAnswers == 10) {
             int percentage = (correctCount * 100) / totalAnswers;
 
@@ -395,9 +595,135 @@ void runMultiplicationSession(int difficulty){
 
             correctAnswer = generateNewQuestion(difficulty);
             continue;
+        }//end if */
+
+        // After 10 answers → evaluate and reset
+        if (totalAnswers == 10) {
+            totalScore(correctCount,totalAnswers);
+            break;
         }//end if
 
         // Next question
-        correctAnswer = generateNewQuestion(difficulty);//use to compare and check student's answers
+        correctAnswer = generateNewQuestion(difficulty,3);//use to compare and check student's answers
     }//end while loop
-}//end multiplication function
+}//end runMultiplicationSession function
+
+/*----------------------------------------------------------------------------------------------------------------*/
+void runDivisionSession(int difficulty){
+    // declaring and initializing variables
+    int correctAnswer = 0;
+    int studentAnswer = 0;
+    int correctCount  = 0;
+    int totalAnswers  = 0;
+
+    std::cout << "-------------------------------------------------------------\n";
+    std::cout << "  ++====********    LEARN DIVISION    ********====++\n";
+    std::cout << "                   Difficulty level: " << difficulty << "\n";
+    std::cout << "-------------------------------------------------------------\n" << std::endl;
+
+    correctAnswer = generateNewQuestion(difficulty,4);//use to compare and check student's answers
+
+    //while loop
+    //it loops forever; to break loop student must enter -1
+    while (totalAnswers < 10){
+        //reads and validates student's answer
+        if (!(std::cin >> studentAnswer)) {
+            // Handle bad input (letters, etc.)
+            std::cin.clear();
+            std::cin.ignore(10000, '\n');
+            std::cout << "Please enter a number (or -1 to quit): ";
+            continue;
+        }//end if
+
+        //terminates loop when student enters -1
+        if (studentAnswer == -1) {
+            std::cout << "Goodbye! Come back soon!\n";
+            break;  // exit session (and program)
+        }//end if
+
+        totalAnswers++;
+
+        //check student's answers to see if it's correct
+        if(studentAnswer == correctAnswer){
+            correctCount++;
+            correctMessage();//will display a message after every answer from the student 
+            //correctAnswer = generateNewQuestion();//use to compare and check student's answers
+        }//end if
+        else if(studentAnswer != -1){
+            incorrectMessage();//will display a message after every answer from the student
+            //new question is not generated yet; let's them try again  
+        }//end else
+
+        // After 10 answers → evaluate and reset
+        if (totalAnswers == 10) {
+            totalScore(correctCount,totalAnswers);
+            break;
+        }//end if
+
+        // Next question
+        correctAnswer = generateNewQuestion(difficulty,4);//use to compare and check student's answers
+    }//end while loop
+}//end runSubtractionSession function
+
+/*-----------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------*/
+void runMixMathSession(int difficulty){
+    // declaring and initializing variables
+    int correctAnswer = 0;
+    int studentAnswer = 0;
+    int correctCount  = 0;
+    int totalAnswers  = 0;
+
+    std::cout << "----------------------------------------------------------------\n";
+    std::cout << "  ++====********    LEARN MIX-MATH PROBLEMS    ********====++\n";
+    std::cout << "                      Difficulty level: " << difficulty << "\n";
+    std::cout << "----------------------------------------------------------------\n" << std::endl;
+
+    correctAnswer = generateNewQuestion(difficulty,(rand()%4)+1);//use to compare and check student's answers
+
+    //while loop
+    //it loops forever; to break loop student must enter -1
+    while (totalAnswers < 10){
+        //reads and validates student's answer
+        if (!(std::cin >> studentAnswer)) {
+            // Handle bad input (letters, etc.)
+            std::cin.clear();
+            std::cin.ignore(10000, '\n');
+            std::cout << "Please enter a number (or -1 to quit): ";
+            continue;
+        }//end if
+
+        //terminates loop when student enters -1
+        if (studentAnswer == -1) {
+            std::cout << "Goodbye! Come back soon!\n";
+            break;  // exit session (and program)
+        }//end if
+
+        totalAnswers++;
+
+        //check student's answers to see if it's correct
+        if(studentAnswer == correctAnswer){
+            correctCount++;
+            correctMessage();//will display a message after every answer from the student 
+            //correctAnswer = generateNewQuestion();//use to compare and check student's answers
+        }//end if
+        else if(studentAnswer != -1){
+            incorrectMessage();//will display a message after every answer from the student
+            //new question is not generated yet; let's them try again  
+        }//end else
+
+        // After 10 answers → evaluate and reset
+        if (totalAnswers == 10) {
+            totalScore(correctCount,totalAnswers);
+            break;
+        }//end if
+
+        // Next question
+        correctAnswer = generateNewQuestion(difficulty,(rand()%4)+1);//use to compare and check student's answers
+    }//end while loop
+}//end runMixMathSession function
+
+/*-----------------------------------------------------------------------------------------------------------------*/
+
+

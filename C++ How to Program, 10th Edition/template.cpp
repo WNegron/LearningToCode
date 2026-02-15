@@ -25,8 +25,12 @@ Description:
 #include <random> // contains C++11 random number generation features
 #include <utility>//enables program to use pair
 #include <string> // enable program to use C++ string data type
+#include <thread>     // for sleep_for
+#include <chrono>     // for seconds, milliseconds, etc.
 
-/* #include "headerFileName.hpp"//enable program to use function from headerFileNames */
+using namespace std::chrono_literals;   // lets you write 2s, 1500ms, etc.
+
+// #include "headerFileName.hpp"//enable program to use function from headerFileNames
 
 using namespace std;//program uses names from namespace std
 
@@ -37,6 +41,89 @@ int main(){
 }// end of main function
 
 /*
+// ────────────────────────────────────────────────
+    // ← Add delay here – most users like 1–3 seconds
+    // ────────────────────────────────────────────────
+    std::cout << "\nNext question in...\n";
+    std::this_thread::sleep_for(2s);          // 2 seconds pause
+    // or: std::this_thread::sleep_for(std::chrono::seconds(2));
+    // or shorter: std::this_thread::sleep_for(1200ms);
+
+void countdownGo() {
+    std::cout << "Next question in ";
+    for (int i = 3; i >= 1; --i) {
+        std::cout << i << "... " << std::flush;     // flush forces immediate display
+        std::this_thread::sleep_for(1s);
+        std::cout << "\b\b\b\b    \b\b\b\b";       // erase "3... ", "2... ", etc.
+    }
+    std::cout << "Go!\n\n";
+}
+
+void countdownClean() {
+    std::cout << "Next question in   ";   // reserve space
+    
+    for (int i = 3; i >= 1; --i) {
+        std::cout << "\rNext question in " << i << "... " << std::flush;
+        std::this_thread::sleep_for(1s);
+    }
+    
+    std::cout << "\rNext question in Go!      \n\n";
+}
+
+void countdownSpinner() {
+    const char spinner[] = {'|', '/', '-', '\\'};
+    int spinIdx = 0;
+
+    std::cout << "Preparing next question ";
+    
+    for (int i = 3; i >= 0; --i) {
+        std::cout << "\rPreparing next question " << spinner[spinIdx % 4] 
+                  << "  " << i << "s  " << std::flush;
+        spinIdx++;
+        std::this_thread::sleep_for(1s);
+    }
+    
+    std::cout << "\rPreparing next question Done!          \n\n";
+}
+
+void dotsCountdown() {
+    std::cout << "Next question ";
+    
+    for (int i = 0; i < 9; ++i) {           // 3 seconds total
+        std::cout << "." << std::flush;
+        std::this_thread::sleep_for(333ms);
+    }
+    
+    std::cout << "\rNext question     \n\n";   // clear line
+    std::cout << "Here we go!\n";
+}
+
+void dramaticCountdown() {
+    clearScreen();
+    std::cout << "\n\n\n\n\n";  // center vertically a bit
+    
+    for (int i = 3; i >= 1; --i) {
+        clearScreen();
+        std::cout << "\n\n\n\n          " << i << "\n\n\n\n" << std::flush;
+        std::this_thread::sleep_for(1s);
+    }
+    
+    clearScreen();
+    std::cout << "\n\n\n\n          GO!\n\n\n\n" << std::flush;
+    std::this_thread::sleep_for(700ms);
+}
+    
+void make_banner(string text) {
+    if (text.empty()) {
+        cerr << "Error: Text cannot be empty" << endl;
+        return;
+    }
+    int length = text.length() + 4;
+    cout << string(length, '*') << endl;
+    cout << "* " << text << " *" << endl;
+    cout << string(length, '*') << endl;
+}
+
 Escape sequence Description
 \n Newline. Position the screen cursor to the beginning of the next line.
 \t Horizontal tab. Move the screen cursor to the next tab stop.
@@ -99,6 +186,29 @@ cussed in Chapter 17, Exception Handling: A Deeper Look).
 //fixed: indicates that floating-point values should be output in fixed-point format, 
 //as opposed to scientific notation
 std::cout << std::setprecision(10) << std::fixed;
+
+#include <iostream>
+
+void clearScreen() {
+    std::cout << "\033[2J\033[H";   // or "\x1B[2J\x1B[H"
+    //               ^^^^^^^^       clears screen
+    //                      ^^^^^   moves cursor to top-left (1,1)
+}
+
+std::cout << "\033[2J";          // just clear (cursor may stay where it was)
+std::cout << "\033c";            // full terminal reset (clear + reset attributes)
+
+#include <iostream>
+#include <cstdlib>
+
+void clearScreen() {
+#ifdef _WIN32
+    std::system("cls");
+#else
+    std::system("clear");     // Linux, macOS, most UNIX-like
+    // or use ANSI: std::cout << "\033[2J\033[H";
+#endif
+}
 
 Character,Code point,Name / Description,Typical use in C++,Copy-paste
 ₀,U+2080,Subscript zero,x₀ (initial value),₀
