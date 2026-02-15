@@ -275,7 +275,8 @@ void totalScore(int correctCount, int totalAnswers){
         std::cout << "Please ask your teacher for extra help.\n";
     }//end if...else
 
-    std::this_thread::sleep_for(15s);
+    //std::this_thread::sleep_for(15s);
+    pause();
 }//end totalScore function
 
 int difficultyLevel(){

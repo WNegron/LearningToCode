@@ -20,6 +20,18 @@ Description:
 
 using namespace std::chrono_literals;   // lets you write 2s, 1500ms, etc.
 
+void pause()
+{
+    std::cout << "\nPress Enter to continue . . . ";
+    
+    // Clear error flags and discard everything until newline
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    
+    // Wait for the user to press Enter
+    std::cin.get();
+}
+
 //clearScreen Function difinition
 void clearScreen() {
     // clears screen
