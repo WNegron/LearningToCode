@@ -227,7 +227,7 @@ int main(){
         std::cin.ignore(1000, '\n');
     }//end while
 
-    std::cout << "Thanks for practicing. Goodbye! Come back soon!\n";
+    std::cout << "\n\nThanks for practicing. Goodbye! Come back soon!\n";
     
     return 0;// indicate that program ended successfully
 }// end of main function
