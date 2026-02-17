@@ -22,7 +22,15 @@ Description:
 #include <iostream>//enable program to perform input/output
 #include <array>//contains the definition of class template array
 #include <algorithm> // contains sort and binary_search
-
+#include <ctime>//enable program to perform time functions
+#include <iomanip>//parameterized stream manipulators
+#include <cmath>//enable program to perform math functions
+#include <cstdlib> // contains prototypes for functions srand and rand
+#include <random> // contains C++11 random number generation features
+#include <utility>//enables program to use pair
+#include <string> // enable program to use C++ string data type
+#include <thread>     // for sleep_for
+#include <chrono>     // for seconds, milliseconds, etc.
 
 //developer define header files
 //#include "headerFileName.hpp"//enable program to use function from headerFileNames
@@ -45,28 +53,6 @@ int main(){
 //using Matrix = std::array<std::array<int, Cols>, Rows>;
 // Now it reads more naturally:
 //Matrix<5, 8> image;     // ← Rows first in the template args
-
-//Standard Library header files
-#include <iostream>//enable program to perform input/output
-#include <ctime>//enable program to perform time functions
-#include <iomanip>//parameterized stream manipulators
-#include <cmath>//enable program to perform math functions
-#include <cstdlib> // contains prototypes for functions srand and rand
-#include <random> // contains C++11 random number generation features
-#include <utility>//enables program to use pair
-#include <string> // enable program to use C++ string data type
-#include <thread>     // for sleep_for
-#include <chrono>     // for seconds, milliseconds, etc.
-
-using namespace std::chrono_literals;   // lets you write 2s, 1500ms, etc.
-
-using namespace std;//program uses names from namespace std
-
-//#include "headerFileName.hpp"//enable program to use function from headerFileNames
-
-using namespace std;//program uses names from namespace std
-
-
 
 /*
 // ────────────────────────────────────────────────
