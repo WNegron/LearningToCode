@@ -57,7 +57,7 @@ b[3] = 1.5;
             
 //c) Initialize each of the 4 elements of one-dimensional integer array g to 7.
 
-for(int gItems: g)
+for(int& gItems: g)
     gItems = 7;
            
 //d) Total and display the elements of floating-point array c of 200 elements.
