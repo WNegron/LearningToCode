@@ -17,6 +17,35 @@ Description:
 -----------------------------------    End Pseudocode    -------------------------------------------
     
 ***************************************************************************************************/
+
+//Standard Library Header Files
+#include <iostream>//enable program to perform input/output
+#include <array>//contains the definition of class template array
+#include <algorithm> // contains sort and binary_search
+
+//developer define header files
+//#include "headerFileName.hpp"//enable program to use function from headerFileNames
+
+//using directives; enables a program to use all the names in any standard C++ header
+using namespace std;//program uses names from namespace std
+using namespace std::chrono_literals;   // lets you write 2s, 1500ms, etc.
+
+// function main begins program execution
+int main(){
+    // declaring and initializing variables
+
+    return 0;// indicate that program ended successfully
+}// end of main function
+
+//std::array<std::array<int, COLUMNS>, ROWS> grid;   // ← COLUMNS first (inner), ROWS second (outer)
+
+
+//template<std::size_t Rows, std::size_t Cols>
+//using Matrix = std::array<std::array<int, Cols>, Rows>;
+// Now it reads more naturally:
+//Matrix<5, 8> image;     // ← Rows first in the template args
+
+//Standard Library header files
 #include <iostream>//enable program to perform input/output
 #include <ctime>//enable program to perform time functions
 #include <iomanip>//parameterized stream manipulators
@@ -30,15 +59,13 @@ Description:
 
 using namespace std::chrono_literals;   // lets you write 2s, 1500ms, etc.
 
-// #include "headerFileName.hpp"//enable program to use function from headerFileNames
+using namespace std;//program uses names from namespace std
+
+//#include "headerFileName.hpp"//enable program to use function from headerFileNames
 
 using namespace std;//program uses names from namespace std
 
-// function main begins program execution
-int main(){
-    // declaring and initializing variables
-    return 0;// indicate that program ended successfully
-}// end of main function
+
 
 /*
 // ────────────────────────────────────────────────
@@ -140,18 +167,23 @@ header Explanation
 <iostream> Contains function prototypes for the C++ standard input and output
 functions, introduced in Chapter 2, and is covered in more detail in
 Chapter 13, Stream Input/Output: A Deeper Look.
+
 <iomanip> Contains function prototypes for stream manipulators that format
 streams of data. This header is first used in Section 4.10 and is discussed
 in more detail in Chapter 13, Stream Input/Output: A Deeper Look.
+
 <cmath> Contains function prototypes for math library functions (Section 6.3).
+
 <cstdlib> Contains function prototypes for conversions of numbers to text, text
 to numbers, memory allocation, random numbers and various other
 utility functions. Portions of the header are covered in Section 6.7;
 Chapter 11, Operator Overloading; Class string; Chapter 17, Excep-
 tion Handling: A Deeper Look; Chapter 22, Bits, Characters, C Strings
 and structs; and Appendix F, C Legacy Code Topics.
+
 <ctime> Contains function prototypes and types for manipulating the time and
 date. This header is used in Section 6.7.
+
 <array>,
 <vector>, <list>,
 <forward_list>,
