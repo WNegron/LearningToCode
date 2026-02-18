@@ -239,29 +239,31 @@ int main(){
    games++;//increase tally
 }//end while games loop
 
-    std::cout << "\nFrequency of Games\n";
+    std::cout << "\nFrequency of Games Won\n";
     std::cout << std::string(40,'-') << "\n";
-    std::cout << "Games Won" << std::setw(15)
-    << "1st Roll" << std::setw(30) << "2nd or Higher\n";
+    std::cout << "Games Played" << std::setw(10)
+    << "1st Roll" << std::setw(15) << "2nd or Higher\n";
     std::cout << std::setw(4) << games;
     std::cout << std::setw(15) << frequencyWins[0];
-    std::cout << std::setw(30) << frequencyWins[1];
+    std::cout << std::setw(10) << frequencyWins[1];
+    std::cout << "\n" << std::string(40,'-') << "\n";
 
-        std::cout << "\nFrequency of Games\n";
+    std::cout << "\nFrequency of Games Lost\n";
     std::cout << std::string(40,'-') << "\n";
-    std::cout << "Games Lost" << std::setw(15)
-    << "1st Roll" << std::setw(30) << "2nd or Higher\n";
+    std::cout << "Games Played" << std::setw(10)
+    << "1st Roll" << std::setw(15) << "2nd or Higher\n";
     std::cout << std::setw(4) << games;
     std::cout << std::setw(15) << frequencyLost[0];
-    std::cout << std::setw(30) << frequencyLost[1];
+    std::cout << std::setw(10) << frequencyLost[1];
+    std::cout << "\n" << std::string(40,'-') << "\n";
 
-    std::cout << "Percentages\n";
+    std::cout << "\nPercentages\n";
     std::cout << std::setw(4) << "Games Won" 
               << std::setw(15) << "Games Lost\n";
     std::cout << std::string(40,'-') << "\n";
     std::cout << std::setw(4) << std::fixed << std::setprecision(4) 
-    << static_cast<double>(frequencyWins[0]) / TOTAL_GAMES * 100.00;
+    << static_cast<double>(frequencyWins[0] + frequencyWins[1]) / TOTAL_GAMES * 100.00;
     std::cout << std::setw(15) << std::fixed << std::setprecision(4) 
-    << static_cast<double>(frequencyLost[0]) / TOTAL_GAMES * 100.00;
+    << static_cast<double>(frequencyLost[0] + frequencyLost[1] ) / TOTAL_GAMES * 100.00;
     return 0;// indicate that program ended successfully
 }// end of main function
