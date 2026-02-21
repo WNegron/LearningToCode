@@ -168,14 +168,14 @@ unsigned int rollDice(){
 // function main begins program execution
 int main(){
     // declaring and initializing variables
-    const int arraySize = 22;
+    const int arraySize = 100;
     std::array<int, arraySize> frequencyWins{};
     std::array<int, arraySize> frequencyLost{};
     
     const int TOTAL_GAMES = 1000;//play a 1,000 games
     int games = 0; // how many games are played counter
     int rolls = 0; //how many times dice are rolled
-    //std::array<int, TOTAL_GAMES> frequencyRolls{};
+    std::array<int, TOTAL_GAMES> frequencyRolls{};
 
     // scoped enumeration with constants that represent the game status 
    enum class Status {CONTINUE, WON, LOST}; // all caps in constants
@@ -199,13 +199,13 @@ int main(){
       case 7: // win with 7 on first roll
       case 11: // win with 11 on first roll           
          gameStatus = Status::WON;
-         frequencyWins[rolls]++;//games won first roll
+         frequencyWins[0]++;//games won first roll
          break;
       case 2: // lose with 2 on first roll
       case 3: // lose with 3 on first roll
       case 12: // lose with 12 on first roll             
          gameStatus = Status::LOST;
-         frequencyLost[rolls]++;//games lost on first roll
+         frequencyLost[0]++;//games lost on first roll
          break;
       default: // did not win or lose, so remember point
          gameStatus = Status::CONTINUE; // game is not over
@@ -222,22 +222,12 @@ int main(){
       // determine game status
       if (sumOfDice == myPoint) { // win by making point
          gameStatus = Status::WON;
-         if(rolls < 21){
-            frequencyWins[rolls]++;//games won on 2nd roll and above
-         }//end if
-         else{
-            frequencyWins[21]++;//games won after 20th roll and above
-         }
+         frequencyWins[1]++;//games won on 2nd roll and above
       }
       else {
          if (sumOfDice == 7) { // lose by rolling 7 before point
             gameStatus = Status::LOST;
-            if(rolls < 21){
-            frequencyLost[rolls]++;//games lost on 2nd roll or above
-         }//end if
-         else{
-            frequencyLost[21]++;//games lost after 20th roll and above
-         }
+            frequencyLost[1]++;
          }
       }
       
@@ -250,13 +240,14 @@ int main(){
    else {
       std::cout << "Player loses" << std::endl;
    }//end else
+
    
-   //frequencyRolls[games] = rolls;
+   frequencyRolls[games] = rolls;
    games++;//increase tally
    rolls = 0;//reset roll count for next game
 }//end while games loop
 
-   /*std::cout << "\nFrequency of Games Won\n";
+    std::cout << "\nFrequency of Games Won\n";
     std::cout << std::string(40,'-') << "\n";
     std::cout << "Games Played" << std::setw(10)
     << "1st Roll" << std::setw(15) << "2nd or Higher\n";
@@ -281,7 +272,7 @@ int main(){
     std::cout << std::setw(4) << std::fixed << std::setprecision(4) 
     << static_cast<double>(frequencyWins[0] + frequencyWins[1]) / TOTAL_GAMES * 100.00;
     std::cout << std::setw(15) << std::fixed << std::setprecision(4) 
-    << static_cast<double>(frequencyLost[0] + frequencyLost[1] ) / TOTAL_GAMES * 100.00; */
+    << static_cast<double>(frequencyLost[0] + frequencyLost[1] ) / TOTAL_GAMES * 100.00;
 
     std::cout << "\n" << std::string(40,'-') << "\n";
     std::cout << "Roll Frequency per Game\n";
@@ -291,16 +282,17 @@ int main(){
     std::cout << std::string(40,'-') << "\n";
 
     //dice roll frequency per game
-    for (size_t i = 1; i < arraySize; i++){
-      std::cout << std::setw(4) << i;
-      std::cout << std::setw(15) << frequencyWins[i] << "\n";
+    for (size_t i = 0; i < TOTAL_GAMES; i++){
+      std::cout << std::setw(4) << i + 1;
+      std::cout << std::setw(15) << frequencyRolls[i] << "\n";
     }//end dice roll frequency per game for loop 
 
-    /*/variables
+    //variables
     int smallest{1};
     int largest{0};
 
     for (size_t i = 0; i < TOTAL_GAMES; i++){
+      /* code */
       if(largest < frequencyRolls[i]){
          largest = frequencyRolls[i];
       }//end
@@ -311,7 +303,9 @@ int main(){
     std::array<int, TOTAL_GAMES> r{};
     
     for (size_t i = 0; i < largest; i++){
+      /* code */
       for (size_t j = 0; j < TOTAL_GAMES; j++){
+         /* code */
          if((i + 1) == frequencyRolls[j]){
             r[i]++;
          }//end if
@@ -329,7 +323,7 @@ int main(){
     for (size_t i = 0; i < largest; i++){
       std::cout << std::setw(4) << i + 1;
       std::cout << std::setw(15) << r[i] << "\n";
-    }//end dice roll frequency per game for loop */
+    }//end dice roll frequency per game for loop 
     
     
     
