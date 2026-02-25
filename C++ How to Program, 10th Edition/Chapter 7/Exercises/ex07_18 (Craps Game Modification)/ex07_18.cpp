@@ -171,10 +171,16 @@ int main(){
     const int arraySize = 22;
     std::array<int, arraySize> frequencyWins{};
     std::array<int, arraySize> frequencyLost{};
-    
     const int TOTAL_GAMES = 1000;//play a 1,000 games
     int games = 0; // how many games are played counter
-    int rolls = 0; //how many times dice are rolled
+
+    // Arrays: index 1 = first roll, index 2 = second roll, ..., index 20 = 20th roll
+    // index 0 will be used for "after 20th roll" (or more precisely: 21st roll and beyond)
+    //int winsByRoll[21]  = {0};   // winsByRoll[1] = won on 1st roll, etc.
+    //int lossesByRoll[21] = {0};
+    int totalWins = 0;
+    int totalGamesWithPoint = 0;   // games that went to "point" phase
+    int totalRolls = 0;// sum of all rolls across all games
 
     // scoped enumeration with constants that represent the game status 
    enum class Status {CONTINUE, WON, LOST}; // all caps in constants
@@ -188,6 +194,8 @@ int main(){
 
    while (games < TOTAL_GAMES){
       unsigned int myPoint{0}; // point if no win or loss on first roll
+      int rolls = 0; //how many times dice are rolled
+
       Status gameStatus; // can be CONTINUE, WON or LOST
       unsigned int sumOfDice{rollDice()}; // first roll of the dice
       rolls++;//increase tally for every dice rolled
@@ -198,6 +206,7 @@ int main(){
          case 11: // win with 11 on first roll           
             gameStatus = Status::WON;
             frequencyWins[rolls]++;//games won first roll
+            totalWins++;
             break;
          case 2: // lose with 2 on first roll
          case 3: // lose with 3 on first roll
@@ -207,6 +216,7 @@ int main(){
             break;
          default: // did not win or lose, so remember point
             gameStatus = Status::CONTINUE; // game is not over
+            totalGamesWithPoint++;
             myPoint = sumOfDice; // remember the point
             std::cout << "Point is " << myPoint << std::endl;
             break; // optional at end of switch  
@@ -220,6 +230,7 @@ int main(){
          // determine game status
          if (sumOfDice == myPoint) { // win by making point
             gameStatus = Status::WON;
+            totalWins++;
             if(rolls < 21){
                frequencyWins[rolls]++;//games won on 2nd roll and above
             }//end if
@@ -250,7 +261,7 @@ int main(){
    
    //frequencyRolls[games] = rolls;
    games++;//increase tally
-   rolls = 0;//reset roll count for next game
+   totalRolls += rolls;//reset roll count for next game
    }//end while games loop
 
    std::cout << "\n" << std::string(40,'-') << "\n";
@@ -267,6 +278,40 @@ int main(){
       std::cout << std::setw(12) << frequencyWins[i];
       std::cout << std::setw(13) << frequencyLost[i] << "\n";
     }//end dice roll frequency per game for loop 
+
+    // ────────────────────────────────────────────────
+    // Output results
+    // ────────────────────────────────────────────────
+
+    std::cout << "\nResults after " << TOTAL_GAMES << " games of craps\n";
+    std::cout << std::string(50, '-') << "\n";
+
+    std::cout << "\nWins by roll number:\n";
+    for (int i = 1; i <= 20; ++i) {
+        std::cout << "Roll " << std::setw(2) << i << ": " << frequencyWins[i] << " wins\n";
+    }
+    std::cout << "After 20th roll: " << frequencyWins[0] << " wins\n";
+
+    std::cout << "\nLosses by roll number:\n";
+    for (int i = 1; i <= 20; ++i) {
+        std::cout << "Roll " << std::setw(2) << i << ": " << frequencyLost[i] << " losses\n";
+    }
+    std::cout << "After 20th roll: " << frequencyLost[0] << " losses\n";
+
+    std::cout << "\nSummary:\n";
+    std::cout << "Total wins:           " << totalWins << " (" 
+         << std::fixed << std::setprecision(2) 
+         << (totalWins * 100.0 / TOTAL_GAMES) << "%)\n";
+    std::cout << "Total losses:         " << (TOTAL_GAMES - totalWins) << "\n";
+    std::cout << "Probability of winning: " 
+         << (totalWins * 100.0 / TOTAL_GAMES) << "%\n";
+    std::cout << "Average length of game: " 
+         << std::fixed << std::setprecision(2) 
+         << (static_cast<double>(totalRolls) / TOTAL_GAMES) << " rolls\n";
+
+    std::cout << "\nGames that reached the point phase: " 
+         << totalGamesWithPoint << " (" 
+         << (totalGamesWithPoint * 100.0 / TOTAL_GAMES) << "%)\n";
 
        
     return 0;// indicate that program ended successfully
