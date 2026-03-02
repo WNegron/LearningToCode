@@ -1,25 +1,29 @@
 /***************************************************************************************************
 
-File Name: exXX_XX.cpp
-     Date: XXXX-XX-XX
+File Name: ex07_21.cpp
+     Date: 2026-02-25
    Author: Warren Negron
     Email: warren.negron@gmail.com
 
 Note: 
-My answer to exercise X.XX using only the tools and methods taught up to Chapter X.
+My answer to exercise 7.21 using only the tools and methods taught up to Chapter 7.
 
 This exercise is from the global Edition of C++ How to Program, 10/e 
 
 Description:
 
-7.21 (Workshop Summary) Use a two-dimensional array to solve the following problem. A craft
+    7.21 (Workshop Summary) Use a two-dimensional array to solve the following problem. A craft
 workshop has three craftspeople (1 to 3) who produce four different products (1 to 4). Once a day,
 each craftsperson passes in a slip for each different type of product completed. Each slip contains
 the following:
-a) The craft-person’s number
-b) The product number
-c) The quantity of items completed
-Thus, each craftsperson passes in between 0 and 4 production slips per day. Write a program that
+    
+    a) The craft-person’s number
+
+    b) The product number
+
+    c) The quantity of items completed
+
+    Thus, each craftsperson passes in between 0 and 4 production slips per day. Write a program that
 will read in the information as supplied on each individual production slip and summarize the total
 items manufactured by a craftsperson by product. All totals should be stored in the two-dimensional
 array stock. After processing all the information for the last month, print the results in tabular
@@ -44,6 +48,9 @@ using namespace std;//program uses names from namespace std
 // function main begins program execution
 int main(){
     // declaring and initializing variables
+    const int columns = 4;
+    const int rows = 3;
+    array<array<int,columns>,rows> craftWorkshop{};
 
     return 0;// indicate that program ended successfully
 }// end of main function
