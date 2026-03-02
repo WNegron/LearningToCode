@@ -32,6 +32,7 @@ Description:
 #include <string> // enable program to use C++ string data type
 #include <thread>     // for sleep_for
 #include <chrono>     // for seconds, milliseconds, etc.
+#include <vector>//contains the definition of class template vector
 
 //developer define header files
 //#include "headerFileName.hpp"//enable program to use function from headerFileNames
